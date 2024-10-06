@@ -1,0 +1,37 @@
+---
+title: Attendees
+description: Invited researchers
+image: /new_imgs/DallE-background-speaker.png
+---
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<div class="inner-hero text-container">
+		<div class="hero-text-container">
+			<div class="heading-landing">         
+		       	<h1 class="hero-title">
+		            Invited researchers
+		       	</h1>
+				<!--<p class="subtext editable bold-large-text">Who confirmed their attendance?</p>-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="pad">
+	<div class="container">
+		<p class="editor-link"><a href="cloudcannon:collections/_attendees" class="btn"><strong>&#9998;</strong> Manage Staff Members</a></p>
+		<ul class="staff">
+			<!-- <p>This list is being constantly updated. Complete information available soon.</p> -->
+			{% for person in site.attendees %}
+				<li>
+					<div class="square-image" style="background-image: url({% include relative-src.html src=person.image_path %})"></div>
+					
+					<div class="name"><a href={{ person.website }} target="_blank" >{{ person.name }}</a></div>
+					<div class="position">{{ person.position }}</div>
+					<div class="position2">{{ person.position2 }}</div>
+					<div class="position3">{{ person.position3 }}</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
