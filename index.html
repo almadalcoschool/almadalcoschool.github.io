@@ -1,52 +1,105 @@
----
+<!-- ---
 title: Home
-description: Alma Dal Co School on Collective Behaviour
-image: /new_imgs/ocean_currents.png
+description: The Alma Dal Co School on Collective Behaviour
+image: /images/home/paper_natEcoEvol2020.jpg.png
 bottom_image: http://unsplash.it/2000/1322?a=.png
----
+--- -->
+
 
 <style>
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 2px;
-}
+    /* Column layout for older structure (not used in grid) */
+    .column {
+        float: left; /* Float elements to the left */
+        width: 33.33%; /* Each column takes one-third of the row */
+        padding: 2px; /* Padding around columns */
+    }
 
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    /* Clearfix to clear floats */
+    .row::after {
+        content: ""; /* Generates content */
+        clear: both; /* Clears floats */
+        display: table; /* Displays as a table */
+    }
+
+    /* Hero section styles */
+    .hero {
+        background-image: url('images/home/paper_natEcoEvol2020.jpg'); /* Set background image */
+        background-size: cover; /* Cover the entire area */
+        background-position: center; /* Center the image */
+        height: 70vh; /* Set the height of the hero section */
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        color: white; /* Set text color */
+    }
+
+    /* Title styles */
+    .hero-title {
+        font-size: 40px; /* Main title font size */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    /* Responsive title size */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 30px; /* Font size for smaller screens */
+        }
+    }
+
+    /* Fixed box styles */
+    .fixed-box {
+        position: fixed; /* Keep the box fixed */
+        bottom: 20px; /* Distance from the bottom of the page */
+        right: 0; /* Position to the right */
+        width: 170px; /* Box width */
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        padding: 10px; /* Inner padding */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
+        z-index: 1000; /* Ensure the box is above other content */
+    }
+
+    /* Content margin for fixed box */
+    .content {
+        margin-right: 240px; /* Space to the right for the box */
+    }
+
+    /* Grid layout for logos */
+    .grid {
+        display: grid; /* Set the layout to grid */
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Create fluid columns */
+        gap: 20px; /* Space between items */
+        margin-top: 20px; /* Space above the grid */
+    }
+
+    /* Logo image styles */
+    .grid img {
+        width: 100%; /* Full width to fit the cell */
+        height: auto; /* Keep image proportions */
+    }
 </style>
+
+
+<body>
+<div class="fixed-box">
+    <strong>Date:</strong> Sep. 28th – Oct. 4th, 2025<br>
+    <strong>Venue:</strong> Palazzo Franchetti<br>
+    <strong>Location:</strong> Venice<br>
+    <strong>Deadlines:</strong> TBD<br>
+    <strong>Contacts:</strong> TBD<br>
+    <strong>Event Poster:</strong> TBD<br>
+</div>
 
 <section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
 	<div class="inner-hero text-container">
 		<div class="hero-text-container">
 			<div class="heading-landing-home">
 				<h1 class="hero-title">
-            Alma Dal Co School on Collective Behaviour
-       	</h1>
-         
-       	<h2 class="hero-subtitle">
-            Subtitle
-       	</h2>
-				<p class="subtext editable bold-large-text">28 September- 4 October 2025 - Venice, Italy</p>
+                    Alma Dal Co School on Collective Behaviour
+                </h1> <!-- Corretto qui -->
+				<p class="subtext editable bold-large-text">Venice, Palazzo Franchetti, September 28th– October 4th, 2025</p>
 			</div>
-			<!--<div class="cta button alt"><a href="https://app.oxfordabstracts.com/stages/24379/submitter" target="_blank">Submit an abstract/poster<br>(Oxford Abstracts)</a></div>-->
-			<!-- <div class="cta button alt"><a href="./registration" target="_blank">Pre-registration and<br>fee waiver (for young scholars)</a></div>- -->
 		</div>
 	</div>
-	<!--
-	<div class="learn-more">
-		<font size="25">
-			<a href="#learn-more">
-				<span class="highlight">Learn more</span>
-				<span class="arrow">&#x25BC;</span>
-			</a>
-		</font>
-	</div>-->
-	<!-- <div class="learn-more"><font size="25"><a href="#learn-more">Learn more <span class="arrow">&#x25BC;</span></a></font></div> -->
 </section>
 
 <div class="content">
@@ -54,87 +107,53 @@ bottom_image: http://unsplash.it/2000/1322?a=.png
 		<div class="container flex">
 			<div class="text">
 				<p class="editable">
-					The school perpetuates Alma dal Co's open, bold and generous approach to science by pursuing a twofold objective. 
-					First, young scientists will be exposed to exciting research on a particular topic, through different points of view and interdisciplinary expertise. 
-					Second, senior participants will have the opportunity to meet talented students and to hear about complementary approaches to their research. 
-					The school is organized in a highly interactive format, to foster communication across disciplines and career stages. 
-					Development of a shared language, and a common understanding of different approaches will be supported by introductory lectures given by world experts in collective behaviour research. 
-					Ample time will be allocated to discussion and exchange of ideas among participants. 
-					In memory of Alma’s talent as a pianist, the school will be followed, on Saturday the 30th of November, by a series of musical events at the Venice Conservatory Benedetto Marcello.
+					Collective behaviour occurs at every scale of spatiotemporal organization of living matter: 
+					molecules within cells, microbes, cells within multicellular organisms, and societies all 
+					display organized behaviours that transcend the properties of one single element in isolation. 
+					Collective, macroscopic modes emerge as the result of interactions among the composing units, 
+					often encompassing and integrating lower-level heterogeneity. Changes in collective behaviour 
+					can be characterized on short time scales, those associated with its establishment and functioning, 
+					but also on longer, evolutionary time scales, where their functions get shaped by selection.
+					Studying collective behaviour involves methods of observation and modelling that span across 
+					disciplines: biochemistry, molecular biology, physics, informatics, ecology and evolution. 
+					The school will cover several of those approaches and encourage cross-talk between all 
+					participants, exploiting the diversity of backgrounds, career stages, and expertise.
+				</p>
+				<h3>School Description & Objectives</h3>
+				The School on Collective Behaviour perpetuates Alma Dal Co's open, bold and generous approach to science, 
+				pursuing a twofold objective. First, young scientists will be exposed to exciting research on a particular 
+				topic, through different points of view and interdisciplinary expertise. Second, senior participants will 
+				have the opportunity to meet talented students and to hear about complementary approaches to their own research.
+				 The School is organized in a highly interactive format, to foster communication across disciplines and career 
+				 stages. Development of a shared language, and a common understanding of different approaches will be supported
+				  by introductory lectures given by world experts in collective behaviour research. Ample time will be allocated
+				   to discussion and exchange of ideas among participants. 
 			</div>
 		</div>
 	</section>
 
 
-	<!--<div class="content">
 	<section class="info" id="learn-more">
 		<div class="container flex">
-			<div class="text">
-				<p class="editable">
-				</p>
+			<div class="grid"> <!-- Apply grid class here -->
+				<a href="https://almadalcofondazione.org/" target="_blank">
+					<img src="images/almadalco.jpg" alt="almadalco">
+				</a>
+				<a href="https://www.istitutoveneto.it/" target="_blank">
+					<img src="images/istitutoveneto.jpg" alt="istitutoveneto">
+				</a>
+				<a href="http://www.dfa.unipd.it/" target="_blank">
+					<img src="images/logoDFA.png" alt="DFA">
+				</a>
+				<a href="https://www.unil.ch/dbc/" target="_blank">
+					<img src="images/unil.jpg" alt="unil">
+				</a>
+				<a href="https://www.unipd.it/" target="_blank">
+					<img src="images/UNIPD.jpg" alt="Università degli studi di Padova">
+				</a>
 			</div>
-		</div>
-	</section>-->
-
-	<section class="info">
-		<div class="container flex">
-			<div class="text">
-				<h2 class="editable">List of Questions</h2>
-				<p class="editable">
-				<ul>
-  					<li> <b> Modeling Lagrangian Paths in Oceanography </b> <br/>
-  										What are the latest advancements and challenges in modeling Lagrangian paths in ocean currents, and how can these models enhance our understanding of marine ecosystems and their dynamic interactions? </li>
-  					<li> <b> Understanding Oceanic Metacommunities </b> <br/> 
-  										In what ways can the concept of a metacommunity be applied to the ocean's diverse habitats, and how does this perspective alter our approach to studying marine biodiversity and ecological processes? </li>
-  					<li> <b> Incorporating Evolutionary Dynamics in Seascape Ecology </b> <br/> 
-  										How can we effectively integrate evolutionary dynamics into seascape ecology models, and what implications does this integration have for predicting and managing changes in marine biodiversity?</li>
-  					<li> <b> Functional Scales and Dynamics in the Seascape </b> <br/>
-  										What are the key challenges in understanding and quantifying the scales relevant for functioning and dynamics within seascapes, and how do these scales influence ecological processes and conservation strategies?</li>
-				</ul></p>
-			</div>
-			<!---<div class="image">
-				<img class="editable" src="new_imgs/starry_night.jpg" alt="The Starry Night by Vincent van Gogh" />
-			</div>-->
 		</div>
 	</section>
-
-	
-
-
-		<section class="info" id="learn-more">
-			<div class="container flex">
-				<div class="text">
-					<h2 class="editable">Sponsored by:</h2>
-		
-			<div class="row">
-			<div class="column">
-			 <a href="https://almadalcofondazione.org/" target="_blank"><img src="images/almadalco.jpg" alt="almadalco" style="width:90%"></a>             
-            </div>
-			<div class="column">							
-             <a href="https://www.istitutoveneto.it/" target="_blank"><img src="images/istitutoveneto.jpg" alt="istitutoveneto" style="width:90%"></a>              
-            </div>
-			<div class="column">							
-			 <a href="http://www.dfa.unipd.it/" target="_blank"><img src="images/logoDFA.png" alt="DFA" style="width:90%"></a>              
-			</div>
-			<div class="column">							
-			 <a href="https://www.unil.ch/dbc/" target="_blank"><img src="images/unil.jpg" alt="unil" style="width:90%"></a>              
-			</div>
-		</div>
-		<h2 class="editable"> Supported by: </h2>
-		<div class="row">
-			 <div class="column">
-			<a href="https://www.unipd.it/" target="_blank"><img src="images/UNIPD.jpg" alt="Università degli studi di Padova" style="width:75%"></a>             
-            </div>
-		</div>
-		<!--<div class="row">
-			<div class="column">
-				<a href="https://www.mur.gov.it/it" target="_blank"><img src="images/LOGO_MUR_Social.jpg" alt="MUR" style="width:60%"></a>            
-			  </div>			
-			<div class="column">
-				<a target="_blank"><img src="images/IT Finanziato dall'Unione europea_PANTONE.jpg" alt="PNRR" style="width: 500px;"></a>            			
-			</div>		
-		</div>	-->
-			</div>
-			</div>
-		</section>
 </div>
+
+</body>
