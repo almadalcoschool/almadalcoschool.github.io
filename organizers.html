@@ -32,7 +32,7 @@ image: /new_imgs/eddy.png
 	  <h3>Chairpersons</h3>
 	  <ul class="staff">
 		{% for person in site.organizers %}
-		  {% if person.role == "Chairperson" %}
+		  {% if person.roles contains "Chairperson" %}
 			<li>
 			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
 			  <div class="name">
@@ -46,11 +46,11 @@ image: /new_imgs/eddy.png
 		{% endfor %}
 	  </ul>
   
-	  <!-- Scientific Committee -->
+	  <!-- Scientific Committee of the School -->
 	  <h3>Scientific Committee of the School</h3>
 	  <ul class="staff">
 		{% for person in site.organizers %}
-		  {% if person.role == "Scientific Committee" %}
+		  {% if person.roles contains "Scientific Committee" %}
 			<li>
 			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
 			  <div class="name">
@@ -68,7 +68,7 @@ image: /new_imgs/eddy.png
 	  <h3>Local Organizing Committee</h3>
 	  <ul class="staff">
 		{% for person in site.organizers %}
-		  {% if person.role == "Local Organizing Committee" %}
+		  {% if person.roles contains "Local Organizing Committee" %}
 			<li>
 			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
 			  <div class="name">
@@ -82,7 +82,7 @@ image: /new_imgs/eddy.png
 		{% endfor %}
 	  </ul>
 	</div>
-  </section>
+  </section>  
   
 
 <!-- OLD ORGANIZERS SECTION -->
