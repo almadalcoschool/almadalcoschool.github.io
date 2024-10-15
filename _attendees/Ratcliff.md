@@ -1,7 +1,7 @@
 ---
 name: William Ratcliff 
-position: Georgia Tech, Atlanta
+position: Georgia Tech, Atlanta, USA
 #position3: Institute of Ecology and Biodiversity
-#image_path: /new_imgs/attendees/Marquet.png
-#website: "https://ieb-chile.cl/en/persona/dr-pablo-marquet/"
+image_path: /new_imgs/attendees/Ratcliff.jpeg
+website: "https://ratclifflab.biosci.gatech.edu/"
 ---

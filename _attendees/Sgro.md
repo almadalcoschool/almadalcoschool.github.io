@@ -1,7 +1,7 @@
 ---
 name: Allyson Sgro
-position: Howard Hughes Medical Institute, Ashburn
+position: Howard Hughes Medical Institute, Ashburn, USA
 #position3: Istituto di Ricerca Sulle Acque di Verbania
-#image_path: /new_imgs/attendees/Martinez.jpg
-#website: "https://publications.cnr.it/authors/alejandro.martinezgarcia"
+image_path: /new_imgs/attendees/Sgro.jpeg
+website: "https://sgrolab.com/"
 ---

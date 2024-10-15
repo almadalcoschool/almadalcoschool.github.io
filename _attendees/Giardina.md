@@ -1,7 +1,7 @@
 ---
 name: Irene Giardina
-position: La Sapienza, Roma
+position: La Sapienza, Roma, ITA
 #position3: Integrative Marine Ecology group
-#image_path: /images/organizers/Iudicone.jpg
-#website: "https://www.szn.it/index.php/en/staff/list-of-personnel/291-iudicone-daniele/457-iudicone-daniele"
+image_path: /images/organizers/Giardina.jpeg
+website: "https://sites.google.com/uniroma1.it/irene-giardina"
 ---

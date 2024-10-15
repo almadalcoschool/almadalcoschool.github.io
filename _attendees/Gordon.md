@@ -1,7 +1,7 @@
 ---
 name: Deborah Gordon  
-position: Stanford University
+position: Stanford University, USA
 #position3: Laboratory of Interdisciplinary Physics
-#image_path: /new_imgs/attendees/Lazzardi.jpg
-#website: "https://www.liphlab.com/people/silvia/"
+image_path: /new_imgs/attendees/Gordon.jpg
+website: "https://web.stanford.edu/~dmgordon/"
 ---
