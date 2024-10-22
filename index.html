@@ -90,11 +90,27 @@ image: /images/home/paper_natEcoEvol2020.jpg
         .grid {
             grid-template-columns: repeat(2, 1fr); /* Riduce il numero di colonne */
         }
+        
+        /* Aggiornamenti per la sezione hero */
         .hero {
-            height: 50vh; /* Riduce l'altezza della sezione hero */
+            height: 50vh; /* Riduce l'altezza della hero su schermi piccoli */
+            background-position: center center; /* Mantiene l'immagine centrata */
+            background-size: cover; /* Assicura che l'immagine copra l'intera sezione */
         }
+    
         .hero-title {
             font-size: 30px; /* Riduce la dimensione del titolo */
+            margin-bottom: 10px; /* Riduce il margine sotto il titolo */
+            text-align: center; /* Centra il titolo */
+        }
+    
+        .subtext {
+            font-size: 16px; /* Riduce il font della descrizione sotto il titolo */
+            text-align: center; /* Centra la descrizione */
+        }
+    
+        .hero-text-container {
+            padding: 20px; /* Aggiunge padding per evitare che il testo tocchi i bordi */
         }
     }
 </style>
