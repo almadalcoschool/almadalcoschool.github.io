@@ -32,6 +32,8 @@
     text-align: left; /* Align left on larger screens */
     white-space: normal; /* Allow wrapping */
     line-height: 1.2; /* Better line height for readability */
+    max-width: 90%; /* Limit width on mobile */
+    overflow-wrap: break-word; /* Allow breaking of long words */
 }
 
 /* Subtext styles */
@@ -91,17 +93,19 @@
     }
 
     .hero-title {
-        font-size: 1.8rem; /* Smaller size for mobile */
+        font-size: 1.6rem; /* Smaller size for mobile */
         text-align: left; /* Align left on mobile */
+        max-width: 90%; /* Limit width on mobile */
+        overflow-wrap: break-word; /* Allow breaking of long words */
     }
 
     .subtext {
-        font-size: 16px; /* Reduces the font size of the subtitle */
+        font-size: 14px; /* Reduces the font size of the subtitle */
         text-align: center; /* Centers the subtitle */
     }
 
     .hero-text-container {
-        padding: 20px; /* Adds padding to prevent the text from touching the edges */
+        padding: 10px; /* Reduce padding on mobile */
     }
 }
 
@@ -111,4 +115,3 @@
         font-size: 2.5rem; /* Regular size for larger screens */
     }
 }
-
