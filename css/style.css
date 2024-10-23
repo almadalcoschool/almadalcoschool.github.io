@@ -92,7 +92,7 @@
 
     .hero-title {
         font-size: 1.8rem; /* Smaller size for mobile */
-        text-align: left; /* Center on mobile */
+        text-align: left; /* Align left on mobile */
     }
 
     .subtext {
@@ -105,7 +105,7 @@
     }
 }
 
-/* Responsive title size */
+/* Regular size for larger screens */
 @media (min-width: 769px) {
     .hero-title {
         font-size: 2.5rem; /* Regular size for larger screens */
