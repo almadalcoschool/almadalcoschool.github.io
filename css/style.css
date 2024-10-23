@@ -26,15 +26,15 @@
 
 /* Title styles */
 .hero-title {
-    font-size: 48px; /* Main title font size */
+    font-size: 2.5rem; /* Main title font size */
     margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Centers the title */
 }
 
-/* Responsive title size */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 38px; /* Font size for smaller screens */
-    }
+/* Subtext styles */
+.subtext {
+    font-size: 1.2rem; /* Font size for subtitle */
+    text-align: center; /* Centers the subtitle */
 }
 
 /* Fixed box styles */
@@ -70,6 +70,7 @@
     height: auto; /* Keep image proportions */
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
     .content {
         margin-right: 0; /* Remove margin for mobile screens */
@@ -87,14 +88,13 @@
     }
 
     .hero-title {
-        font-size: 30px; /* Reduces the font size of the title */
+        font-size: 1.8rem; /* Smaller size for mobile */
+        line-height: 1.2; /* Adjust line height if necessary */
         margin-bottom: 10px; /* Reduces margin below the title */
-        text-align: center; /* Centers the title */
     }
 
     .subtext {
-        font-size: 16px; /* Reduces the font size of the subtitle */
-        text-align: center; /* Centers the subtitle */
+        font-size: 1rem; /* Adjusted font size for mobile subtitle */
     }
 
     .hero-text-container {
