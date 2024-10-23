@@ -92,6 +92,14 @@
         background-size: cover; /* Ensures the image covers the section */
     }
 
+    .heading-landing {
+        padding: 20px; /* Reduce padding */
+    }
+
+    .heading-landing-home {
+        padding: 20px; /* Reduce padding */
+    }
+
     .hero-title {
         font-size: 1.6rem; /* Smaller size for mobile */
         text-align: left; /* Align left on mobile */
