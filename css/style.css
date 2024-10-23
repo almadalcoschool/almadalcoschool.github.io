@@ -72,15 +72,11 @@
 
 @media (max-width: 768px) {
     .content {
-        margin-right: 170px; /* Adds margin to the right to prevent overlap */
+        margin-right: 0; /* Remove margin for mobile screens */
     }
-    
+
     .fixed-box {
-        bottom: 10px;  /* Keeps the fixed position */
-        right: 10px;   /* Moves the box slightly inwards */
-        width: 140px;  /* Reduces the width for better fit on small screens */
-        padding: 8px;  /* Adjusts the padding for smaller size */
-        background-color: rgba(255, 255, 255, 0.9); /* Keeps a semi-transparent background */
+        display: none; /* Hides the fixed box on mobile */
     }
 
     /* Updates for the hero section */
