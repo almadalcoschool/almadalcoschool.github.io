@@ -92,14 +92,22 @@
         background-size: cover; /* Ensures the image covers the section */
     }
 
+
     .heading-landing {
-        padding: 10px; /* Reduce padding */
-        width: 90%; /* Make the box narrower if needed */
+        padding: 10px; /* Reduced padding for mobile */
+        max-width: 90%; /* Allow more fluid width */
+        margin: 0 auto; /* Center align the box */
+    }
+
+    .heading-landing h2 {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+        margin-bottom: 5px; /* Maintain margin */
     }
 
     .heading-landing-home {
-        padding: 10px; /* Reduce padding */
-        width: 90%; /* Make the box narrower if needed */
+        padding: 10px; /* Reduced padding for mobile */
+        max-width: 90%; /* Allow more fluid width */
+        margin: 0 auto; /* Center align the box */
     }
 
     .hero-title {
@@ -107,6 +115,11 @@
         text-align: left; /* Align left on mobile */
         max-width: 90%; /* Limit width on mobile */
         overflow-wrap: break-word; /* Allow breaking of long words */
+    }
+
+    .heading-landing-home .hero-title {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+        margin-bottom: 15px; /* Maintain margin */
     }
 
     .subtext {
