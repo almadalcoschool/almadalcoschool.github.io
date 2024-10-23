@@ -86,13 +86,13 @@
     /* Updates for the hero section */
     .hero {
         height: 50vh; /* Reduces the height of the hero section */
-        background-position: center center; /* Centers the image */
+        background-position: center; /* Centers the image */
         background-size: cover; /* Ensures the image covers the section */
     }
 
     .hero-title {
         font-size: 1.8rem; /* Smaller size for mobile */
-        text-align: center; /* Center on mobile */
+        text-align: left; /* Center on mobile */
     }
 
     .subtext {
