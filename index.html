@@ -195,24 +195,27 @@ image: /images/home/paper_natEcoEvol2020.jpg
     /* Mobile Styles */
     @media (max-width: 768px) {
     .content {
-        margin-right: 0; /* Adjust the right margin for small screens */
-    }
-    .fixed-box {
-        bottom: 10px; /* Adjusts the position to prevent overlap */
-        right: 10px;  /* Slightly moves the box to the left for smaller screens */
-        width: 150px; /* Reduces the width of the box for smaller screens */
+        margin-right: 170px; /* Adds margin to the right to prevent overlap */
     }
     
+    .fixed-box {
+        bottom: 10px;  /* Keeps the fixed position */
+        right: 10px;   /* Moves the box slightly inwards */
+        width: 140px;  /* Reduces the width for better fit on small screens */
+        padding: 8px;  /* Adjusts the padding for smaller size */
+        background-color: rgba(255, 255, 255, 0.9); /* Keeps a semi-transparent background */
+    }
+
     /* Updates for the hero section */
     .hero {
-        height: 50vh; /* Reduces hero section height on smaller screens */
-        background-position: center center; /* Keeps the background image centered */
-        background-size: cover; /* Ensures the image covers the entire section */
+        height: 50vh; /* Reduces the height of the hero section */
+        background-position: center center; /* Centers the image */
+        background-size: cover; /* Ensures the image covers the section */
     }
 
     .hero-title {
-        font-size: 30px; /* Reduces the title size */
-        margin-bottom: 10px; /* Reduces the margin below the title */
+        font-size: 30px; /* Reduces the font size of the title */
+        margin-bottom: 10px; /* Reduces margin below the title */
         text-align: center; /* Centers the title */
     }
 
