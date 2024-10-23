@@ -93,11 +93,13 @@
     }
 
     .heading-landing {
-        padding: 20px; /* Reduce padding */
+        padding: 10px; /* Reduce padding */
+        width: 90%; /* Make the box narrower if needed */
     }
 
     .heading-landing-home {
-        padding: 20px; /* Reduce padding */
+        padding: 10px; /* Reduce padding */
+        width: 90%; /* Make the box narrower if needed */
     }
 
     .hero-title {
