@@ -24,6 +24,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
         .content {
             margin-right: 240px; /* Space to the right for the box */
         }
+
+        @media (max-width: 768px) {
+			.content {
+				margin-right: 0; /* Remove margin for mobile screens */
+			}
+		
+			.fixed-box {
+				display: none; /* Hides the fixed box on mobile */
+			}
+		}
         </style>
 </head>
 
