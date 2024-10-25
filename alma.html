@@ -49,15 +49,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
         overflow-wrap: break-word; /* Allow breaking of long words */
     }
 
-    @media (max-width: 768px) {
-        .content {
-            margin-right: 0; /* Remove margin for mobile screens */
-        }
-    
-        .fixed-box {
-            display: none; /* Hides the fixed box on mobile */
-        }
-    }
 
  /* AGGIUNGO QUESTA PARTEEEEEEEEEEEEEEEEEEE */
         .container {
@@ -76,16 +67,29 @@ image: /images/home/paper_natEcoEvol2020.jpg
             flex-shrink: 0;             /* Prevent image from shrinking */
         }
 
-        /* Optional: Add responsive styles */
+        /* Responsive styles for mobile screens */
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* Stack elements vertically */
-                align-items: center;    /* Center align */
-            }
-            .text {
-                padding-right: 0;       /* Remove right padding */
-            }
+        .content {
+            margin-right: 0; /* Remove margin for mobile screens */
         }
+    
+        .fixed-box {
+            display: none; /* Hides the fixed box on mobile */
+        }
+        .container {
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center;    /* Center align */
+        }
+        .text {
+            padding-right: 0;       /* Remove right padding */
+        }
+
+        .figure-image {
+            max-width: 250px;       /* Smaller max width on mobile */
+            height: auto;           /* Maintain aspect ratio */
+        }
+        }
+
 
         /* Additional styling for images */
         .figure-image {
