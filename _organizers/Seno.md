@@ -1,6 +1,6 @@
 ---
 name: Flavio Seno
-position: Padua University
+position: Padua University, Padua, ITA
 role: 
     - Chairperson
     # - Scientific Committee

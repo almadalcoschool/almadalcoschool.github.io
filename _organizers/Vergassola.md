@@ -1,6 +1,8 @@
 ---
 name: Massimo Vergassola
-position: President, ENS, Paris
+position: |
+    ENS, Paris, FRA
+    President
 role: Scientific Committee
 #position3: Laboratory of Interdisciplinary Physics
 #image_path: /images/organizers/Suweis.jpg

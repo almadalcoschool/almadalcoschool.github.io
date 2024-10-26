@@ -1,6 +1,6 @@
 ---
 name: Thierry Emonet
-position: Yale
+position: Yale University, New Haven, USA
 role: Scientific Committee
 #position3: Integrative Marine Ecology group
 #image_path: /images/organizers/Iudicone.jpg

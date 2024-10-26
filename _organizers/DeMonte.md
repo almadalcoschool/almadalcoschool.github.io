@@ -1,6 +1,6 @@
 ---
 name: Silvia Da Monte 
-position: ENS, Paris
+position: ENS, Paris, FRA
 role: 
     - Chairperson
     # - Scientific Committee

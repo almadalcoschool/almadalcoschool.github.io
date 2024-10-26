@@ -1,6 +1,6 @@
 ---
 name: Martin Ackermann
-position: ETH, Zurich
+position: ETH, Zurich, CHE
 role: Scientific Committee
 #position3: Laboratory of Interdisciplinary Physics
 #image_path: /images/organizers/Suweis.jpg
