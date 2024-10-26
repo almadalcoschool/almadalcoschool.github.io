@@ -7,6 +7,104 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+    .fixed-box {
+        position: fixed; /* Keep the box fixed */
+        bottom: 20px; /* Distance from the bottom of the page */
+        right: 0; /* Position to the right */
+        width: 170px; /* Box width */
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        padding: 10px; /* Inner padding */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
+        z-index: 1000; /* Ensure the box is above other content */
+    }
+
+    /* Content margin for fixed box */
+    .content {
+        margin-right: 240px; /* Space to the right for the box */
+    }
+
+    /* Hero section styles */
+    .hero {
+        background-image: url('images/home/paper_natEcoEvol2020.jpg'); /* Set background image */
+        background-size: cover; /* Cover the entire area */
+        background-position: center; /* Center the image */
+        height: 70vh; /* Set the height of the hero section */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack elements vertically */
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        color: white; /* Set text color */
+    }
+
+    /* Title styles */
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
+        margin-bottom: 20px; /* Space below the title */
+        text-align: left; /* Align left on larger screens */
+        white-space: normal; /* Allow wrapping */
+        line-height: 1.2; /* Better line height for readability */
+        max-width: 90%; /* Limit width on mobile */
+        overflow-wrap: break-word; /* Allow breaking of long words */
+    }
+
+
+ /* AGGIUNGO QUESTA PARTEEEEEEEEEEEEEEEEEEE */
+        .container {
+            display: flex;                /* Use flexbox layout */
+            align-items: center;         /* Vertically center the items */
+            justify-content: space-between; /* Add space between the text and image */
+            flex-wrap: wrap;             /* Allow wrapping if needed */
+        }
+
+        .text {
+            flex: 1;                     /* Allow the text to grow */
+            padding-right: 20px;        /* Add some space between text and image */
+        }
+
+        .image {
+            flex-shrink: 0;             /* Prevent image from shrinking */
+        }
+
+        /* Responsive styles for mobile screens */
+
+
+        @media (max-width: 768px) {
+        .content {
+            margin-right: 0; /* Remove margin for mobile screens */
+        }
+    
+        .fixed-box {
+            display: none; /* Hides the fixed box on mobile */
+        }
+        .container {
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center;    /* Center align */
+        }
+        .text {
+            padding-right: 0;       /* Remove right padding */
+        }
+
+        .figure-image {
+            max-width: 250px;       /* Smaller max width on mobile */
+            height: auto;           /* Maintain aspect ratio */
+        }
+        }
+
+
+        /* Additional styling for images */
+        .figure-image {
+            max-width: 350px;         /* Set max width for the image */
+            height: auto;             /* Maintain aspect ratio */
+        }
+
+
+ /* AGGIUNGO QUESTA PARTEEEEEEEEEEEEEEEEEEE */
+
+
+
+    </style>
 </head>
 
 <body>
@@ -24,39 +122,68 @@ image: /images/home/paper_natEcoEvol2020.jpg
 	</div>
 </section>
 
-<!-- <div class="fixed-box">
+<div class="fixed-box">
     <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
     <strong>Venue:</strong> Palazzo Franchetti<br>
     <strong>Location:</strong> Venice<br>
     <strong>Deadlines:</strong> TBD<br>
     <strong>Contacts:</strong> TBD<br>
     <strong>Event Poster:</strong> TBD<br>
-</div> -->
+</div>
+
+
 
 <div class="content">
     <section class="info" id="learn-more">
-        <div class="container flex">
-            <div class="text">
-                <h2 class="editable">Alma Dal Co (1989-2022)</h2>
-                <p>
-                    Despite her young age, made important and valuable discoveries at the frontier between physics and microbiology 
-                    by revealing how metabolic interactions at very small spatial scales structure microbial communities. 
-                    Her interests are better explained by her own words: "I was doing physics when biology ran over me. 
-                    I got fascinated by how complex functionality arises in ... bacterial communities... . If I am not in the office, 
-                    I am at the piano. If I am not at the piano, I am underwater spearfishing." The Alma Dal Co School aims to inspire 
-                    early career researchers to pursue groundbreaking research in the spirit of Alma Dal Co's passion for knowledge, 
-                    innovation and multidisciplinary research. <br>
-					For further information, please visit the <a href="https://almadalcofondazione.org/" target="_blank">Alma Dal Co Foundation</a>.
-                </p>
+            <div class="container flex">
+                <div class="text">
+                    <h2 class="editable"> Alma Dal Co (1989-2022)</h2>
+                    <p class="editable">
+                        Despite her young age, made important and valuable discoveries at the frontier between physics and microbiology 
+                        by revealing how metabolic interactions at very small spatial scales structure microbial communities. 
+                        Her interests are better explained by her own words: "I was doing physics when biology ran over me. 
+                        I got fascinated by how complex functionality arises in ... bacterial communities... . If I am not in the office, 
+                        I am at the piano. If I am not at the piano, I am underwater spearfishing." The Alma Dal Co School aims to inspire 
+                        early career researchers to pursue groundbreaking research in the spirit of Alma Dal Co's passion for knowledge, 
+                        innovation and multidisciplinary research. <br>
+                        For further information, please visit the <a href="https://almadalcofondazione.org/" target="_blank">Alma Dal Co Foundation</a>.
+                    </p>
+                    
+                </div>
+                <div class="image">
+                    <img width="512" 
+                    alt="Alma Dal Co" 
+                    src="/images/alma.jpg"></a>
+                </div>
+            </div>
+    </section>
 
-                <figure>
-					<img src="/images/alma.jpg" alt="Alma Dal Co" class="figure-image" style="max-width: 400px; height: auto;">
-				</figure>
-              
-                
-            </div> 
-        </div> 
-    </section> 
-</div>
+<div>
+    
+<!--
+<div class="content">
+    <section class="info" id="learn-more">
+            <div class="container flex">
+                <div class="text">
+                    <h2 class="editable"> Alma Dal Co (1989-2022)</h2>
+                    <p class="editable">
+                        Despite her young age, made important and valuable discoveries at the frontier between physics and microbiology 
+                        by revealing how metabolic interactions at very small spatial scales structure microbial communities. 
+                        Her interests are better explained by her own words: "I was doing physics when biology ran over me. 
+                        I got fascinated by how complex functionality arises in ... bacterial communities... . If I am not in the office, 
+                        I am at the piano. If I am not at the piano, I am underwater spearfishing." The Alma Dal Co School aims to inspire 
+                        early career researchers to pursue groundbreaking research in the spirit of Alma Dal Co's passion for knowledge, 
+                        innovation and multidisciplinary research. <br>
+                        For further information, please visit the <a href="https://almadalcofondazione.org/" target="_blank">Alma Dal Co Foundation</a>.
+                    </p>
+                    
+                </div>
+                <div class="image">
+                    <img src="/images/alma.jpg" alt="Alma Dal Co" class="figure-image" style="max-width: 500px; height: auto;">
+                </div>
+            </div>
+    </section>
 
+<div>
+-->
 </body>
