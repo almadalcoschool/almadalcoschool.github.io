@@ -152,9 +152,11 @@ header {
 	padding: 35px;	
 	background-color: #2c3435bb;
 	border-radius: 25px;
-	overflow-wrap: break-word;
+	// overflow-wrap: break-word;
 	max-width: 100%;
 	overflow: hidden; /* Nasconde eventuali contenuti che eccedono */
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
 }
 
 .heading-landing-home .hero-title {
