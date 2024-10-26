@@ -4,10 +4,10 @@
   link: /alma/
 - name: Speakers
   link: /attendees/
-- name: Program
-  link: /program/
 - name: Participants
   link: /participants/
+- name: Program
+  link: /program/
 - name: Organizers and contacts
   link: /organizers/
 - name: Venue and logistics
