@@ -2,7 +2,5 @@
 name: Andrea Giometto
 position: Cornell University, Ithaca, USA
 role: Local Organizing Committee
-#position3: Laboratory of Interdisciplinary Physics
-#image_path: /images/organizers/Suweis.jpg
-#website: "https://www.liphlab.com/"
+website: "https://www.engineering.cornell.edu/faculty-directory/andrea-giometto"
 ---

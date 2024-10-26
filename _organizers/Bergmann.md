@@ -2,7 +2,5 @@
 name: Sven Bergmann
 position: UNIL, Lausanne, CHE
 role: Scientific Committee
-#position3: Laboratory of Interdisciplinary Physics
-#image_path: /images/organizers/Suweis.jpg
-#website: "https://www.liphlab.com/"
+website: "https://www.sib.swiss/sven-bergmann-group"
 ---

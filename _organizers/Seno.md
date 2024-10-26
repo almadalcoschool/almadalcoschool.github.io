@@ -5,7 +5,5 @@ role:
     - Chairperson
     # - Scientific Committee
     # - Local Organizing Committee
-#position3: Laboratory of Interdisciplinary Physics
-#image_path: /images/organizers/Pigani.png
-#website: "https://epigani.github.io/"
+website: "https://www.unipd.it/en/contatti/rubrica/?ruolo=1&checkout=cerca&persona=SENO&key=947510AD324E7DA307E504C8E25D8D9A"
 ---

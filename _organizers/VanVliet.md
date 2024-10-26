@@ -5,7 +5,5 @@ role:
     - Chairperson
     # - Scientific Committee
     # - Local Organizing Committee
-#position3: Laboratory of Interdisciplinary Physics
-#image_path: /images/organizers/Suweis.jpg
-#website: "https://www.liphlab.com/"
+website: "https://www.biozentrum.unibas.ch/research/research-groups/project-leaders-a-z/overview/unit/research-group-simon-van-vliet"
 ---
