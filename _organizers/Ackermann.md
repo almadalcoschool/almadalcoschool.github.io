@@ -2,7 +2,5 @@
 name: Martin Ackermann
 position: ETH, Zurich, CHE
 role: Scientific Committee
-#position3: Laboratory of Interdisciplinary Physics
-#image_path: /images/organizers/Suweis.jpg
-#website: "https://www.liphlab.com/"
+website: "https://www.eawag.ch/en/about-us/portrait/organisation/staff/profile/martin-ackermann/show/"
 ---
