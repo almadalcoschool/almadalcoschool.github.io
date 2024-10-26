@@ -49,60 +49,41 @@ image: /images/home/paper_natEcoEvol2020.jpg
         overflow-wrap: break-word; /* Allow breaking of long words */
     }
 
+    .container {
+        display: flex;                /* Use flexbox layout */
+        align-items: center;         /* Vertically center the items */
+        justify-content: space-between; /* Add space between the text and image */
+        flex-wrap: wrap;             /* Allow wrapping if needed */
+    }
 
- /* AGGIUNGO QUESTA PARTEEEEEEEEEEEEEEEEEEE */
-        .container {
-            display: flex;                /* Use flexbox layout */
-            align-items: center;         /* Vertically center the items */
-            justify-content: space-between; /* Add space between the text and image */
-            flex-wrap: wrap;             /* Allow wrapping if needed */
-        }
+    .image {
+        flex-shrink: 0;             /* Prevent image from shrinking */
+    }
 
-        .text {
-            flex: 1;                     /* Allow the text to grow */
-            padding-right: 20px;        /* Add some space between text and image */
-        }
-
-        .image {
-            flex-shrink: 0;             /* Prevent image from shrinking */
-        }
-
-        /* Responsive styles for mobile screens */
+    /* Responsive styles for mobile screens */
 
 
-        @media (max-width: 768px) {
-        .content {
-            margin-right: 0; /* Remove margin for mobile screens */
-        }
-    
-        .fixed-box {
-            display: none; /* Hides the fixed box on mobile */
-        }
-        .container {
-            flex-direction: column; /* Stack elements vertically */
-            align-items: center;    /* Center align */
-        }
-        .text {
-            padding-right: 0;       /* Remove right padding */
-        }
+    @media (max-width: 768px) {
+    .content {
+        margin-right: 0; /* Remove margin for mobile screens */
+    }
 
-        .figure-image {
-            max-width: 250px;       /* Smaller max width on mobile */
-            height: auto;           /* Maintain aspect ratio */
-        }
-        }
+    .fixed-box {
+        display: none; /* Hides the fixed box on mobile */
+    }
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;    /* Center align */
+    }
+    .text {
+        padding-right: 0;       /* Remove right padding */
+    }
 
-
-        /* Additional styling for images */
-        .figure-image {
-            max-width: 350px;         /* Set max width for the image */
-            height: auto;             /* Maintain aspect ratio */
-        }
-
-
- /* AGGIUNGO QUESTA PARTEEEEEEEEEEEEEEEEEEE */
-
-
+    .figure-image {
+        max-width: 250px;       /* Smaller max width on mobile */
+        height: auto;           /* Maintain aspect ratio */
+    }
+    }
 
     </style>
 </head>
