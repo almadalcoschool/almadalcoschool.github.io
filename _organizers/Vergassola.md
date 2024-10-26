@@ -1,6 +1,6 @@
 ---
 name: Massimo Vergassola
-position: "ENS, Paris, FRA \n President"
+position: "ENS, Paris, FRA<br>President"
 role: Scientific Committee
 website: "https://qbio.ens.psl.eu/annuaire/massimo-vergassola"
 ---
