@@ -4,17 +4,20 @@ left_links:
   - name: Alma Dal Co
     link: /alma/
   - name: Speakers
-    link: /attendees/
-  - name: Program
-    link: /program/
+    link: /speakers/
   - name: Participants
     link: /participants/
-  - name: Organizers and contacts
-    link: /organizers/
-  - name: Venue and logistics
+  - name: Program
+    link: /program/
+  - name: Venue and Logistics
     link: /venue/
+  - name: Organizers 
+    link: /organizers/
+  - name: Contacts
+    link: /contacts/
   - name: Sustainability
     link: /sustainability/
+
 
 #right_links:
 #  - name:

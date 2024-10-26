@@ -1,6 +1,6 @@
 ---
-title: Organizers and contacts
-description: Organizers and contacts.
+title: Contacts
+description: Contacts
 image: /images/home/paper_natEcoEvol2020.jpg
 ---
 
@@ -68,9 +68,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		<div class="hero-text-container">
 			<div class="heading-landing">         
                 <h1 class="hero-title">
-                    Organizers and contacts
+                    Contacts
                 </h1>
-                <!--<p class="subtext editable bold-large-text">Who organizes the workshop?</p>-->
+                <!--<p class="subtext editable bold-large-text">How to get to the workshop?</p>-->
             </div>
 		</div>
 	</div>
@@ -85,69 +85,15 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <strong>Event Poster:</strong> TBD<br>
 </div>
 
-<!-- NEW ORGANIZERS SECTION (SUBDIVISION INTO ROLES) -->
-<section class="pad">
-	<div class="container">
-	  <p class="editor-link">
-		<a href="cloudcannon:collections/_organizers" class="btn">
-		  <strong>&#9998;</strong> Manage Staff Members
-		</a>
-	  </p>
-  
-	  <!-- Chairpersons -->
-	  <h2>Chairpersons</h2>
-	  <ul class="staff">
-		{% for person in site.organizers %}
-		  {% if person.role contains "Chairperson" %}
-			<li>
-			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
-			  <div class="name">
-				<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-			  </div>
-			  <div class="position">{{ person.position }}</div>
-			  <div class="position2">{{ person.position2 }}</div>
-			  <div class="position3">{{ person.position3 }}</div>
-			</li>
-		  {% endif %}
-		{% endfor %}
-	  </ul>
-  
-	  <!-- Scientific Committee of the School -->
-	  <h2>Scientific Committee of the School</h2>
-	  <ul class="staff">
-		{% for person in site.organizers %}
-		  {% if person.role contains "Scientific Committee" %}
-			<li>
-			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
-			  <div class="name">
-				<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-			  </div>
-			  <div class="position">{{ person.position }}</div>
-			  <div class="position2">{{ person.position2 }}</div>
-			  <div class="position3">{{ person.position3 }}</div>
-			</li>
-		  {% endif %}
-		{% endfor %}
-	  </ul>
-  
-	  <!-- Local Organizing Committee -->
-	  <h2>Local Organizing Committee</h2>
-	  <ul class="staff">
-		{% for person in site.organizers %}
-		  {% if person.role contains "Local Organizing Committee" %}
-			<li>
-			  <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div>
-			  <div class="name">
-				<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-			  </div>
-			  <div class="position">{{ person.position }}</div>
-			  <div class="position2">{{ person.position2 }}</div>
-			  <div class="position3">{{ person.position3 }}</div>
-			</li>
-		  {% endif %}
-		{% endfor %}
-	  </ul>
-	</div>
-  </section>  
-  
+<div class="content">
+	<section class="info" id="learn-more">
+		<div class="container flex">
+			<div class="text">
+				<h2 class="editable">Contacts</h2>
+				<p>For any further questions, please write to <a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a>.</p>
+				<p>Or call us at <a href="tel:+390412407711">+390412407711</a>.</p>
+			</div>
+		</div>
+	</section>
+</div>
 </body>

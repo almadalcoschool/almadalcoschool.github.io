@@ -3,14 +3,16 @@
 - name: Alma Dal Co
   link: /alma/
 - name: Speakers
-  link: /attendees/
+  link: /speakers/
 - name: Participants
   link: /participants/
 - name: Program
   link: /program/
-- name: Organizers and contacts
-  link: /organizers/
-- name: Venue and logistics
+- name: Venue and Logistics
   link: /venue/
+- name: Organizers 
+  link: /organizers/
+- name: Contacts
+  link: /contacts/
 - name: Sustainability
   link: /sustainability/
