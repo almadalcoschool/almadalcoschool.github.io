@@ -76,6 +76,18 @@ image: /images/home/paper_natEcoEvol2020.jpg
         margin-bottom: 40px; /* Adjust the value as needed */
         }
     
+    .background-label {
+        position: absolute; /* Overlay position */
+        top: 10px; /* Adjust based on preference */
+        left: 10px; /* Adjust based on preference */
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        color: #fff; /* White text for contrast */
+        padding: 5px 10px; /* Padding around the label */
+        font-size: 0.9rem; /* Label font size */
+        border-radius: 4px; /* Rounded corners */
+        z-index: 10; /* Ensure it stays above the image */
+    }
+    
     @media (max-width: 768px) {
 
         /* Updates for the hero section */
@@ -142,6 +154,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 </div>
 
 <section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+    <div class="background-label"></div>
+        Figure from Nat Ecol Evol 2020  by Alma Dal Co
+    </div>
     <div class="inner-hero text-container">
         <div class="hero-text-container">
             <div class="heading-landing-home">
