@@ -50,41 +50,42 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		overflow-wrap: break-word; /* Allow breaking of long words */
 	}
 
-    @media (max-width: 768px) {
-        /* Updates for the hero section */
-        .fixed-box {
-        display: none; /* Hides the fixed box on mobile */
-        }
-        .hero {
-            height: 40vh; /* Reduces the height of the hero section */
-            background-position: center; /* Centers the image */
-            background-size: cover; /* Ensures the image covers the section */
-        }
-    
-        .hero-title {
-            font-size: 1.4rem !important; /* Smaller size for mobile */
-            max-width: 90%; /* Limit width on mobile */
-            text-align: left; /* Align left on mobile */
-            line-height: 1.1; /* Adjusts line height */
-            overflow-wrap: break-word; /* Allow breaking of long words */
-        }
-    
-        .subtext {
-            font-size: 14px; /* Reduces the font size of the subtitle */
-            text-align: center; /* Centers the subtitle */
-        }
-    
-        .hero-text-container {
-            padding: 10px; /* Reduce padding on mobile */
-        }
-        
-        .heading-landing, 
-        .heading-landing-home {
-            padding: 15px;        /* Adjust padding for mobile */
-            max-width: none;    /* Remove max-width to allow natural size */
-            word-wrap: break-word; /* Allow words to break in case of overflow */
-        }
-    }
+	@media (max-width: 768px) {
+
+/* Updates for the hero section */
+.fixed-box {
+display: none; /* Hides the fixed box on mobile */
+}
+.hero {
+    height: 40vh; /* Reduces the height of the hero section */
+    background-position: center; /* Centers the image */
+    background-size: cover; /* Ensures the image covers the section */
+}
+
+.hero-title {
+    font-size: 1.4rem !important; /* Smaller size for mobile */
+    max-width: 90%; /* Limit width on mobile */
+    text-align: left; /* Align left on mobile */
+    line-height: 1.1; /* Adjusts line height */
+    overflow-wrap: normal; /* Allow breaking of long words */
+}
+
+.subtext {
+    font-size: 14px; /* Reduces the font size of the subtitle */
+    text-align: center; /* Centers the subtitle */
+}
+
+.hero-text-container {
+    padding: 10px; /* Reduce padding on mobile */
+}
+
+.heading-landing, 
+.heading-landing-home {
+    padding: 15px;        /* Adjust padding for mobile */
+    max-width: none;    /* Remove max-width to allow natural size */
+    word-wrap: break-word; /* Allow words to break in case of overflow */
+}
+}
 </style>
 
 </head>
@@ -92,12 +93,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <body>
 
 <div class="fixed-box">
-    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
-    <strong>Venue:</strong> Palazzo Franchetti<br>
-    <strong>Location:</strong> Venice<br>
-    <strong>Deadlines:</strong> TBD<br>
-    <strong>Contacts:</strong> TBD<br>
-    <strong>Event Poster:</strong> TBD<br>
+<strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
+<strong>Venue:</strong> Palazzo Franchetti<br>
+<strong>Location:</strong> Venice<br>
+<strong>Deadlines:</strong> TBD<br>
+<strong>Contacts:</strong> TBD<br>
+<strong>Event Poster:</strong> TBD<br>
 </div>
 
 <section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
