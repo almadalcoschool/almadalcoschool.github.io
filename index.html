@@ -24,7 +24,21 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .content {
         margin-right: 240px; /* Space to the right for the box */
     }
-    
+    .grid {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap to a new line */
+        justify-content: center; /* Center items within the container */
+        gap: 10px; /* Optional: Add space between items */
+        max-width: 100%; /* Ensure the grid doesn't exceed the container */
+        overflow: hidden; /* Prevent overflow */
+    }
+    .grid img {
+        height: auto;
+        width: 100px; /* Set a responsive max width */
+        max-height: 80px; /* Optional: Limit height on smaller screens */
+        object-fit: contain; /* Ensures the image aspect ratio remains intact */
+    }
+        
 
     /* Hero section styles */
     .hero {
@@ -85,6 +99,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
             max-width: none;    /* Remove max-width to allow natural size */
             word-wrap: break-word; /* Allow words to break in case of overflow */
         }
+        .grid img {
+            width: 80px; /* Smaller width for mobile */
+            height: auto; /* Allow height to adjust */
     }
 </style>
 
@@ -194,26 +211,27 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="container flex">
         <div class="grid"> 
             <a href="https://almadalcofondazione.org/" target="_blank">
-                <img src="images/almadalco.jpg" alt="almadalco" style="height: 100px; width: auto;">
+                <img src="images/almadalco.jpg" alt="almadalco">
             </a>
             <a href="https://www.istitutoveneto.it/" target="_blank">
-                <img src="images/istitutoveneto.jpg" alt="istitutoveneto" style="height: 100px; width: auto;">
+                <img src="images/istitutoveneto.jpg" alt="istitutoveneto">
             </a>
             <a href="https://www.unipd.it/" target="_blank">
-                <img src="images/UNIPD.jpg" alt="Università degli studi di Padova" style="height: 100px; width: auto;">
+                <img src="images/UNIPD.jpg" alt="Università degli studi di Padova">
             </a>
             <a href="http://www.dfa.unipd.it/" target="_blank">
-                <img src="images/logoDFA.png" alt="DFA" style="height: 100px; width: auto;">
+                <img src="images/logoDFA.png" alt="DFA">
             </a>
             <a href="https://www.unil.ch/index.html" target="_blank">
-                <img src="images/unil.png" alt="unil" style="height: 100px; width: auto;">
+                <img src="images/unil.png" alt="unil">
             </a>
             <a href="https://www.unil.ch/dbc/en/home.html" target="_blank">
-                <img src="images/logo_dep_bio_comp.jpeg" alt="unil" style="height: 100px; width: auto;">
+                <img src="images/logo_dep_bio_comp.jpeg" alt="unil">
             </a>
         </div> 
     </div> 
 </section> 
+
 
 
             
