@@ -55,6 +55,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         justify-content: center; /* Center content vertically */
         align-items: center; /* Center content horizontally */
         color: white; /* Set text color */
+        position: relative; /* Set hero section to relative to position the label */
         }
 
     .grid {
@@ -77,16 +78,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
         }
     
     .background-label {
-        position: fixed; /* Absolute within the hero section */
-        bottom: 0px; /* 10px from the bottom of the hero section */
-        right: 0px; /* 10px from the right of the hero section */
-        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        position: absolute; /* Positioned within the hero section */
+        bottom: 10px; /* Position 10px from the bottom */
+        right: 10px; /* Position 10px from the right */
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
         color: #fff; /* White text for contrast */
         padding: 5px 15px; /* Padding around the label */
         font-size: 0.9rem; /* Font size for the label */
-        border-radius: 4px; /* Rounded corners */
-        z-index: 10; /* Ensure it appears above other content */
-        text-align: center; /* Center text in the label */
+        border-radius: 4px; /* Rounded corners for the label */
+        z-index: 10; /* Ensure it appears above background content */
+        text-align: center; /* Center the text within the label */
     }
 
     @media (max-width: 768px) {
