@@ -9,6 +9,22 @@ image: /new_imgs/Accademia.jpg
     <!--<link rel="stylesheet" href="css/style.css"> -->
 	
 <style>
+	.fixed-box {
+			position: fixed; /* Keep the box fixed */
+			bottom: 20px; /* Distance from the bottom of the page */
+			right: 0; /* Position to the right */
+			width: 170px; /* Box width */
+			background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+			padding: 10px; /* Inner padding */
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
+			z-index: 1000; /* Ensure the box is above other content */
+		}
+	
+		/* Content margin for fixed box */
+		.content {
+			margin-right: 240px; /* Space to the right for the box */
+		}
+		
 	@media (max-width: 768px) {
 		/* Updates for the hero section */
 		.fixed-box {
