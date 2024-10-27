@@ -68,10 +68,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         line-height: 1.2; /* Better line height for readability */
         max-width: 90%; /* Limit width on mobile */
         overflow-wrap: break-word; /* Allow breaking of long words */
-        padding: 0 10px; /* Add some horizontal padding */
-        overflow: hidden; /* Hide overflow text */
-        text-overflow: ellipsis; /* Optional: Add ellipsis if text is too long */
-            }
+        }
     
     @media (max-width: 768px) {
 
@@ -86,11 +83,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
             background-size: cover; /* Ensures the image covers the section */
             }
         .hero-title {
-            font-size: 1.4rem; /* Smaller size for mobile */
-            max-width: 90%; /* Limit width on mobile */
-            line-height: 1.3; /* Adjust line height for better readability */
-            overflow-wrap: break-word; /* Allow breaking of long words */
-            padding: 0 10px; /* Add horizontal padding to prevent overflow */
+            font-size: 1.4rem !important; /* Smaller size for mobile */
+            max-width: 90% !important; /* Limit width on mobile */
+            text-align: left; /* Align left on mobile */
+            line-height: 1.1; /* Adjusts line height */
+            overflow-wrap: break-word !important; /* Allow breaking of long words */
             }
         .subtext {
             font-size: 14px; /* Reduces the font size of the subtitle */
@@ -256,23 +253,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 <!--
-    .hero-title {
-        font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
-        margin-bottom: 20px; /* Space below the title */
-        text-align: left; /* Align left on larger screens */
-        white-space: normal; /* Allow wrapping */
-        line-height: 1.2; /* Better line height for readability */
-        max-width: 90%; /* Limit width on mobile */
-        overflow-wrap: break-word; /* Allow breaking of long words */
-        }
-
+    
 
         IN MOBILE
-                .hero-title {
-            font-size: 1.4rem !important; /* Smaller size for mobile */
-            max-width: 90%; /* Limit width on mobile */
-            text-align: left; /* Align left on mobile */
-            line-height: 1.1; /* Adjusts line height */
-            overflow-wrap: break-word; /* Allow breaking of long words */
-            }
+                
         -->
