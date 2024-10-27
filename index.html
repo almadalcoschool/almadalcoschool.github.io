@@ -247,6 +247,38 @@ image: /images/home/paper_natEcoEvol2020.jpg
 </section> 
 
 
+<script>
+    function checkWidth() {
+        const fixedBox = document.querySelector('.fixed-box');
+        if (window.innerWidth < 768) {
+            if (fixedBox) {
+                fixedBox.remove(); // Remove the fixed box if it exists
+            }
+        } else {
+            // If you want to re-add the box when the screen is resized back to larger sizes,
+            // you'll need to recreate it here. For example:
+            if (!document.querySelector('.fixed-box')) {
+                const newFixedBox = document.createElement('div');
+                newFixedBox.className = 'fixed-box';
+                newFixedBox.innerHTML = `
+                    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
+                    <strong>Venue:</strong> Palazzo Franchetti<br>
+                    <strong>Location:</strong> Venice<br>
+                    <strong>Deadlines:</strong> TBD<br>
+                    <strong>Contacts:</strong> TBD<br>
+                    <strong>Event Poster:</strong> TBD<br>
+                `;
+                document.body.appendChild(newFixedBox);
+            }
+        }
+    }
+
+    // Check width on load
+    checkWidth();
+
+    // Check width on resize
+    window.addEventListener('resize', checkWidth);
+</script>
 
             
 
