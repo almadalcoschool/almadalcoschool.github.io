@@ -84,6 +84,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
             background-position: center; /* Centers the image */
             background-size: cover; /* Ensures the image covers the section */
             }
+            
         .hero-title {
             text-align: left; /* Align left on mobile */
             font-size: 1.4rem !important; /* Smaller size for mobile */
@@ -96,6 +97,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         .subtext {
             font-size: 14px; /* Reduces the font size of the subtitle */
             text-align: center; /* Centers the subtitle */
+            overflow-wrap: break-word;
             }
     
         .hero-text-container {
@@ -113,6 +115,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
             height: 80px; /* Allow height to adjust */
             width: auto; /* Smaller width for mobile */
             }
+
+        .inner-hero, .text-container, .hero-text-container, .heading-landing-home {
+        padding: 0 10px; /* Add horizontal padding to avoid overflow */
+        max-width: 90%; /* Limit width to avoid overflow */
+    }
         }
 </style>
 
@@ -245,41 +252,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
         </div> 
     <!--</div> -->
 </section> 
-
-
-<script>
-    function checkWidth() {
-        const fixedBox = document.querySelector('.fixed-box');
-        if (window.innerWidth < 768) {
-            if (fixedBox) {
-                fixedBox.remove(); // Remove the fixed box if it exists
-            }
-        } else {
-            // If you want to re-add the box when the screen is resized back to larger sizes,
-            // you'll need to recreate it here. For example:
-            if (!document.querySelector('.fixed-box')) {
-                const newFixedBox = document.createElement('div');
-                newFixedBox.className = 'fixed-box';
-                newFixedBox.innerHTML = `
-                    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
-                    <strong>Venue:</strong> Palazzo Franchetti<br>
-                    <strong>Location:</strong> Venice<br>
-                    <strong>Deadlines:</strong> TBD<br>
-                    <strong>Contacts:</strong> TBD<br>
-                    <strong>Event Poster:</strong> TBD<br>
-                `;
-                document.body.appendChild(newFixedBox);
-            }
-        }
-    }
-
-    // Check width on load
-    checkWidth();
-
-    // Check width on resize
-    window.addEventListener('resize', checkWidth);
-</script>
-
             
 
 </body>
