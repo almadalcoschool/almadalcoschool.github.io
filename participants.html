@@ -8,6 +8,119 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="css/style.css">-->
 
+<style>
+	@media (max-width: 768px) {
+		/* Updates for the hero section */
+		.fixed-box {
+		display: none; /* Hides the fixed box on mobile */
+		}
+		.hero {
+			height: 50vh; /* Reduces the height of the hero section */
+			background-position: center; /* Centers the image */
+			background-size: cover; /* Ensures the image covers the section */
+		}
+	
+		.hero-title {
+			font-size: 1.6rem; /* Smaller size for mobile */
+			max-width: 90%; /* Limit width on mobile */
+			text-align: left; /* Align left on mobile */
+			line-height: 1.2; /* Adjusts line height */
+			overflow-wrap: break-word; /* Allow breaking of long words */
+		}
+	
+		.subtext {
+			font-size: 14px; /* Reduces the font size of the subtitle */
+			text-align: center; /* Centers the subtitle */
+		}
+	
+		.hero-text-container {
+			padding: 10px; /* Reduce padding on mobile */
+		}
+		
+		.heading-landing, 
+		.heading-landing-home {
+			padding: 15px;        /* Adjust padding for mobile */
+			max-width: none;    /* Remove max-width to allow natural size */
+			word-wrap: break-word; /* Allow words to break in case of overflow */
+		}
+	}
+</style>
+
+</head>
+
+<body>
+
+<div class="fixed-box">
+	<strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
+	<strong>Venue:</strong> Palazzo Franchetti<br>
+	<strong>Location:</strong> Venice<br>
+	<strong>Deadlines:</strong> TBD<br>
+	<strong>Contacts:</strong> TBD<br>
+	<strong>Event Poster:</strong> TBD<br>
+</div>
+	
+</head>
+
+<body>
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<div class="inner-hero text-container">
+		<div class="hero-text-container">
+			<div class="heading-landing">         
+		       	<h1 class="hero-title">
+		            Participants
+		       	</h1>
+				<!--<p class="subtext editable bold-large-text">How to register for the workshop?</p>-->
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<div class="content">
+
+	<section class="info" id="learn-more">
+		<div class="container flex">
+			<div class="text">
+				<h2 class="editable">Participants</h2>
+				<p>
+					The School will welcome 35 early career researchers (PhD students, post-docs, starting PIs) 
+					from all STEM disciplines who work on collective behaviour in any biological system.
+				</p> 
+				<p>	
+					<strong>Participants are expected to participate for the whole duration of the school and to present their work in a poster or short talk.<strong>
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- <section class="info" id="fee-waiver">
+		<div class="container flex">
+			<div class="text">
+				<h2 class="editable">Important Info:</h2>		
+				<p>  
+					text
+				</p>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- <section class="info" id="learn-more">
+		<div class="container flex">
+			<div class="text">
+				<h2 class="editable">How to apply</h2>
+				<p>
+					text & link to the form
+				</p>
+			</div>
+		</div>
+	</section> -->
+
+</div>
+</body>
+
+
+<!--
 	<style>
 		.fixed-box {
 			position: fixed; /* Keep the box fixed */
@@ -60,70 +173,4 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			}
 		}
 		</style>
-</head>
-
-<body>
-
-<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-	<div class="inner-hero text-container">
-		<div class="hero-text-container">
-			<div class="heading-landing">         
-		       	<h1 class="hero-title">
-		            Participants
-		       	</h1>
-				<!--<p class="subtext editable bold-large-text">How to register for the workshop?</p>-->
-			</div>
-		</div>
-	</div>
-</section>
-
-<div class="fixed-box">
-    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
-    <strong>Venue:</strong> Palazzo Franchetti<br>
-    <strong>Location:</strong> Venice<br>
-    <strong>Deadlines:</strong> TBD<br>
-    <strong>Contacts:</strong> TBD<br>
-    <strong>Event Poster:</strong> TBD<br>
-</div>
-
-<div class="content">
-
-	<section class="info" id="learn-more">
-		<div class="container flex">
-			<div class="text">
-				<h2 class="editable">Participants</h2>
-				<p>
-					The School will welcome 35 early career researchers (PhD students, post-docs, starting PIs) 
-					from all STEM disciplines who work on collective behaviour in any biological system.
-				</p> 
-				<p>	
-					<strong>Participants are expected to participate for the whole duration of the school and to present their work in a poster or short talk.<strong>
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- <section class="info" id="fee-waiver">
-		<div class="container flex">
-			<div class="text">
-				<h2 class="editable">Important Info:</h2>		
-				<p>  
-					text
-				</p>
-			</div>
-		</div>
-	</section> -->
-
-	<!-- <section class="info" id="learn-more">
-		<div class="container flex">
-			<div class="text">
-				<h2 class="editable">How to apply</h2>
-				<p>
-					text & link to the form
-				</p>
-			</div>
-		</div>
-	</section> -->
-
-</div>
-</body>
+-->

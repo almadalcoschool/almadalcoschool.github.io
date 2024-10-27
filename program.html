@@ -8,6 +8,126 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="css/style.css">-->
 
+<style>
+    @media (max-width: 768px) {
+        /* Updates for the hero section */
+        .fixed-box {
+        display: none; /* Hides the fixed box on mobile */
+        }
+        .hero {
+            height: 50vh; /* Reduces the height of the hero section */
+            background-position: center; /* Centers the image */
+            background-size: cover; /* Ensures the image covers the section */
+        }
+    
+        .hero-title {
+            font-size: 1.6rem; /* Smaller size for mobile */
+            max-width: 90%; /* Limit width on mobile */
+            text-align: left; /* Align left on mobile */
+            line-height: 1.2; /* Adjusts line height */
+            overflow-wrap: break-word; /* Allow breaking of long words */
+        }
+    
+        .subtext {
+            font-size: 14px; /* Reduces the font size of the subtitle */
+            text-align: center; /* Centers the subtitle */
+        }
+    
+        .hero-text-container {
+            padding: 10px; /* Reduce padding on mobile */
+        }
+        
+        .heading-landing, 
+        .heading-landing-home {
+            padding: 15px;        /* Adjust padding for mobile */
+            max-width: none;    /* Remove max-width to allow natural size */
+            word-wrap: break-word; /* Allow words to break in case of overflow */
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="fixed-box">
+    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
+    <strong>Venue:</strong> Palazzo Franchetti<br>
+    <strong>Location:</strong> Venice<br>
+    <strong>Deadlines:</strong> TBD<br>
+    <strong>Contacts:</strong> TBD<br>
+    <strong>Event Poster:</strong> TBD<br>
+</div>
+
+
+</head>
+
+<body>
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+    <div class="inner-hero text-container">
+        <div class="hero-text-container">
+            <div class="heading-landing">         
+                <h1 class="hero-title">
+                    Program
+                </h1>
+                <!--<p class="subtext editable bold-large-text">What is the timeline of the workshop?</p>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="content">
+    <section class="info" id="learn-more">
+        <div class="container flex">
+            <div class="text">
+                <p>
+                    The school starts on Monday, September 29th at 8:30 and finishes on Saturday, October 4th at 12:00. The optional 
+                    Conversation on Science and Music event will subsequently take place on Saturday, October 4th from 16:00 - 18:45.
+                </p>
+                <p>
+                    The school will combine lectures, talks, and discussion sessions to allow for in-depth exchanges with both the 
+                    invited speakers and the other participants. A number of arrangements will be put in place to stimulate intellectual 
+                    exchange among participants and speakers. In particular, participants will be asked to engage with introducing the 
+                    speakers and moderating the discussions. Moreover, thematic groups involving participants and speakers will be established 
+                    on the first day and will report their conclusions at the end of the school. Guidelines will be provided after acceptance.
+                </p>
+                <p>
+                    Participants are required to participate for the whole duration of the school, to reciprocate a similar commitment 
+                    by the speakers. There will be time to explore Venice in the evenings and during a free afternoon halfway through the 
+                    school. A detailed program will be published closer to the start of the conference.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="info" id="learn-more">
+    <div class="container flex">
+        <div class="text">
+            <h3 class="editable">Additional Activities</h3>
+            <p>
+                A social event will introduce the participants to the Venice Biennale, the world famous international cultural 
+                exhibition. The title of the Biennale Architettura 2025 is <i>'Intelligens. Natural. Artificial. Collective.'</i>  offering 
+                a close connection with the themes of the school.<br>
+                
+                A <b>Lecture</b> by Andrea Rinaldo, Prof. of Maritime hydraulic construction and hydrology (Padua University), will introduce 
+                the participants to Venice and its Lagoon, both World Heritage sites. The lecture will illustrate the impact of 
+                the high tide on the city and the Lagoon and the protection system (MOSE), as another example of collective behaviour.<br>
+                
+                Finally, <b>Conversation on Science and Music</b> will take place at the conclusion of the School, giving insights in 
+                cognitive, neuro-sciences and contemporary philosophy, to connect the two branches of interest of the Alma dal Co 
+                Foundation: science and music.
+            </p>               
+        </div> 
+    </div> 
+</section> 
+
+</body>
+
+
+<!--
 
     <style>
         .fixed-box {
@@ -61,76 +181,4 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			}
 		}
         </style>
-</head>
-
-<body>
-
-<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-    <div class="inner-hero text-container">
-        <div class="hero-text-container">
-            <div class="heading-landing">         
-                <h1 class="hero-title">
-                    Program
-                </h1>
-                <!--<p class="subtext editable bold-large-text">What is the timeline of the workshop?</p>-->
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="fixed-box">
-    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
-    <strong>Venue:</strong> Palazzo Franchetti<br>
-    <strong>Location:</strong> Venice<br>
-    <strong>Deadlines:</strong> TBD<br>
-    <strong>Contacts:</strong> TBD<br>
-    <strong>Event Poster:</strong> TBD<br>
-</div>
-
-<div class="content">
-    <section class="info" id="learn-more">
-        <div class="container flex">
-            <div class="text">
-                <p>
-                    The school starts on Monday, September 29th at 8:30 and finishes on Saturday, October 4th at 12:00. The optional 
-                    Conversation on Science and Music event will subsequently take place on Saturday, October 4th from 16:00 - 18:45.
-                </p>
-                <p>
-                    The school will combine lectures, talks, and discussion sessions to allow for in-depth exchanges with both the 
-                    invited speakers and the other participants. A number of arrangements will be put in place to stimulate intellectual 
-                    exchange among participants and speakers. In particular, participants will be asked to engage with introducing the 
-                    speakers and moderating the discussions. Moreover, thematic groups involving participants and speakers will be established 
-                    on the first day and will report their conclusions at the end of the school. Guidelines will be provided after acceptance.
-                </p>
-                <p>
-                    Participants are required to participate for the whole duration of the school, to reciprocate a similar commitment 
-                    by the speakers. There will be time to explore Venice in the evenings and during a free afternoon halfway through the 
-                    school. A detailed program will be published closer to the start of the conference.
-                </p>
-            </div>
-        </div>
-    </section>
-</div>
-
-<section class="info" id="learn-more">
-    <div class="container flex">
-        <div class="text">
-            <h3 class="editable">Additional Activities</h3>
-            <p>
-                A social event will introduce the participants to the Venice Biennale, the world famous international cultural 
-                exhibition. The title of the Biennale Architettura 2025 is <i>'Intelligens. Natural. Artificial. Collective.'</i>  offering 
-                a close connection with the themes of the school.<br>
-                
-                A <b>Lecture</b> by Andrea Rinaldo, Prof. of Maritime hydraulic construction and hydrology (Padua University), will introduce 
-                the participants to Venice and its Lagoon, both World Heritage sites. The lecture will illustrate the impact of 
-                the high tide on the city and the Lagoon and the protection system (MOSE), as another example of collective behaviour.<br>
-                
-                Finally, <b>Conversation on Science and Music</b> will take place at the conclusion of the School, giving insights in 
-                cognitive, neuro-sciences and contemporary philosophy, to connect the two branches of interest of the Alma dal Co 
-                Foundation: science and music.
-            </p>               
-        </div> 
-    </div> 
-</section> 
-
-</body>
+-->

@@ -7,6 +7,87 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="css/style.css">-->
+
+<style>
+	@media (max-width: 768px) {
+		/* Updates for the hero section */
+		.fixed-box {
+		display: none; /* Hides the fixed box on mobile */
+		}
+		.hero {
+			height: 50vh; /* Reduces the height of the hero section */
+			background-position: center; /* Centers the image */
+			background-size: cover; /* Ensures the image covers the section */
+		}
+	
+		.hero-title {
+			font-size: 1.6rem; /* Smaller size for mobile */
+			max-width: 90%; /* Limit width on mobile */
+			text-align: left; /* Align left on mobile */
+			line-height: 1.2; /* Adjusts line height */
+			overflow-wrap: break-word; /* Allow breaking of long words */
+		}
+	
+		.subtext {
+			font-size: 14px; /* Reduces the font size of the subtitle */
+			text-align: center; /* Centers the subtitle */
+		}
+	
+		.hero-text-container {
+			padding: 10px; /* Reduce padding on mobile */
+		}
+		
+		.heading-landing, 
+		.heading-landing-home {
+			padding: 15px;        /* Adjust padding for mobile */
+			max-width: none;    /* Remove max-width to allow natural size */
+			word-wrap: break-word; /* Allow words to break in case of overflow */
+		}
+	}
+</style>
+
+</head>
+
+<body>
+
+<div class="fixed-box">
+	<strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
+	<strong>Venue:</strong> Palazzo Franchetti<br>
+	<strong>Location:</strong> Venice<br>
+	<strong>Deadlines:</strong> TBD<br>
+	<strong>Contacts:</strong> TBD<br>
+	<strong>Event Poster:</strong> TBD<br>
+</div>
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<div class="inner-hero text-container">
+		<div class="hero-text-container">
+			<div class="heading-landing">         
+                <h1 class="hero-title">
+                    Contacts
+                </h1>
+                <!--<p class="subtext editable bold-large-text">How to get to the workshop?</p>-->
+            </div>
+		</div>
+	</div>
+</section>
+
+
+<div class="content">
+	<section class="info" id="learn-more">
+		<div class="container flex">
+			<div class="text">
+				<h2 class="editable">Contacts</h2>
+				<p>For any further questions, please write to <a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a> or 
+					contact her by phone at <a href="tel:+390412407711">+39 0412407711</a>.</p>
+			</div>
+		</div>
+	</section>
+</div>
+</body>
+
+
+<!--
 	<style>
 		.fixed-box {
 			position: fixed; /* Keep the box fixed */
@@ -62,38 +143,4 @@ image: /images/home/paper_natEcoEvol2020.jpg
 </head>
 
 <body>
-
-<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-	<div class="inner-hero text-container">
-		<div class="hero-text-container">
-			<div class="heading-landing">         
-                <h1 class="hero-title">
-                    Contacts
-                </h1>
-                <!--<p class="subtext editable bold-large-text">How to get to the workshop?</p>-->
-            </div>
-		</div>
-	</div>
-</section>
-
-<div class="fixed-box">
-    <strong>Date:</strong> Sep. 29th – Oct. 4th, 2025<br>
-    <strong>Venue:</strong> Palazzo Franchetti<br>
-    <strong>Location:</strong> Venice<br>
-    <strong>Deadlines:</strong> TBD<br>
-    <strong>Contacts:</strong> TBD<br>
-    <strong>Event Poster:</strong> TBD<br>
-</div>
-
-<div class="content">
-	<section class="info" id="learn-more">
-		<div class="container flex">
-			<div class="text">
-				<h2 class="editable">Contacts</h2>
-				<p>For any further questions, please write to <a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a> or 
-					contact her by phone at <a href="tel:+390412407711">+39 0412407711</a>.</p>
-			</div>
-		</div>
-	</section>
-</div>
-</body>
+-->
