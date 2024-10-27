@@ -77,15 +77,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
         }
     
     .background-label {
-        position: absolute; /* Overlay position */
-        top: 10px; /* Adjust based on preference */
-        left: 10px; /* Adjust based on preference */
-        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        position: absolute; /* Positioned within the hero section */
+        bottom: 10px; /* Position 10px from the bottom */
+        right: 10px; /* Position 10px from the right */
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
         color: #fff; /* White text for contrast */
-        padding: 5px 10px; /* Padding around the label */
-        font-size: 0.9rem; /* Label font size */
-        border-radius: 4px; /* Rounded corners */
-        z-index: 10; /* Ensure it stays above the image */
+        padding: 5px 15px; /* Padding around the label */
+        font-size: 0.9rem; /* Font size for the label */
+        border-radius: 4px; /* Rounded corners for the label */
+        z-index: 10; /* Ensure it appears above background content */
+        text-align: center; /* Center the text within the label */
     }
     
     @media (max-width: 768px) {
