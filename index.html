@@ -10,9 +10,19 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <style>
 
+    /* Title styles */
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
+        margin-bottom: 20px; /* Space below the title */
+        white-space: normal; /* Allow wrapping */
+        line-height: 1.2; /* Better line height for readability */
+        max-width: 90%; /* Limit width on mobile */
+        overflow-wrap: break-word; /* Allow breaking of long words */
+        }
+
     /* Center text in sections */
     .text, .hero-text-container, .hero-title, .subtext, .container.flex {
-        text-align: flex-start; /* Center-align all major text sections */
+        text-align: flex-start;
         }
 
     .fixed-box {
@@ -53,17 +63,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
         height:  100px;
         max-width: 200px; /* Set a responsive max width */
         object-fit: contain; /* Ensures the image aspect ratio remains intact */
-        }
-        
-    /* Title styles */
-    .hero-title {
-        font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
-        margin-bottom: 20px; /* Space below the title */
-        text-align: left; /* Align left on larger screens */
-        white-space: normal; /* Allow wrapping */
-        line-height: 1.2; /* Better line height for readability */
-        max-width: 90%; /* Limit width on mobile */
-        overflow-wrap: break-word; /* Allow breaking of long words */
         }
     
     @media (max-width: 768px) {
@@ -217,8 +216,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <!-- </div> -->
 
 <!-- loghi -->
-<section class="info" id="learn-more">
-    <div class="container flex">
+<!-- <section class="info" id="learn-more">
+    <div class="container flex"> -->
         <div class="grid"> 
             <a href="https://almadalcofondazione.org/" target="_blank">
                 <img src="images/almadalco.jpg" alt="almadalco">
