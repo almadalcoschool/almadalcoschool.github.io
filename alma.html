@@ -17,7 +17,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
             padding: 0;
             box-sizing: border-box; /* Ensure consistent box sizing */
         }
-
+    /* Specific styles */
+    .main-content {
+        margin-right: 230px; /* Adjust this value based on the width of fixed-box plus some extra space */
+    }
     /* Title styles */
     .hero-title {
         font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
@@ -77,7 +80,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
         }
 
     @media (max-width: 768px) {
-
+        .main-content {
+            margin-right: 0; /*  */
+        }
         /* Updates for the hero section */
         .fixed-box {
         display: none; /* Hides the fixed box on mobile */
