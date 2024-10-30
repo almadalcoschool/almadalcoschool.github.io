@@ -53,12 +53,25 @@ h2 a {
 	}
 }
 
-p, address, ul {
+/* removed ul */
+p, address {
 	font-size: 1.38em;
 	margin-bottom: 20px;
 	font-weight: 300;
 	line-height: 1.6em;
 	font-family: 'Lato', sans-serif;
+}
+
+/* added */
+ul { 
+	font-size: 1.38em;
+	margin-bottom: 20px;
+	font-weight: 300;
+	line-height: 1.6em;
+	font-family: 'Lato', sans-serif;
+	list-style-type: disc; /* Default bullet style */
+	padding-left: 20px; /* Default padding creates indentation */
+	margin: 20px 0; /* Margin around the list */
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
