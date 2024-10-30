@@ -167,65 +167,66 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <div class="main-content">
 	<section class="pad">
 		<div class="container">
-		<p class="editor-link">
-			<a href="cloudcannon:collections/_organizers" class="btn">
-			<strong>&#9998;</strong> Manage Staff Members
-			</a>
-		</p>
+			<p class="editor-link">
+				<a href="cloudcannon:collections/_organizers" class="btn">
+				<strong>&#9998;</strong> Manage Staff Members
+				</a>
+			</p>
+		
+			<!-- Chairpersons -->
+			<h2>Chairpersons</h2>
+			<ul class="staff">
+				{% for person in site.organizers %}
+				{% if person.role contains "Chairperson" %}
+					<li>
+					<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
+					<div class="name">
+						<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
+					</div>
+					<div class="position">{{ person.position }}</div>
+					<div class="position2">{{ person.position2 }}</div>
+					<div class="position3">{{ person.position3 }}</div>
+					</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
 	
-		<!-- Chairpersons -->
-		<h2>Chairpersons</h2>
-		<ul class="staff">
-			{% for person in site.organizers %}
-			{% if person.role contains "Chairperson" %}
-				<li>
-				<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
-				<div class="name">
-					<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-				</div>
-				<div class="position">{{ person.position }}</div>
-				<div class="position2">{{ person.position2 }}</div>
-				<div class="position3">{{ person.position3 }}</div>
-				</li>
-			{% endif %}
-			{% endfor %}
-		</ul>
-	
-		<!-- Scientific Committee of the School -->
-		<h2>Scientific Committee of the School</h2>
-		<ul class="staff">
-			{% for person in site.organizers %}
-			{% if person.role contains "Scientific Committee" %}
-				<li>
-				<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
-				<div class="name">
-					<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-				</div>
-				<div class="position">{{ person.position }}</div>
-				<div class="position2">{{ person.position2 }}</div>
-				<div class="position3">{{ person.position3 }}</div>
-				</li>
-			{% endif %}
-			{% endfor %}
-		</ul>
-	
-		<!-- Local Organizing Committee -->
-		<h2>Local Organizing Committee</h2>
-		<ul class="staff">
-			{% for person in site.organizers %}
-			{% if person.role contains "Local Organizing Committee" %}
-				<li>
-				<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
-				<div class="name">
-					<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
-				</div>
-				<div class="position">{{ person.position }}</div>
-				<div class="position2">{{ person.position2 }}</div>
-				<div class="position3">{{ person.position3 }}</div>
-				</li>
-			{% endif %}
-			{% endfor %}
-		</ul>
+			<!-- Scientific Committee of the School -->
+			<h2>Scientific Committee of the School</h2>
+			<ul class="staff">
+				{% for person in site.organizers %}
+				{% if person.role contains "Scientific Committee" %}
+					<li>
+					<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
+					<div class="name">
+						<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
+					</div>
+					<div class="position">{{ person.position }}</div>
+					<div class="position2">{{ person.position2 }}</div>
+					<div class="position3">{{ person.position3 }}</div>
+					</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		
+			<!-- Local Organizing Committee -->
+			<h2>Local Organizing Committee</h2>
+			<ul class="staff">
+				{% for person in site.organizers %}
+				{% if person.role contains "Local Organizing Committee" %}
+					<li>
+					<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
+					<div class="name">
+						<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
+					</div>
+					<div class="position">{{ person.position }}</div>
+					<div class="position2">{{ person.position2 }}</div>
+					<div class="position3">{{ person.position3 }}</div>
+					</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
 	</section>  
 </div>
   
