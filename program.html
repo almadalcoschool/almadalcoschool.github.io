@@ -11,15 +11,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <style>
 
     /* CSS Reset */
-        * {
+    * {
             margin: 0;
             padding: 0;
             box-sizing: border-box; /* Ensure consistent box sizing */
         }
-    /* Specific styles */
     .main-content {
-        margin-right: 220px; /* Adjust this value based on the width of fixed-box plus some extra space */
-    }
+            margin-right: 220px; /* Adjust this value based on the width of fixed-box plus some extra space */
+        }
 
     /* Title styles */
     .hero-title {
@@ -60,8 +59,24 @@ image: /images/home/paper_natEcoEvol2020.jpg
         justify-content: center; /* Center content vertically */
         align-items: center; /* Center content horizontally */
         color: white; /* Set text color */
+        position: relative; /* Set hero section to relative to position the label */
         }
-    
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap to a new line */
+        justify-content: flex-start; /* Center items within the container */
+        gap: 10px; /* Optional: Add space between items */
+        max-width: 100%; /* Ensure the grid doesn't exceed the container */
+        overflow: hidden; /* Prevent overflow */
+        }
+
+    .grid img {
+        height:  100px;
+        max-width: 200px; /* Set a responsive max width */
+        object-fit: contain; /* Ensures the image aspect ratio remains intact */
+        }
+
     .text {
         margin-bottom: 40px; /* Adjust the value as needed */
         }
@@ -71,23 +86,24 @@ image: /images/home/paper_natEcoEvol2020.jpg
         bottom: 0px; /* Position 10px from the bottom */
         right: 0px; /* Position 10px from the right */
         background-color: rgba(0, 0, 0, 0);
-        color: #9dc2ec;
+        color: #b9b9b9;
         padding: 5px 15px; /* Padding around the label */
         font-size: 0.9rem; /* Font size for the label */
         border-radius: 4px; /* Rounded corners for the label */
         z-index: 10; /* Ensure it appears above background content */
         text-align: center; /* Center the text within the label */
-        }
+    }
 
     @media (max-width: 768px) {
         .main-content {
-            margin-right: 0; /*  */
-            }
-        
+            margin-right: 0; 
+        }
+
         .text {
         margin-bottom: 30px;
             }
 
+        /* Updates for the hero section */
         .fixed-box {
         display: none; /* Hides the fixed box on mobile */
             }
@@ -100,36 +116,42 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
         .hero-title {
             text-align: left; /* Align left on mobile */
-            font-size: 1.8rem !important; /* Smaller size for mobile */
-            max-width: 90% !important; /* Limit width on mobile */
-            line-height: 1.1; /* Adjusts line height */
-            padding: 0; 
+            font-size: 1.8em !important; /* Slightly larger font size for emphasis */
+            max-width: 100% !important; /* Use full width on mobile */
+            line-height: 1.3; /* Further increased line height for readability */
+            padding: 10px 15px; /* Add more padding around the title */
             overflow-wrap: break-word !important; /* Allow breaking of long words */
-            }
+        }
 
         .subtext {
             font-size: 14px; /* Reduces the font size of the subtitle */
-            text-align: center; /* Centers the subtitle */
+            text-align: left; /* Centers the subtitle */
             overflow-wrap: break-word;
             }
     
         .hero-text-container {
-            padding: 10px; /* Reduce padding on mobile */
+            padding: 20px 15px; /* Increase padding slightly for breathing room */
             }
         
         .heading-landing, 
         .heading-landing-home {
-            padding: 15px;        /* Adjust padding for mobile */
-            max-width: none;    /* Remove max-width to allow natural size */
+            padding: 25px; /* Adjust padding for mobile */
+            max-width: 90%; /* Increase width slightly */
             word-wrap: break-word; /* Allow words to break in case of overflow */
+            }
+        
+        .grid img {
+            height: 80px; /* Allow height to adjust */
+            width: auto; /* Smaller width for mobile */
             }
 
         .inner-hero, .text-container, .hero-text-container, .heading-landing-home {
-        padding: 0 10px; /* Add horizontal padding to avoid overflow */
-        max-width: 90%; /* Limit width to avoid overflow */
+            padding: 10 15px; /* Add horizontal padding to avoid overflow */
+            max-width: 95%; /* Limit width to avoid overflow */
             }
         }
 </style>
+
 
 </head>
 
