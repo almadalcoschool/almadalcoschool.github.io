@@ -1,5 +1,5 @@
 ---
-name: Simon Van Vliet
+name: Simon van Vliet
 position: Basel University, Basel, CHE
 role: 
     - Chairperson
