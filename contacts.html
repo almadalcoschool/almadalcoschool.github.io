@@ -16,10 +16,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			padding: 0;
 			box-sizing: border-box; /* Ensure consistent box sizing */
 		}
-		/* Specific styles */
-		.main-content {
-			margin-right: 220px; /* Adjust this value based on the width of fixed-box plus some extra space */
-		}
+	/* Specific styles */
+	.main-content {
+		margin-right: 220px; /* Adjust this value based on the width of fixed-box plus some extra space */
+	}
+
 	/* Title styles */
 	.hero-title {
 		font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
@@ -36,16 +37,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		}
 
 	.fixed-box {
-            position: fixed; /* Keep the box fixed */
-            bottom: 25px; /* Distance from the bottom of the page */
-            right: 0; /* Position to the right */
-            width: 210px; /* Box width */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 15px; /* Inner padding */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
-            z-index: 1000; /* Ensure the box is above other content */
-            font-size: 16px; 
-        }
+		position: fixed; /* Keep the box fixed */
+		bottom: 25px; /* Distance from the bottom of the page */
+		right: 0; /* Position to the right */
+		width: 210px; /* Box width */
+		background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+		padding: 15px; /* Inner padding */
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
+		z-index: 1000; /* Ensure the box is above other content */
+		font-size: 16px; 
+	}
 
 	
 	/* Hero section styles */
@@ -60,32 +61,32 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		align-items: center; /* Center content horizontally */
 		color: white; /* Set text color */
 		}
-
+	
 	.text {
-        margin-bottom: 40px; /* Adjust the value as needed */
-        }
-		
+		margin-bottom: 40px; /* Adjust the value as needed */
+		}
+	
 	.background-label {
-        position: relative; /* Positioned within the hero section */
-        bottom: 0px; /* Position 10px from the bottom */
-        right: 0px; /* Position 10px from the right */
-        background-color: rgba(0, 0, 0, 0);
-        color: #9dc2ec;
-        padding: 5px 15px; /* Padding around the label */
-        font-size: 0.9rem; /* Font size for the label */
-        border-radius: 4px; /* Rounded corners for the label */
-        z-index: 10; /* Ensure it appears above background content */
-        text-align: center; /* Center the text within the label */
-        }
+		position: relative; /* Positioned within the hero section */
+		bottom: 0px; /* Position 10px from the bottom */
+		right: 0px; /* Position 10px from the right */
+		background-color: rgba(0, 0, 0, 0);
+		color: #9dc2ec;
+		padding: 5px 15px; /* Padding around the label */
+		font-size: 0.9rem; /* Font size for the label */
+		border-radius: 4px; /* Rounded corners for the label */
+		z-index: 10; /* Ensure it appears above background content */
+		text-align: center; /* Center the text within the label */
+		}
 
 	@media (max-width: 768px) {
-        .main-content {
-            margin-right: 0; /*  */
-        	}
-
-        .text {
-        margin-bottom: 30px;
-        	}
+		.main-content {
+			margin-right: 0; /*  */
+			}
+		
+		.text {
+		margin-bottom: 30px;
+			}
 
 		.fixed-box {
 		display: none; /* Hides the fixed box on mobile */
@@ -159,9 +160,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
 </section>
 
 
-<!--<div class="content">-->
+<div class="main-content">
 	<section class="info" id="learn-more">
-		<div class="main-content">
 		<div class="container flex">
 			<div class="text">
 				<h2 class="editable">Contacts</h2>
@@ -169,7 +169,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
 					contact her by phone at <a href="tel:+390412407711">+39 0412407711</a>.</p>
 			</div>
 		</div>
-	</div>
 	</section>
-<!--</div>-->
+</div>
 </body>
