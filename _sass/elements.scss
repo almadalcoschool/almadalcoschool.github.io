@@ -74,6 +74,10 @@ ul {
 	margin: 20px 0; /* Margin around the list */
 }
 
+ul ul {
+    font-size: 1.38em; /* This would increase the font size of nested lists */
+}
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) 
 {}
