@@ -15,10 +15,11 @@ left_links:
     link: /organizers/
   - name: Contacts
     link: /contacts/
+  - name: Sponsors
+    link: /sponsors/
   # - name: Sustainability
   #   link: /sustainability/
-  # - name: Sponsors
-  #   link: /sponsors/
+
 
 
 #right_links:
