@@ -244,6 +244,24 @@ image: /images/home/paper_natEcoEvol2020.jpg
 				{% endif %}
 				{% endfor %}
 			</ul>
+
+			<!-- Webmasters -->
+			<h2>Webmasters</h2>
+			<ul class="staff">
+				{% for person in site.organizers %}
+				{% if person.role contains "Webmasters" %}
+					<li>
+					<!-- <div class="square-image" style="background-image: url('{{ person.image_path }}')"></div> -->
+					<div class="name">
+						<a href="{{ person.website }}" target="_blank">{{ person.name }}</a>
+					</div>
+					<div class="position">{{ person.position }}</div>
+					<div class="position2">{{ person.position2 }}</div>
+					<div class="position3">{{ person.position3 }}</div>
+					</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
 		</div>
 	</section>  
 </div>
