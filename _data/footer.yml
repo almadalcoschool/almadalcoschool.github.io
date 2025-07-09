@@ -13,10 +13,11 @@ left_links:
     link: /venue/
   - name: Organizers 
     link: /organizers/
-  - name: Contacts
-    link: /contacts/
   - name: Promoters
     link: /promoters/
+  - name: Contacts
+    link: /contacts/
+
   # - name: Sustainability
   #   link: /sustainability/
 
