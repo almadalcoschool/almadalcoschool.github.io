@@ -183,7 +183,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 
-
 <style type="text/css">
     .tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
     .tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
@@ -212,13 +211,29 @@ image: /images/home/paper_natEcoEvol2020.jpg
       overflow: visible !important;   /* override del overflow:hidden di .tg td */
       white-space: nowrap;
       padding-top: 0;                 /* avvicina al bordo superiore */
+      padding-left: 0;                /* il rientro lo gestiamo con --time-x */
     }
     .tg tbody td:first-child .time-on-line{
       position: absolute;
       top: 0;                         /* bordo superiore della riga */
-      left: 0;
+      left: var(--time-x, 8px);       /* rientro dal bordo sinistro */
       transform: translateY(-50%);    /* metà sopra / metà sotto la linea */
       white-space: nowrap;
+    }
+
+    /* === LARGHEZZA FISSA DELLA COLONNA ORARI ===
+       Usa variabili per regolarla in un solo punto */
+    .tg{
+      --time-col: 84px;  /* larghezza colonna orari su desktop */
+      --time-x: 8px;     /* rientro orario dal bordo sinistro */
+    }
+    .tg .tg-col-time{ width: var(--time-col); }
+    .tg thead th:first-child,
+    .tg tbody td:first-child{ width: var(--time-col); min-width: var(--time-col); }
+
+    /* Un po' più compatto su mobile */
+    @media (max-width: 767px){
+      .tg{ --time-col: 64px; --time-x: 4px; }
     }
   </style>
 </head>
@@ -226,6 +241,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
   <div class="tg-wrap">
     <table class="tg">
+      <!-- FISSA LA LARGHEZZA DELLA PRIMA COLONNA -->
+      <colgroup>
+        <col class="tg-col-time">
+        <col span="6">
+      </colgroup>
+
       <thead>
         <tr>
           <th class="tg-ul38"></th>
@@ -256,8 +277,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-0lax" rowspan="2"></td>
           <td class="tg-0lax" rowspan="4"></td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1"><span style="color:#FFF">9:00</span></td>
           <td class="tg-82rs"><span style="background-color:#FFF2CC">Welcome and introduction</span></td>
@@ -274,12 +294,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-pta1" rowspan="4">9:30</td>
           <td class="tg-dmai" rowspan="4">Presentation of groups' conclusions</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr><tr></tr>
         <tr>
           <td class="tg-7803" rowspan="2">10:30</td>
           <td class="tg-agz1" rowspan="2">Coffee break</td>
@@ -289,8 +304,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-agz1" rowspan="2">Coffee break</td>
           <td class="tg-agz1" rowspan="2">Coffee break</td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="4">11:00</td>
           <td class="tg-gpin" rowspan="6">Thierry Emonet</td>
@@ -300,19 +314,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-mkke" rowspan="6">Poster session 2</td>
           <td class="tg-dmai" rowspan="4"></td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr><tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="2">12:00</td>
           <td class="tg-82rs"><span style="background-color:#FFF2CC">Closing remarks</span></td>
         </tr>
-        <tr>
-          <td class="tg-0lax" rowspan="17"></td>
-        </tr>
+        <tr><td class="tg-0lax" rowspan="17"></td></tr>
         <tr>
           <td class="tg-7803" rowspan="6">12:30</td>
           <td class="tg-agz1" rowspan="6">Lunch</td>
@@ -321,16 +328,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-agz1" rowspan="6">Lunch</td>
           <td class="tg-agz1" rowspan="6">Lunch</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="4">14:00</td>
           <td class="tg-gpin" rowspan="4">Allyson Sgro</td>
@@ -339,12 +337,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-gpin" rowspan="4">Karine Gibbs</td>
           <td class="tg-gpin" rowspan="4">Chaitanya Gokhale</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr><tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="2">15:00</td>
           <td class="tg-82rs" rowspan="2">Presentation of the Alma dal Co Foundation and of the school</td>
@@ -353,14 +346,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-gpin" rowspan="4">Markus Arnoldini</td>
           <td class="tg-gpin" rowspan="4">Simon Garnier</td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="2">15:30</td>
           <td class="tg-agz1" rowspan="2">Coffee break</td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="2">16:00</td>
           <td class="tg-dmai" rowspan="6">Group discussion</td>
@@ -369,8 +360,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-gpin" rowspan="4">Ralph Kuvers</td>
           <td class="tg-ccct" rowspan="2">Coffee break</td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="4">16:30</td>
           <td class="tg-gpin" rowspan="4">Will Ratcliff</td>
@@ -378,32 +368,22 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-dmai" rowspan="6">Group discussion</td>
           <td class="tg-teb0" rowspan="10">Public Conversation on Music &amp; Science, followed by a concert by the PhD students of Venice Conservatory</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-          <td class="tg-0lax" rowspan="2"></td>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr>
+        <tr><td class="tg-0lax" rowspan="2"></td></tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="2">17:30</td>
           <td class="tg-0lax" rowspan="2"></td>
           <td class="tg-dmai" rowspan="6">Group discussion</td>
           <td class="tg-teb0" rowspan="6">Aperitif at Orto del Redentore, Giudecca. Donatella Calabi:<span style="font-style:italic"> 'Venezia è viva!'</span></td>
         </tr>
-        <tr>
-        </tr>
+        <tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="4">18:00</td>
           <td class="tg-teb0" rowspan="8">Visit to the European Cultural Center and get together with happy hour </td>
           <td class="tg-teb0" rowspan="7">Francesco Musco: Open lecture on <span style="font-style:italic">'Venice &amp; Lagoon socio-ecological system'</span>, followed by aperitif</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr><tr></tr>
         <tr>
           <td class="tg-pta1" rowspan="3">19:00</td>
           <td class="tg-0lax" rowspan="5"></td>
@@ -411,10 +391,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
           <td class="tg-0lax" rowspan="5"></td>
           <td class="tg-0lax" rowspan="5"></td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+        <tr></tr><tr></tr>
         <tr>
           <td class="tg-pta1"><span style="color:#FFF">19:45</span></td>
           <td class="tg-0lax" rowspan="2"></td>
@@ -442,6 +419,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     });
   </script>
 </body>
+
 
 <!-- TIMETABLE -->
 <!--
