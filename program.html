@@ -179,243 +179,359 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="background-label"> Photo by Alma Dal Co, Nat Ecol Evol 2020 </div>
 </section>
 
+.design-section {
+    padding: 32px clamp(16px, 4vw, 48px);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
 
+  .schedule {
+    display: grid;
+    gap: var(--gutter);
+    align-items: stretch;
 
+    grid-template-columns:
+      [times] var(--time-col-w)
+      [track-1-start] 1fr [track-1-end track-2-start] 1fr
+      [track-2-end track-3-start] 1fr [track-3-end track-4-start] 1fr
+      [track-4-end track-5-start] 1fr [track-5-end track-6-start] 1fr
+      [track-6-end];
 
+    grid-template-rows:
+      [tracks] 44px
+      [time-0830] 40px
+      [time-0900] 40px
+      [time-0915] 40px
+      [time-0930] 40px
+      [time-1030] 40px
+      [time-1100] 40px
+      [time-1200] 40px
+      [time-1230] 40px
+      [time-1400] 40px
+      [time-1500] 40px
+      [time-1530] 40px
+      [time-1600] 40px
+      [time-1630] 40px
+      [time-1730] 40px
+      [time-1800] 40px
+      [time-1900] 40px
+      [time-1945] 40px
+      [time-2000] 40px;
+  }
+
+  .time-slot {
+    grid-column: times;
+    position: sticky;
+    left: 0;
+    align-self: center;
+    justify-self: end;
+    margin: 0;
+    padding-right: 8px;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    z-index: 2;
+    background: linear-gradient(90deg, rgba(11,16,32,1) 70%, rgba(11,16,32,0) 100%);
+  }
+
+  .track-slot {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    padding: 10px 8px;
+    border-radius: 14px;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 8px 20px rgba(0,0,0,0.35);
+  }
+
+  .session {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 10px 12px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 10px 24px rgba(0,0,0,0.35);
+    overflow: hidden;
+  }
+  .session-title {
+    margin: 0 0 4px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  .session-title a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(122,162,255,0.35);
+  }
+  .session-time, .session-presenter {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .session_dummy {
+    background: transparent;
+    color: transparent;
+    box-shadow: none;
+    padding: 0;
+    height: 0;
+  }
+
+  @media (max-width: 1100px) {
+    :root { --time-col-w: 92px; }
+    .session { font-size: 14px; }
+    .session-title { font-size: 13px; }
+  }
+  @media (max-width: 900px) {
+    .schedule {
+      grid-template-columns:
+        [times] var(--time-col-w)
+        [track-1-start] 1fr [track-1-end track-2-start] 1fr
+        [track-2-end track-3-start] 1fr;
+    }
+    [style*="grid-column: track-4"], [style*="grid-column: track-5"], [style*="grid-column: track-6"] {
+      display: none;
+    }
+    .track-slot[style*="track-4"], .track-slot[style*="track-5"], .track-slot[style*="track-6"] {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
 <section class="design-section">
-    <div class="schedule" aria-labelledby="schedule-heading">
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Monday 29/09</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-1; grid-row: time-0830 / time-0900; order: 1;">Monday 29/09</div>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Tuesday 30/09</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-2; grid-row: time-0830 / time-0900; order: 2;">Tuesday 30/09</div>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Wednesday 01/10</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-3; grid-row: time-0830 / time-0900; order: 3;">Wednesday 01/10</div>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Thursday 02/10</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-4; grid-row: time-0830 / time-0900; order: 4;">Thursday 02/10</div>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Friday 03/10</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-5; grid-row: time-0830 / time-0900; order: 5;">Friday 03/10</div>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Saturday 04/10</span>
-    <div class="session_dummy track_dummy" style="grid-column: track-6; grid-row: time-0830 / time-0900; order: 6;">Saturday 04/10</div>
-    <h2 class="time-slot" style="grid-row: time-0830;">08h30</h2>
-    <h2 class="time-slot" style="grid-row: time-0900;">09h00</h2>
-    <h2 class="time-slot" style="grid-row: time-0915;">09h15</h2>
-    <h2 class="time-slot" style="grid-row: time-0930;">09h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1030;">10h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1100;">11h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1200;">12h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1230;">12h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1400;">14h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1500;">15h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1530;">15h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1600;">16h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1630;">16h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1730;">17h30</h2>
-    <h2 class="time-slot" style="grid-row: time-1800;">18h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1900;">19h00</h2>
-    <h2 class="time-slot" style="grid-row: time-1945;">19h45</h2>
-    <h2 class="time-slot" style="grid-row: time-2000;">20h00</h2>
-    <div class="session session-1 track-1" style="grid-column: track-1; grid-row: time-0830 / time-0900; order: 0;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#registration">Registration</a></h3>
-      <span class="session-time">08h30 - 09h00</span>
-    </div>
-    <div class="session session-2 track-1" style="grid-column: track-1; grid-row: time-0900 / time-0915; order: 2;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#welcome-and-introduction">Welcome and introduction</a></h3>
-      <span class="session-time">09h00 - 09h15</span>
-    </div>
-    <div class="session session-3 track-1" style="grid-column: track-1; grid-row: time-0915 / time-0930; order: 3;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#participants-introduction">Participants' introduction</a></h3>
-      <span class="session-time">09h15 - 09h30</span>
-    </div>
-    <div class="session session-4 track-1" style="grid-column: track-1; grid-row: time-1030 / time-1100; order: 8;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-5 track-1" style="grid-column: track-1; grid-row: time-1100 / time-1200; order: 10;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#thierry-emonet">Thierry Emonet</a></h3>
-      <span class="session-time">11h00 - 12h00</span>
-    </div>
-    <div class="session session-6 track-1" style="grid-column: track-1; grid-row: time-1230 / time-1400; order: 16;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch">Lunch</a></h3>
-      <span class="session-time">12h30 - 14h00</span>
-    </div>
-    <div class="session session-7 track-1" style="grid-column: track-1; grid-row: time-1400 / time-1500; order: 22;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#allyson-sgro">Allyson Sgro</a></h3>
-      <span class="session-time">14h00 - 15h00</span>
-    </div>
-    <div class="session session-8 track-1" style="grid-column: track-1; grid-row: time-1500 / time-1530; order: 26;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#presentation-of-the-alma-dal-co-foundation-and-of-the-school">Presentation of the Alma dal Co Foundation and of the school</a></h3>
-      <span class="session-time">15h00 - 15h30</span>
-    </div>
-    <div class="session session-9 track-1" style="grid-column: track-1; grid-row: time-1530 / time-1600; order: 28;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">15h30 - 16h00</span>
-    </div>
-    <div class="session session-10 track-1" style="grid-column: track-1; grid-row: time-1600 / time-1630; order: 30;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion">Group discussion</a></h3>
-      <span class="session-time">16h00 - 16h30</span>
-    </div>
-    <div class="session session-11 track-1" style="grid-column: track-1; grid-row: time-1800 / time-1900; order: 38;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#visit-to-the-european-cultural-center-and-get-together-with-happy-hour">Visit to the European Cultural Center and get together with happy hour</a></h3>
-      <span class="session-time">18h00 - 19h00</span>
-    </div>
-    <div class="session session-12 track-2" style="grid-column: track-2; grid-row: time-0900 / time-0915; order: 102;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#mathieu-coppey">Mathieu Coppey</a></h3>
-      <span class="session-time">09h00 - 09h15</span>
-    </div>
-    <div class="session session-13 track-2" style="grid-column: track-2; grid-row: time-1030 / time-1100; order: 108;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-14 track-2" style="grid-column: track-2; grid-row: time-1100 / time-1200; order: 110;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#mirta-galesic">Mirta Galesic</a></h3>
-      <span class="session-time">11h00 - 12h00</span>
-    </div>
-    <div class="session session-15 track-2" style="grid-column: track-2; grid-row: time-1230 / time-1400; order: 116;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch">Lunch</a></h3>
-      <span class="session-time">12h30 - 14h00</span>
-    </div>
-    <div class="session session-16 track-2" style="grid-column: track-2; grid-row: time-1400 / time-1500; order: 122;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#elena-scarpa">Elena Scarpa</a></h3>
-      <span class="session-time">14h00 - 15h00</span>
-    </div>
-    <div class="session session-17 track-2" style="grid-column: track-2; grid-row: time-1500 / time-1530; order: 126;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#selected-talks-1-tabea-lilian-marx-jan-rombouts-judith-mine-hattab-oliver-meacock">Selected talks 1 Tabea Lilian Marx, Jan Rombouts, Judith Mine-Hattab, Oliver Meacock</a></h3>
-      <span class="session-time">15h00 - 15h30</span>
-    </div>
-    <div class="session session-18 track-2" style="grid-column: track-2; grid-row: time-1600 / time-1630; order: 130;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">16h00 - 16h30</span>
-    </div>
-    <div class="session session-19 track-2" style="grid-column: track-2; grid-row: time-1630 / time-1730; order: 132;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#will-ratcliff">Will Ratcliff</a></h3>
-      <span class="session-time">16h30 - 17h30</span>
-    </div>
-    <div class="session session-20 track-2" style="grid-column: track-2; grid-row: time-1730 / time-1800; order: 136;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion">Group discussion</a></h3>
-      <span class="session-time">17h30 - 18h00</span>
-    </div>
-    <div class="session session-21 track-3" style="grid-column: track-3; grid-row: time-0900 / time-0915; order: 202;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#irene-giardina">Irene Giardina</a></h3>
-      <span class="session-time">09h00 - 09h15</span>
-    </div>
-    <div class="session session-22 track-3" style="grid-column: track-3; grid-row: time-1030 / time-1100; order: 208;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-23 track-3" style="grid-column: track-3; grid-row: time-1100 / time-1200; order: 210;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#poster-session-1">Poster session 1</a></h3>
-      <span class="session-time">11h00 - 12h00</span>
-    </div>
-    <div class="session session-24 track-3" style="grid-column: track-3; grid-row: time-1230 / time-1400; order: 216;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch">Lunch</a></h3>
-      <span class="session-time">12h30 - 14h00</span>
-    </div>
-    <div class="session session-25 track-3" style="grid-column: track-3; grid-row: time-1400 / time-1500; order: 222;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#gonzalo-polavieja">Gonzalo Polavieja</a></h3>
-      <span class="session-time">14h00 - 15h00</span>
-    </div>
-    <div class="session session-26 track-3" style="grid-column: track-3; grid-row: time-1500 / time-1530; order: 226;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#yuko-ulrich">Yuko Ulrich</a></h3>
-      <span class="session-time">15h00 - 15h30</span>
-    </div>
-    <div class="session session-27 track-3" style="grid-column: track-3; grid-row: time-1600 / time-1630; order: 230;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">16h00 - 16h30</span>
-    </div>
-    <div class="session session-28 track-3" style="grid-column: track-3; grid-row: time-1630 / time-1730; order: 232;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#free-afternoon-additional-group-discussion">Free afternoon/ additional group discussion</a></h3>
-      <span class="session-time">16h30 - 17h30</span>
-    </div>
-    <div class="session session-29 track-4" style="grid-column: track-4; grid-row: time-0900 / time-0915; order: 302;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#matti-gralka">Matti Gralka</a></h3>
-      <span class="session-time">09h00 - 09h15</span>
-    </div>
-    <div class="session session-30 track-4" style="grid-column: track-4; grid-row: time-1030 / time-1100; order: 308;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-31 track-4" style="grid-column: track-4; grid-row: time-1100 / time-1200; order: 310;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#selected-talks-2-theo-gibbs-angela-albi-fernandez-i-lopez-alba-motes-rodrigo-giovanni-iacucci-gaurav-gardi">Selected talks 2 Theo Gibbs, Angela Albi, Fernandez I Lopez, Alba Motes Rodrigo, Giovanni Iacucci, Gaurav Gardi</a></h3>
-      <span class="session-time">11h00 - 12h00</span>
-    </div>
-    <div class="session session-32 track-4" style="grid-column: track-4; grid-row: time-1230 / time-1400; order: 316;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch">Lunch</a></h3>
-      <span class="session-time">12h30 - 14h00</span>
-    </div>
-    <div class="session session-33 track-4" style="grid-column: track-4; grid-row: time-1400 / time-1500; order: 322;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#karine-gibbs">Karine Gibbs</a></h3>
-      <span class="session-time">14h00 - 15h00</span>
-    </div>
-    <div class="session session-34 track-4" style="grid-column: track-4; grid-row: time-1500 / time-1530; order: 326;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#markus-arnoldini">Markus Arnoldini</a></h3>
-      <span class="session-time">15h00 - 15h30</span>
-    </div>
-    <div class="session session-35 track-4" style="grid-column: track-4; grid-row: time-1600 / time-1630; order: 330;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#ralph-kuvers">Ralph Kuvers</a></h3>
-      <span class="session-time">16h00 - 16h30</span>
-    </div>
-    <div class="session session-36 track-4" style="grid-column: track-4; grid-row: time-1730 / time-1800; order: 336;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#aperitif-at-orto-del-redentore-giudecca-donatella-calabi-venezia-viva">'Venezia è viva!'</a></h3>
-      <span class="session-time">17h30 - 18h00</span>
-      <span class="session-presenter">Aperitif at Orto del Redentore, Giudecca. Donatella Calabi</span>
-    </div>
-    <div class="session session-37 track-5" style="grid-column: track-5; grid-row: time-0900 / time-0915; order: 402;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#deborah-gordon">Deborah Gordon</a></h3>
-      <span class="session-time">09h00 - 09h15</span>
-    </div>
-    <div class="session session-38 track-5" style="grid-column: track-5; grid-row: time-1030 / time-1100; order: 408;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-39 track-5" style="grid-column: track-5; grid-row: time-1100 / time-1200; order: 410;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#poster-session-2">Poster session 2</a></h3>
-      <span class="session-time">11h00 - 12h00</span>
-    </div>
-    <div class="session session-40 track-5" style="grid-column: track-5; grid-row: time-1230 / time-1400; order: 416;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch">Lunch</a></h3>
-      <span class="session-time">12h30 - 14h00</span>
-    </div>
-    <div class="session session-41 track-5" style="grid-column: track-5; grid-row: time-1400 / time-1500; order: 422;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#chaitanya-gokhale">Chaitanya Gokhale</a></h3>
-      <span class="session-time">14h00 - 15h00</span>
-    </div>
-    <div class="session session-42 track-5" style="grid-column: track-5; grid-row: time-1500 / time-1530; order: 426;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#simon-garnier">Simon Garnier</a></h3>
-      <span class="session-time">15h00 - 15h30</span>
-    </div>
-    <div class="session session-43 track-5" style="grid-column: track-5; grid-row: time-1600 / time-1630; order: 430;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">16h00 - 16h30</span>
-    </div>
-    <div class="session session-44 track-5" style="grid-column: track-5; grid-row: time-1630 / time-1730; order: 432;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion">Group discussion</a></h3>
-      <span class="session-time">16h30 - 17h30</span>
-    </div>
-    <div class="session session-45 track-5" style="grid-column: track-5; grid-row: time-1800 / time-1900; order: 438;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#francesco-musco-open-lecture-on-venice-lagoon-socio-ecological-system-followed-by-aperitif">Open lecture on 'Venice & Lagoon socio-ecological system', followed by aperitif</a></h3>
-      <span class="session-time">18h00 - 19h00</span>
-      <span class="session-presenter">Francesco Musco</span>
-    </div>
-    <div class="session session-46 track-6" style="grid-column: track-6; grid-row: time-0930 / time-1030; order: 504;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#presentation-of-groups-conclusions">Presentation of groups' conclusions</a></h3>
-      <span class="session-time">09h30 - 10h30</span>
-    </div>
-    <div class="session session-47 track-6" style="grid-column: track-6; grid-row: time-1030 / time-1100; order: 508;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break">Coffee break</a></h3>
-      <span class="session-time">10h30 - 11h00</span>
-    </div>
-    <div class="session session-48 track-6" style="grid-column: track-6; grid-row: time-1200 / time-1230; order: 514;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#closing-remarks">Closing remarks</a></h3>
-      <span class="session-time">12h00 - 12h30</span>
-    </div>
-    <div class="session session-49 track-6" style="grid-column: track-6; grid-row: time-1630 / time-1730; order: 532;">
-      <h3 class="session-title"><a rel="noopener" target="_blank" href="#public-conversation-on-music-science-followed-by-a-concert-by-the-phd-students-of-venice-conservatory">Public Conversation on Music & Science, followed by a concert by the PhD students of Venice Conservatory</a></h3>
-      <span class="session-time">16h30 - 17h30</span>
-    </div>
-    </div>
-  </section>
-
-
+<div class="schedule" aria-labelledby="schedule-heading">
+<span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Monday 29/09</span>
+<div class="session_dummy track_dummy" style="grid-column: track-1; grid-row: time-0830 / time-0900; order: 1;">Monday 29/09</div>
+<span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Tuesday 30/09</span>
+<div class="session_dummy track_dummy" style="grid-column: track-2; grid-row: time-0830 / time-0900; order: 2;">Tuesday 30/09</div>
+<span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Wednesday 01/10</span>
+<div class="session_dummy track_dummy" style="grid-column: track-3; grid-row: time-0830 / time-0900; order: 3;">Wednesday 01/10</div>
+<span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Thursday 02/10</span>
+<div class="session_dummy track_dummy" style="grid-column: track-4; grid-row: time-0830 / time-0900; order: 4;">Thursday 02/10</div>
+<span class="track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Friday 03/10</span>
+<div class="session_dummy track_dummy" style="grid-column: track-5; grid-row: time-0830 / time-0900; order: 5;">Friday 03/10</div>
+<span class="track-slot" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Saturday 04/10</span>
+<div class="session_dummy track_dummy" style="grid-column: track-6; grid-row: time-0830 / time-0900; order: 6;">Saturday 04/10</div>
+<h2 class="time-slot" style="grid-row: time-0830;">08h30</h2>
+<h2 class="time-slot" style="grid-row: time-0900;">09h00</h2>
+<h2 class="time-slot" style="grid-row: time-0915;">09h15</h2>
+<h2 class="time-slot" style="grid-row: time-0930;">09h30</h2>
+<h2 class="time-slot" style="grid-row: time-1030;">10h30</h2>
+<h2 class="time-slot" style="grid-row: time-1100;">11h00</h2>
+<h2 class="time-slot" style="grid-row: time-1200;">12h00</h2>
+<h2 class="time-slot" style="grid-row: time-1230;">12h30</h2>
+<h2 class="time-slot" style="grid-row: time-1400;">14h00</h2>
+<h2 class="time-slot" style="grid-row: time-1500;">15h00</h2>
+<h2 class="time-slot" style="grid-row: time-1530;">15h30</h2>
+<h2 class="time-slot" style="grid-row: time-1600;">16h00</h2>
+<h2 class="time-slot" style="grid-row: time-1630;">16h30</h2>
+<h2 class="time-slot" style="grid-row: time-1730;">17h30</h2>
+<h2 class="time-slot" style="grid-row: time-1800;">18h00</h2>
+<h2 class="time-slot" style="grid-row: time-1900;">19h00</h2>
+<h2 class="time-slot" style="grid-row: time-1945;">19h45</h2>
+<h2 class="time-slot" style="grid-row: time-2000;">20h00</h2>
+<div class="session session-1 track-1" style="grid-column: track-1; grid-row: time-0830 / time-0900; order: 0;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#registration-monday-29-09-08-30">Registration</a></h3>
+  <span class="session-time">08h30 - 09h00</span>
+</div>
+<div class="session session-2 track-1" style="grid-column: track-1; grid-row: time-0900 / time-0915; order: 2;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#welcome-and-introduction-monday-29-09-09-00">Welcome and introduction</a></h3>
+  <span class="session-time">09h00 - 09h15</span>
+</div>
+<div class="session session-3 track-1" style="grid-column: track-1; grid-row: time-0915 / time-0930; order: 3;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#participants-introduction-monday-29-09-09-15">Participants' introduction</a></h3>
+  <span class="session-time">09h15 - 09h30</span>
+</div>
+<div class="session session-4 track-1" style="grid-column: track-1; grid-row: time-1030 / time-1100; order: 8;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-monday-29-09-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-5 track-1" style="grid-column: track-1; grid-row: time-1100 / time-1200; order: 10;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#thierry-emonet-monday-29-09-11-00">Thierry Emonet</a></h3>
+  <span class="session-time">11h00 - 12h00</span>
+</div>
+<div class="session session-6 track-1" style="grid-column: track-1; grid-row: time-1230 / time-1400; order: 16;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch-monday-29-09-12-30">Lunch</a></h3>
+  <span class="session-time">12h30 - 14h00</span>
+</div>
+<div class="session session-7 track-1" style="grid-column: track-1; grid-row: time-1400 / time-1500; order: 22;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#allyson-sgro-monday-29-09-14-00">Allyson Sgro</a></h3>
+  <span class="session-time">14h00 - 15h00</span>
+</div>
+<div class="session session-8 track-1" style="grid-column: track-1; grid-row: time-1500 / time-1530; order: 26;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#presentation-of-the-alma-dal-co-foundation-and-of-the-school-monday-29-09-15-00">Presentation of the Alma dal Co Foundation and of the school</a></h3>
+  <span class="session-time">15h00 - 15h30</span>
+</div>
+<div class="session session-9 track-1" style="grid-column: track-1; grid-row: time-1530 / time-1600; order: 28;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-monday-29-09-15-30">Coffee break</a></h3>
+  <span class="session-time">15h30 - 16h00</span>
+</div>
+<div class="session session-10 track-1" style="grid-column: track-1; grid-row: time-1600 / time-1630; order: 30;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion-monday-29-09-16-00">Group discussion</a></h3>
+  <span class="session-time">16h00 - 16h30</span>
+</div>
+<div class="session session-11 track-1" style="grid-column: track-1; grid-row: time-1800 / time-1900; order: 38;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#visit-to-the-european-cultural-center-and-get-together-with-happy-hour-monday-29-09-18-00">Visit to the European Cultural Center and get together with happy hour</a></h3>
+  <span class="session-time">18h00 - 19h00</span>
+</div>
+<div class="session session-12 track-2" style="grid-column: track-2; grid-row: time-0900 / time-0915; order: 102;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#mathieu-coppey-tuesday-30-09-09-00">Mathieu Coppey</a></h3>
+  <span class="session-time">09h00 - 09h15</span>
+</div>
+<div class="session session-13 track-2" style="grid-column: track-2; grid-row: time-1030 / time-1100; order: 108;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-tuesday-30-09-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-14 track-2" style="grid-column: track-2; grid-row: time-1100 / time-1200; order: 110;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#mirta-galesic-tuesday-30-09-11-00">Mirta Galesic</a></h3>
+  <span class="session-time">11h00 - 12h00</span>
+</div>
+<div class="session session-15 track-2" style="grid-column: track-2; grid-row: time-1230 / time-1400; order: 116;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch-tuesday-30-09-12-30">Lunch</a></h3>
+  <span class="session-time">12h30 - 14h00</span>
+</div>
+<div class="session session-16 track-2" style="grid-column: track-2; grid-row: time-1400 / time-1500; order: 122;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#elena-scarpa-tuesday-30-09-14-00">Elena Scarpa</a></h3>
+  <span class="session-time">14h00 - 15h00</span>
+</div>
+<div class="session session-17 track-2" style="grid-column: track-2; grid-row: time-1500 / time-1530; order: 126;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#selected-talks-1-tabea-lilian-marx-jan-rombouts-judith-mine-hattab-oliver-meacock-tuesday-30-09-15-00">Selected talks 1 Tabea Lilian Marx, Jan Rombouts, Judith Mine-Hattab, Oliver Meacock</a></h3>
+  <span class="session-time">15h00 - 15h30</span>
+</div>
+<div class="session session-18 track-2" style="grid-column: track-2; grid-row: time-1600 / time-1630; order: 130;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-tuesday-30-09-16-00">Coffee break</a></h3>
+  <span class="session-time">16h00 - 16h30</span>
+</div>
+<div class="session session-19 track-2" style="grid-column: track-2; grid-row: time-1630 / time-1730; order: 132;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#will-ratcliff-tuesday-30-09-16-30">Will Ratcliff</a></h3>
+  <span class="session-time">16h30 - 17h30</span>
+</div>
+<div class="session session-20 track-2" style="grid-column: track-2; grid-row: time-1730 / time-1800; order: 136;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion-tuesday-30-09-17-30">Group discussion</a></h3>
+  <span class="session-time">17h30 - 18h00</span>
+</div>
+<div class="session session-21 track-3" style="grid-column: track-3; grid-row: time-0900 / time-0915; order: 202;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#irene-giardina-wednesday-01-10-09-00">Irene Giardina</a></h3>
+  <span class="session-time">09h00 - 09h15</span>
+</div>
+<div class="session session-22 track-3" style="grid-column: track-3; grid-row: time-1030 / time-1100; order: 208;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-wednesday-01-10-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-23 track-3" style="grid-column: track-3; grid-row: time-1100 / time-1200; order: 210;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#poster-session-1-wednesday-01-10-11-00">Poster session 1</a></h3>
+  <span class="session-time">11h00 - 12h00</span>
+</div>
+<div class="session session-24 track-3" style="grid-column: track-3; grid-row: time-1230 / time-1400; order: 216;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch-wednesday-01-10-12-30">Lunch</a></h3>
+  <span class="session-time">12h30 - 14h00</span>
+</div>
+<div class="session session-25 track-3" style="grid-column: track-3; grid-row: time-1400 / time-1500; order: 222;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#gonzalo-polavieja-wednesday-01-10-14-00">Gonzalo Polavieja</a></h3>
+  <span class="session-time">14h00 - 15h00</span>
+</div>
+<div class="session session-26 track-3" style="grid-column: track-3; grid-row: time-1500 / time-1530; order: 226;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#yuko-ulrich-wednesday-01-10-15-00">Yuko Ulrich</a></h3>
+  <span class="session-time">15h00 - 15h30</span>
+</div>
+<div class="session session-27 track-3" style="grid-column: track-3; grid-row: time-1600 / time-1630; order: 230;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-wednesday-01-10-16-00">Coffee break</a></h3>
+  <span class="session-time">16h00 - 16h30</span>
+</div>
+<div class="session session-28 track-3" style="grid-column: track-3; grid-row: time-1630 / time-1730; order: 232;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#free-afternoon-additional-group-discussion-wednesday-01-10-16-30">Free afternoon/ additional group discussion</a></h3>
+  <span class="session-time">16h30 - 17h30</span>
+</div>
+<div class="session session-29 track-4" style="grid-column: track-4; grid-row: time-0900 / time-0915; order: 302;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#matti-gralka-thursday-02-10-09-00">Matti Gralka</a></h3>
+  <span class="session-time">09h00 - 09h15</span>
+</div>
+<div class="session session-30 track-4" style="grid-column: track-4; grid-row: time-1030 / time-1100; order: 308;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-thursday-02-10-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-31 track-4" style="grid-column: track-4; grid-row: time-1100 / time-1200; order: 310;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#selected-talks-2-theo-gibbs-angela-albi-fernandez-i-lopez-alba-motes-rodrigo-giovanni-iacucci-gaurav-gardi-thursday-02-10-11-00">Selected talks 2 Theo Gibbs, Angela Albi, Fernandez I Lopez, Alba Motes Rodrigo, Giovanni Iacucci, Gaurav Gardi</a></h3>
+  <span class="session-time">11h00 - 12h00</span>
+</div>
+<div class="session session-32 track-4" style="grid-column: track-4; grid-row: time-1230 / time-1400; order: 316;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch-thursday-02-10-12-30">Lunch</a></h3>
+  <span class="session-time">12h30 - 14h00</span>
+</div>
+<div class="session session-33 track-4" style="grid-column: track-4; grid-row: time-1400 / time-1500; order: 322;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#karine-gibbs-thursday-02-10-14-00">Karine Gibbs</a></h3>
+  <span class="session-time">14h00 - 15h00</span>
+</div>
+<div class="session session-34 track-4" style="grid-column: track-4; grid-row: time-1500 / time-1530; order: 326;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#markus-arnoldini-thursday-02-10-15-00">Markus Arnoldini</a></h3>
+  <span class="session-time">15h00 - 15h30</span>
+</div>
+<div class="session session-35 track-4" style="grid-column: track-4; grid-row: time-1600 / time-1630; order: 330;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#ralph-kuvers-thursday-02-10-16-00">Ralph Kuvers</a></h3>
+  <span class="session-time">16h00 - 16h30</span>
+</div>
+<div class="session session-36 track-4" style="grid-column: track-4; grid-row: time-1730 / time-1800; order: 336;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#aperitif-at-orto-del-redentore-giudecca-donatella-calabi-venezia-viva-thursday-02-10-17-30">'Venezia è viva!'</a></h3>
+  <span class="session-time">17h30 - 18h00</span>
+  <span class="session-presenter">Aperitif at Orto del Redentore, Giudecca. Donatella Calabi</span>
+</div>
+<div class="session session-37 track-5" style="grid-column: track-5; grid-row: time-0900 / time-0915; order: 402;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#deborah-gordon-friday-03-10-09-00">Deborah Gordon</a></h3>
+  <span class="session-time">09h00 - 09h15</span>
+</div>
+<div class="session session-38 track-5" style="grid-column: track-5; grid-row: time-1030 / time-1100; order: 408;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-friday-03-10-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-39 track-5" style="grid-column: track-5; grid-row: time-1100 / time-1200; order: 410;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#poster-session-2-friday-03-10-11-00">Poster session 2</a></h3>
+  <span class="session-time">11h00 - 12h00</span>
+</div>
+<div class="session session-40 track-5" style="grid-column: track-5; grid-row: time-1230 / time-1400; order: 416;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#lunch-friday-03-10-12-30">Lunch</a></h3>
+  <span class="session-time">12h30 - 14h00</span>
+</div>
+<div class="session session-41 track-5" style="grid-column: track-5; grid-row: time-1400 / time-1500; order: 422;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#chaitanya-gokhale-friday-03-10-14-00">Chaitanya Gokhale</a></h3>
+  <span class="session-time">14h00 - 15h00</span>
+</div>
+<div class="session session-42 track-5" style="grid-column: track-5; grid-row: time-1500 / time-1530; order: 426;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#simon-garnier-friday-03-10-15-00">Simon Garnier</a></h3>
+  <span class="session-time">15h00 - 15h30</span>
+</div>
+<div class="session session-43 track-5" style="grid-column: track-5; grid-row: time-1600 / time-1630; order: 430;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-friday-03-10-16-00">Coffee break</a></h3>
+  <span class="session-time">16h00 - 16h30</span>
+</div>
+<div class="session session-44 track-5" style="grid-column: track-5; grid-row: time-1630 / time-1730; order: 432;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#group-discussion-friday-03-10-16-30">Group discussion</a></h3>
+  <span class="session-time">16h30 - 17h30</span>
+</div>
+<div class="session session-45 track-5" style="grid-column: track-5; grid-row: time-1800 / time-1900; order: 438;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#francesco-musco-open-lecture-on-venice-lagoon-socio-ecological-system-followed-by-aperitif-friday-03-10-18-00">Open lecture on 'Venice & Lagoon socio-ecological system', followed by aperitif</a></h3>
+  <span class="session-time">18h00 - 19h00</span>
+  <span class="session-presenter">Francesco Musco</span>
+</div>
+<div class="session session-46 track-6" style="grid-column: track-6; grid-row: time-0930 / time-1030; order: 504;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#presentation-of-groups-conclusions-saturday-04-10-09-30">Presentation of groups' conclusions</a></h3>
+  <span class="session-time">09h30 - 10h30</span>
+</div>
+<div class="session session-47 track-6" style="grid-column: track-6; grid-row: time-1030 / time-1100; order: 508;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#coffee-break-saturday-04-10-10-30">Coffee break</a></h3>
+  <span class="session-time">10h30 - 11h00</span>
+</div>
+<div class="session session-48 track-6" style="grid-column: track-6; grid-row: time-1200 / time-1230; order: 514;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#closing-remarks-saturday-04-10-12-00">Closing remarks</a></h3>
+  <span class="session-time">12h00 - 12h30</span>
+</div>
+<div class="session session-49 track-6" style="grid-column: track-6; grid-row: time-1630 / time-1730; order: 532;">
+  <h3 class="session-title"><a rel="noopener" target="_blank" href="#public-conversation-on-music-science-followed-by-a-concert-by-the-phd-students-of-venice-conservatory-saturday-04-10-16-30">Public Conversation on Music & Science, followed by a concert by the PhD students of Venice Conservatory</a></h3>
+  <span class="session-time">16h30 - 17h30</span>
+</div>
+</div>
+</section>
 
   <!--
 
