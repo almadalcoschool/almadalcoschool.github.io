@@ -179,23 +179,37 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="background-label"> Photo by Alma Dal Co, Nat Ecol Evol 2020 </div>
 </section>
 
-
-
-
-
 <style type="text/css">
-    .tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
-    .tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
-      padding:10px 5px;word-break:normal;}
-    .tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
-      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg  {
+      border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
+      /* Colonne tutte uguali */
+      table-layout: fixed; width: 100%;
+      /* Variabili */
+      --row-min: 28px;   /* altezza minima riga: alza se vuoi più spazio tra orari */
+      --time-x: 8px;     /* rientro orario dal bordo sinistro della prima colonna */
+    }
+
+    /* Colonne tutte della stessa larghezza (7 colonne) */
+    .tg col { width: calc(100% / 7); }
+
+    /* Font: eredita quello del sito per tutta la tabella */
+    .tg td, .tg th{
+      border-style:solid;border-width:0;
+      font-family: inherit;          /* <-- qui l’unificazione del font */
+      font-size:14px;
+      overflow:hidden;
+      padding:10px 5px;
+      word-break:normal;
+    }
+
+    /* Classi colore/stile esistenti */
     .tg .tg-ul38{position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform}
     .tg .tg-gpin{background-color:#C9DAF8;text-align:left;vertical-align:top}
     .tg .tg-agz1{background-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-nj25{background-color:#D9D2E9;text-align:left;vertical-align:top}
     .tg .tg-mkke{background-color:#D0E0E3;font-weight:bold;text-align:left;vertical-align:top}
     .tg .tg-82rs{background-color:#FFF2CC;text-align:left;vertical-align:top}
-    .tg .tg-yedf{background-color:#FFF2CC;font-family:inherit;text-align:left;vertical-align:top}
+    .tg .tg-yedf{background-color:#FFF2CC;text-align:left;vertical-align:top} /* rimosso font-family diverso */
     .tg .tg-7803{color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-ccct{background-color:#4e4e67;border-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-0lax{text-align:left;vertical-align:top}
@@ -203,37 +217,30 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .tg .tg-pta1{color:#FFF;text-align:left;vertical-align:top}
     .tg .tg-dmai{background-color:#FCE5CD;text-align:left;vertical-align:top}
     .tg .tg-teb0{background-color:#D9EAD3;text-align:left;vertical-align:top}
-    @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}
 
-    /* === Variante 2: orari "sulla linea" tra le righe === */
+    /* Altezza minima riga per evitare che due etichette si tocchino */
+    .tg tbody tr{ height: var(--row-min); }
+
+    /* Variante 2: orari “sulla linea” tra le righe */
     .tg tbody td:first-child{
       position: relative;
-      overflow: visible !important;   /* override del overflow:hidden di .tg td */
+      overflow: visible !important;   /* serve perché i td hanno overflow:hidden */
       white-space: nowrap;
-      padding-top: 0;                 /* avvicina al bordo superiore */
+      padding-top: 0;                 /* ci appoggiamo alla linea superiore */
       padding-left: 0;                /* il rientro lo gestiamo con --time-x */
     }
     .tg tbody td:first-child .time-on-line{
       position: absolute;
       top: 0;                         /* bordo superiore della riga */
-      left: var(--time-x, 8px);       /* rientro dal bordo sinistro */
-      transform: translateY(-50%);    /* metà sopra / metà sotto la linea */
+      left: var(--time-x);
+      transform: translateY(-45%);    /* leggermente meno di metà per ridurre sovrapposizioni */
+      line-height: 1;                 /* compatta l’etichetta */
       white-space: nowrap;
     }
 
-    /* === LARGHEZZA FISSA DELLA COLONNA ORARI ===
-       Usa variabili per regolarla in un solo punto */
-    .tg{
-      --time-col: 84px;  /* larghezza colonna orari su desktop */
-      --time-x: 8px;     /* rientro orario dal bordo sinistro */
-    }
-    .tg .tg-col-time{ width: var(--time-col); }
-    .tg thead th:first-child,
-    .tg tbody td:first-child{ width: var(--time-col); min-width: var(--time-col); }
-
-    /* Un po' più compatto su mobile */
-    @media (max-width: 767px){
-      .tg{ --time-col: 64px; --time-x: 4px; }
+    @media screen and (max-width: 767px) {
+      .tg { --row-min: 30px; --time-x: 6px; }
+      .tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}
     }
   </style>
 </head>
@@ -241,10 +248,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
   <div class="tg-wrap">
     <table class="tg">
-      <!-- FISSA LA LARGHEZZA DELLA PRIMA COLONNA -->
+      <!-- 7 colonne uguali -->
       <colgroup>
-        <col class="tg-col-time">
-        <col span="6">
+        <col><col><col><col><col><col><col>
       </colgroup>
 
       <thead>
@@ -411,8 +417,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
       cells.forEach(td => {
         if (td.querySelector('.time-on-line')) return; // già fatto
         const txt = (td.textContent || '').trim();
-        if (/^\d{1,2}:\d{2}$/.test(txt)) {             // es. 9:00, 10:30, 19:45…
-          const original = td.innerHTML;               // preserva eventuali <span style="...">…</span>
+        // Matcha "9:00", "9.15", "19" ecc.
+        if (/^\d{1,2}([:.]\d{2})?$/.test(txt)) {
+          const original = td.innerHTML; // preserva eventuali <span style="...">…</span>
           td.innerHTML = `<span class="time-on-line">${original}</span>`;
         }
       });
@@ -422,6 +429,247 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 <!-- TIMETABLE -->
+<!--
+<style type="text/css">
+    .tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
+    .tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+      padding:10px 5px;word-break:normal;}
+    .tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-ul38{position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform}
+    .tg .tg-gpin{background-color:#C9DAF8;text-align:left;vertical-align:top}
+    .tg .tg-agz1{background-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-nj25{background-color:#D9D2E9;text-align:left;vertical-align:top}
+    .tg .tg-mkke{background-color:#D0E0E3;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-82rs{background-color:#FFF2CC;text-align:left;vertical-align:top}
+    .tg .tg-yedf{background-color:#FFF2CC;font-family:inherit;text-align:left;vertical-align:top}
+    .tg .tg-7803{color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-ccct{background-color:#4e4e67;border-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    .tg .tg-95qi{color:#FFF;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-pta1{color:#FFF;text-align:left;vertical-align:top}
+    .tg .tg-dmai{background-color:#FCE5CD;text-align:left;vertical-align:top}
+    .tg .tg-teb0{background-color:#D9EAD3;text-align:left;vertical-align:top}
+    @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}
+
+    /* === Variante 2: orari "sulla linea" tra le righe === */
+    .tg tbody td:first-child{
+      position: relative;
+      overflow: visible !important;   /* override del overflow:hidden di .tg td */
+      white-space: nowrap;
+      padding-top: 0;                 /* avvicina al bordo superiore */
+      padding-left: 0;                /* il rientro lo gestiamo con --time-x */
+    }
+    .tg tbody td:first-child .time-on-line{
+      position: absolute;
+      top: 0;                         /* bordo superiore della riga */
+      left: var(--time-x, 8px);       /* rientro dal bordo sinistro */
+      transform: translateY(-50%);    /* metà sopra / metà sotto la linea */
+      white-space: nowrap;
+    }
+
+    /* === LARGHEZZA FISSA DELLA COLONNA ORARI ===
+       Usa variabili per regolarla in un solo punto */
+    .tg{
+      --time-col: 64px;  /* larghezza colonna orari su desktop */
+      --time-x: 6px;     /* rientro orario dal bordo sinistro */
+    }
+    .tg .tg-col-time{ width: var(--time-col); }
+    .tg thead th:first-child,
+    .tg tbody td:first-child{ width: var(--time-col); min-width: var(--time-col); }
+
+    /* Un po' più compatto su mobile */
+    @media (max-width: 767px){
+      .tg{ --time-col: 64px; --time-x: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tg-wrap">
+    <table class="tg">
+      <colgroup>
+        <col class="tg-col-time">
+        <col span="6">
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-0lax"></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Monday 29/09</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Tuesday 30/09</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Wednesday 01/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Thursday 02/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Friday 03/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Saturday 04/10</span></td>
+        </tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">8:30</td>
+          <td class="tg-yedf" rowspan="2">Registration</td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="4"></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">9:00</span></td>
+          <td class="tg-82rs"><span style="background-color:#FFF2CC">Welcome and introduction</span></td>
+          <td class="tg-gpin" rowspan="6">Mathieu Coppey</td>
+          <td class="tg-gpin" rowspan="6">Irene Giardina</td>
+          <td class="tg-gpin" rowspan="6">Matti Gralka</td>
+          <td class="tg-gpin" rowspan="6">Deborah Gordon</td>
+        </tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">9:15</span></td>
+          <td class="tg-dmai" rowspan="5">Participants' introduction</td>
+        </tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">9:30</td>
+          <td class="tg-dmai" rowspan="4">Presentation of groups' conclusions</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-7803" rowspan="2">10:30</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">11:00</td>
+          <td class="tg-gpin" rowspan="6">Thierry Emonet</td>
+          <td class="tg-gpin" rowspan="6">Mirta Galesic</td>
+          <td class="tg-mkke" rowspan="6">Poster session 1</td>
+          <td class="tg-nj25" rowspan="6"><span style="font-weight:bold">Selected talks 2</span>: Theo Gibbs, Angela Albi, Fernandez I Lopez, Alba Motes Rodrigo, Giovanni Iacucci, Gaurav Gardi</td>
+          <td class="tg-mkke" rowspan="6">Poster session 2</td>
+          <td class="tg-dmai" rowspan="4"></td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">12:00</td>
+          <td class="tg-82rs"><span style="background-color:#FFF2CC">Closing remarks</span></td>
+        </tr>
+        <tr><td class="tg-0lax" rowspan="17"></td></tr>
+        <tr>
+          <td class="tg-7803" rowspan="6">12:30</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">14:00</td>
+          <td class="tg-gpin" rowspan="4">Allyson Sgro</td>
+          <td class="tg-gpin" rowspan="4">Elena Scarpa</td>
+          <td class="tg-gpin" rowspan="4">Gonzalo Polavieja</td>
+          <td class="tg-gpin" rowspan="4">Karine Gibbs</td>
+          <td class="tg-gpin" rowspan="4">Chaitanya Gokhale</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">15:00</td>
+          <td class="tg-82rs" rowspan="2">Presentation of the Alma dal Co Foundation and of the school</td>
+          <td class="tg-nj25" rowspan="4"><span style="font-weight:bold">Selected talks 1</span>: Tabea Lilian Marx, Jan Rombouts, Judith Mine-Hattab, Oliver Meacock</td>
+          <td class="tg-gpin" rowspan="4">Yuko Ulrich</td>
+          <td class="tg-gpin" rowspan="4">Markus Arnoldini</td>
+          <td class="tg-gpin" rowspan="4">Simon Garnier</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">15:30</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">16:00</td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-gpin" rowspan="4">Ralph Kuvers</td>
+          <td class="tg-ccct" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">16:30</td>
+          <td class="tg-gpin" rowspan="4">Will Ratcliff</td>
+          <td class="tg-dmai" rowspan="10">Free afternoon/ additional group discussion</td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-teb0" rowspan="10">Public Conversation on Music &amp; Science, followed by a concert by the PhD students of Venice Conservatory</td>
+        </tr>
+        <tr></tr>
+        <tr><td class="tg-0lax" rowspan="2"></td></tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">17:30</td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-teb0" rowspan="6">Aperitif at Orto del Redentore, Giudecca. Donatella Calabi:<span style="font-style:italic"> 'Venezia è viva!'</span></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">18:00</td>
+          <td class="tg-teb0" rowspan="8">Visit to the European Cultural Center and get together with happy hour </td>
+          <td class="tg-teb0" rowspan="7">Francesco Musco: Open lecture on <span style="font-style:italic">'Venice &amp; Lagoon socio-ecological system'</span>, followed by aperitif</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="3">19:00</td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+        </tr>
+        <tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">19:45</span></td>
+          <td class="tg-0lax" rowspan="2"></td>
+        </tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">20:00</span></td>
+          <td class="tg-0lax"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cells = document.querySelectorAll('.tg tbody tr td:first-child');
+      cells.forEach(td => {
+        if (td.querySelector('.time-on-line')) return; // già fatto
+        const txt = (td.textContent || '').trim();
+        if (/^\d{1,2}:\d{2}$/.test(txt)) {             // es. 9:00, 10:30, 19:45…
+          const original = td.innerHTML;               // preserva eventuali <span style="...">…</span>
+          td.innerHTML = `<span class="time-on-line">${original}</span>`;
+        }
+      });
+    });
+  </script>
+</body>
+-->
+
+
+
+
+
 <!--
 <style type="text/css">
     .tg  {border:none;border-collapse:collapse;border-spacing:0;margin:0px auto;}
@@ -695,4 +943,3 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 -->
-</body>
