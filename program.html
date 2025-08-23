@@ -185,14 +185,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
 <!-- TIMETABLE -->
 
 
-
 <style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
       table-layout: fixed;            /* colonne a larghezza fissa */
       width: 100%;
       /* Variabili */
-      --row-min: 30px;                /* altezza minima riga */
+      --row-min: 30px;                /* altezza minima riga (step temporale) */
       --time-x: 8px;                  /* rientro orario dal bordo destro della prima colonna */
       --time-col: 64px;               /* larghezza colonna orari (più stretta) */
       --days-font-size: 18px;         /* dimensione font prima riga (giorni) - desktop */
@@ -211,6 +210,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       overflow:hidden;
       padding:10px 5px;
       word-break:normal;
+      cursor: default;
     }
 
     /* Disattiva lo sticky "vuoto" dell'header originale */
@@ -221,18 +221,18 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .tg .tg-gpin{background-color:#C9DAF8;text-align:left;vertical-align:top}
     .tg .tg-agz1{background-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-nj25{background-color:#D9D2E9;text-align:left;vertical-align:top}
-    .tg .tg-mkke{background-color:#D0E0E3;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-mkke{background-color:#D0E0E3;text-align:left;vertical-align:top;font-weight:bold}
     .tg .tg-82rs{background-color:#FFF2CC;text-align:left;vertical-align:top}
     .tg .tg-yedf{background-color:#FFF2CC;text-align:left;vertical-align:top}
     .tg .tg-7803{color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-ccct{background-color:#4e4e67;border-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
     .tg .tg-0lax{text-align:left;vertical-align:top}
-    .tg .tg-95qi{color:#FFF;font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-95qi{color:#FFF;text-align:left;vertical-align:top;font-weight:bold}
     .tg .tg-pta1{color:#FFF;text-align:left;vertical-align:top}
     .tg .tg-dmai{background-color:#FCE5CD;text-align:left;vertical-align:top}
     .tg .tg-teb0{background-color:#D9EAD3;text-align:left;vertical-align:top}
 
-    /* Altezza minima riga per evitare sovrapposizioni tra orari vicini */
+    /* Altezza minima riga = passo temporale (mantiene la scala delle durate) */
     .tg tbody tr{ height: var(--row-min); }
 
     /* === Prima colonna STICKY a sinistra + orario “sulla linea” allineato a destra === */
@@ -248,6 +248,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       width: var(--time-col);         /* assicura larghezza fissa anche a livello di cella */
       min-width: var(--time-col);
       /* background: var(--table-bg, transparent); */
+      cursor: default;
     }
     .tg tbody td:first-child .time-on-line{
       position: absolute;
@@ -281,15 +282,50 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
     @media (max-width: 767px){
       .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .tg      { min-width: 900px; }  /* forza overflow → scroll orizzontale */
+      .tg      { min-width: 1000px; } /* forza overflow → scroll orizzontale */
       .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; }
+
+      /* Mantiene la scala temporale: niente a capo, ellissi */
+      .tg td, .tg th{
+        white-space: nowrap;          /* impedisce l'aumento in altezza della riga */
+        text-overflow: ellipsis;      /* mostra … se il testo è troppo lungo */
+        overflow: hidden;             /* evita che il contenuto gonfi la riga */
+      }
+
+      /* Indicatore "toccabile" solo su celle di contenuto (non orari, non header) */
+      .tg tbody td:not(:first-child){ cursor: pointer; }
+    }
+
+    /* === POPOVER per leggere il contenuto completo su tap === */
+    .cell-popover{
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.35);
+      z-index: 9999; padding: 16px;
+    }
+    .cell-popover--open{ display: flex; }
+    .cell-popover__box{
+      background: #fff; color: #000;
+      max-width: 90vw; max-height: 70vh;
+      overflow: auto; border-radius: 12px; padding: 16px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      font-family: inherit; font-size: 16px; line-height: 1.4;
+      position: relative;
+    }
+    .cell-popover__close{
+      position: absolute; top: 8px; right: 10px;
+      border: 0; background: transparent; font-size: 22px; cursor: pointer;
+      line-height: 1;
+    }
+    .cell-popover__meta{
+      font-size: 12px; opacity: .7; margin-bottom: 8px;
     }
   </style>
 </head>
 <body>
 
   <div class="tg-wrap">
-    <table class="tg">
+    <table class="tg" aria-label="Programma settimanale">
       <!-- 1 colonna orari (stretta) + 6 colonne giorni (uguali) -->
       <colgroup>
         <col class="tg-col-time">
@@ -453,11 +489,21 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </table>
   </div>
 
+  <!-- Popover per testi completi -->
+  <div class="cell-popover" id="cell-popover" aria-hidden="true">
+    <div class="cell-popover__box" role="dialog" aria-modal="true" aria-labelledby="cell-popover-title">
+      <button class="cell-popover__close" type="button" aria-label="Chiudi" title="Chiudi">&times;</button>
+      <div class="cell-popover__meta" id="cell-popover-title">Dettaglio</div>
+      <div id="cell-popover-content"></div>
+    </div>
+  </div>
+
   <!-- Script: incapsula automaticamente gli orari nello span .time-on-line -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const cells = document.querySelectorAll('.tg tbody tr td:first-child');
-      cells.forEach(td => {
+      /* === 1) Wrapping degli orari per effetto "sulla linea" === */
+      const timeCells = document.querySelectorAll('.tg tbody tr td:first-child');
+      timeCells.forEach(td => {
         if (td.querySelector('.time-on-line')) return; // già fatto
         const txt = (td.textContent || '').trim();
         // Matcha "9:00", "9.15", "19", "19,45" ecc.
@@ -466,9 +512,55 @@ image: /images/home/paper_natEcoEvol2020.jpg
           td.innerHTML = `<span class="time-on-line">${original}</span>`;
         }
       });
+
+      /* === 2) Popover per leggere tutto il contenuto su mobile (e desktop) === */
+      const pop = document.getElementById('cell-popover');
+      const popContent = document.getElementById('cell-popover-content');
+      const closeBtn = pop.querySelector('.cell-popover__close');
+
+      function openPop(text, meta) {
+        popContent.textContent = text || '';
+        const metaEl = document.getElementById('cell-popover-title');
+        metaEl.textContent = meta || 'Dettaglio';
+        pop.classList.add('cell-popover--open');
+        pop.setAttribute('aria-hidden','false');
+        closeBtn.focus();
+      }
+      function closePop() {
+        pop.classList.remove('cell-popover--open');
+        pop.setAttribute('aria-hidden','true');
+      }
+
+      // Apri su click di una cella di contenuto (escluse prima colonna orari e prima riga header giorni)
+      document.querySelector('.tg tbody').addEventListener('click', function(e){
+        const td = e.target.closest('td');
+        if (!td) return;
+
+        // escludi la prima colonna (orari)
+        const isFirstCol = td === td.parentElement.querySelector('td:first-child');
+        // escludi la prima riga (giorni)
+        const isFirstRow = td.parentElement === td.closest('tbody').querySelector('tr:first-child');
+
+        if (isFirstCol || isFirstRow) return;
+
+        const text = td.innerText.trim();
+        if (text) {
+          // meta: giorno preso dall'intestazione della stessa colonna
+          const colIndex = Array.prototype.indexOf.call(td.parentElement.children, td);
+          const headerRow = td.closest('tbody').querySelector('tr:first-child');
+          const day = headerRow && headerRow.children[colIndex] ? headerRow.children[colIndex].innerText.trim() : '';
+          openPop(text, day);
+        }
+      });
+
+      // Chiudi popover
+      closeBtn.addEventListener('click', closePop);
+      pop.addEventListener('click', (e)=>{ if(e.target === pop) closePop(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePop(); });
     });
   </script>
 </body>
+
 
 <!--
 <style type="text/css">
@@ -480,6 +572,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
       --row-min: 30px;                /* altezza minima riga */
       --time-x: 8px;                  /* rientro orario dal bordo destro della prima colonna */
       --time-col: 64px;               /* larghezza colonna orari (più stretta) */
+      --days-font-size: 18px;         /* dimensione font prima riga (giorni) - desktop */
+      /* --table-bg: #fff;            /* opzionale: sfondo pieno per sticky */ 
     }
 
     /* Larghezze: 1 colonna orari stretta + 6 colonne giorno uguali */
@@ -520,7 +614,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
     /* === Prima colonna STICKY a sinistra + orario “sulla linea” allineato a destra === */
     .tg tbody td:first-child{
-      position: sticky;               /* sticky (non relative) per la colonna orari */
+      position: sticky;               /* sticky per la colonna orari */
       left: 0;
       z-index: 3;                     /* sopra le altre celle */
       overflow: visible !important;   /* i td di default hanno overflow:hidden */
@@ -530,7 +624,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       text-align: right;              /* coerenza per contenuti non assoluti */
       width: var(--time-col);         /* assicura larghezza fissa anche a livello di cella */
       min-width: var(--time-col);
-      /* background: var(--table-bg, transparent);  <-- imposta --table-bg se vuoi un fondo pieno */
+      /* background: var(--table-bg, transparent); */
     }
     .tg tbody td:first-child .time-on-line{
       position: absolute;
@@ -542,12 +636,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
       text-align: right;
     }
 
-    /* === Prima riga STICKY in alto (quella con i giorni) === */
+    /* === Prima riga STICKY in alto (quella con i giorni) + font più grande === */
     .tg tbody tr:first-child > *{
       position: sticky;
       top: 0;
       z-index: 2;                     /* sotto alla colonna sticky per non creare artefatti */
       /* background: var(--table-bg, transparent); */
+      font-size: var(--days-font-size);
+      line-height: 1.25;
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
 
     /* Cella di intersezione (prima riga + prima colonna): sopra tutto */
@@ -561,7 +659,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     @media (max-width: 767px){
       .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .tg      { min-width: 900px; }  /* forza overflow → scroll orizzontale */
-      .tg { --time-col: 56px; --time-x: 6px; }
+      .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; }
     }
   </style>
 </head>
@@ -730,7 +828,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
       </tbody>
     </table>
   </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const cells = document.querySelectorAll('.tg tbody tr td:first-child');
@@ -747,6 +844,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
   </script>
 </body>
 -->
+
 
 <!--
 
