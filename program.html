@@ -183,8 +183,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 <!-- TIMETABLE -->
-
-
 <style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
@@ -195,6 +193,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       --time-x: 8px;                  /* rientro orario da destra */
       --time-col: 64px;               /* colonna orari (stretta) */
       --days-font-size: 18px;         /* grandezza prima riga (giorni) desktop */
+      --clip-bottom-gap: 8px;         /* anticipo troncamento dal fondo (mobile) */
       /* --table-bg: #fff; */          /* (opz.) sfondo pieno per sticky */
     }
 
@@ -268,19 +267,46 @@ image: /images/home/paper_natEcoEvol2020.jpg
     @media (max-width: 767px){
       .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .tg      { min-width: 1000px; } /* forza overflow → scroll orizzontale */
-      .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; }
+      .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; --clip-bottom-gap: 10px; }
 
-      /* Le celle di contenuto diventano "contenitori" per il clip assoluto */
+      /* Celle di contenuto predisposte al clamp */
       .tg tbody tr > td:not(:first-child){ position: relative; }
-      /* Consenti andare a capo (il clamp farà il resto) */
+      /* Permetti andare a capo (il clamp farà il resto) */
       .tg td, .tg th{ white-space: normal; }
+      /* Indicatore “toccabile” per aprire il popup */
+      .tg tbody td:not(:first-child){ cursor: pointer; }
     }
 
-    /* Wrapper che riempie la cella su mobile e tronca solo se non entra */
+    /* === POPOVER === */
+    .cell-popover{
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.35);
+      z-index: 9999; padding: 16px;
+    }
+    .cell-popover--open{ display: flex; }
+    .cell-popover__box{
+      background: #fff; color: #000;
+      max-width: 90vw; max-height: 70vh;
+      overflow: auto; border-radius: 12px; padding: 16px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      font-family: inherit; font-size: 16px; line-height: 1.4;
+      position: relative;
+    }
+    .cell-popover__close{
+      position: absolute; top: 8px; right: 10px;
+      border: 0; background: transparent; font-size: 22px; cursor: pointer;
+      line-height: 1;
+    }
+    .cell-popover__meta{
+      font-size: 12px; opacity: .7; margin-bottom: 8px;
+    }
+
+    /* Wrapper testo per clamp (creato via JS solo su mobile) */
     .cell-clip{
-      position: absolute; inset: 0;                /* riempie l'area interna della cella */
-      padding: 10px 5px;                           /* come i td */
-      overflow: hidden;                             /* taglia l’eccesso */
+      position: absolute; inset: 0;
+      padding: 10px 5px;               /* replica il padding della cella */
+      overflow: hidden;
       display: -webkit-box; -webkit-box-orient: vertical;
       word-break: break-word;
     }
@@ -453,7 +479,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </table>
   </div>
 
-  <!-- Script: 1) orari "sulla linea"; 2) clamp auto/variabile su mobile -->
+  <!-- Popover per testi completi -->
+  <div class="cell-popover" id="cell-popover" aria-hidden="true">
+    <div class="cell-popover__box" role="dialog" aria-modal="true" aria-labelledby="cell-popover-title">
+      <button class="cell-popover__close" type="button" aria-label="Chiudi" title="Chiudi">&times;</button>
+      <div class="cell-popover__meta" id="cell-popover-title">Dettaglio</div>
+      <div id="cell-popover-content"></div>
+    </div>
+  </div>
+
+  <!-- Script: 1) orari "sulla linea"; 2) clamp variabile su mobile; 3) popup -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       /* === 1) Wrapping degli orari per effetto "sulla linea" === */
@@ -468,7 +503,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         }
       });
 
-      /* === 2) Multi-line clamp dinamico SOLO su mobile === */
+      /* === 2) Multi-line clamp variabile SOLO su mobile === */
       const mql = window.matchMedia('(max-width: 767px)');
 
       function prepareWrappers(){
@@ -494,26 +529,23 @@ image: /images/home/paper_natEcoEvol2020.jpg
       }
 
       function applyClamp(){
-        const clips = document.querySelectorAll('.cell-clip');
-        if (!mql.matches){
-          // Desktop: niente clamp (mostra tutto)
-          clips.forEach(el => {
-            el.style.webkitLineClamp = '';
-            el.style.display = '-webkit-box'; // non influisce
-          });
-          return;
-        }
+        if (!mql.matches) return; // Desktop: niente clamp
 
+        const table = document.querySelector('.tg');
+        const stylesTable = getComputedStyle(table);
+        const bottomGap = parseFloat(stylesTable.getPropertyValue('--clip-bottom-gap')) || 0;
+
+        const clips = document.querySelectorAll('.cell-clip');
         clips.forEach(el => {
           const td = el.parentElement;
           const tdStyles = getComputedStyle(td);
           const padTop = parseFloat(tdStyles.paddingTop) || 0;
           const padBottom = parseFloat(tdStyles.paddingBottom) || 0;
 
-          // Altezza disponibile = altezza cella - padding (il wrapper replica il padding)
-          const available = td.clientHeight - padTop - padBottom;
+          // Altezza disponibile nello slot (con anticipo taglio dal fondo)
+          const available = Math.max(0, td.clientHeight - padTop - padBottom - bottomGap);
 
-          // line-height effettiva
+          // line-height effettiva del wrapper
           const cs = getComputedStyle(el);
           let lineHeight = parseFloat(cs.lineHeight);
           if (isNaN(lineHeight) || cs.lineHeight === 'normal') {
@@ -523,28 +555,66 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
           const maxLines = Math.max(1, Math.floor(available / lineHeight));
 
-          // Imposta il clamp variabile: quante righe ci stanno nello slot
-          el.style.webkitLineClamp = String(maxLines);
-          // display e orient sono già in CSS (.cell-clip)
+          // Imposta clamp dinamico (mostra quante righe ci stanno)
+          el.style.webkitLineClamp = String(maxLines); // trigger ellissi multilinea
         });
       }
 
-      function runAll(){
-        if (mql.matches) prepareWrappers();
-        // usa due frame per essere sicuri che il layout sia pronto
-        requestAnimationFrame(() => requestAnimationFrame(applyClamp));
+      function runClamp(){
+        if (mql.matches) {
+          prepareWrappers();
+          // due frame per sicurezza di layout
+          requestAnimationFrame(() => requestAnimationFrame(applyClamp));
+        }
       }
 
-      runAll();
-      window.addEventListener('resize', runAll);
-      // Safari vecchi
-      if (mql.addEventListener) mql.addEventListener('change', runAll);
-      else mql.addListener(runAll);
-      // dopo che i font sono caricati (se supportato)
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(runAll).catch(()=>{});
+      runClamp();
+      window.addEventListener('resize', runClamp);
+      if (mql.addEventListener) mql.addEventListener('change', runClamp); else mql.addListener(runClamp);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(runClamp).catch(()=>{}); }
+      window.addEventListener('load', runClamp);
+
+      /* === 3) Popup su click cella (mostra testo completo) === */
+      const pop = document.getElementById('cell-popover');
+      const popContent = document.getElementById('cell-popover-content');
+      const closeBtn = pop.querySelector('.cell-popover__close');
+
+      function openPop(text, meta) {
+        popContent.textContent = text || '';
+        const metaEl = document.getElementById('cell-popover-title');
+        metaEl.textContent = meta || 'Dettaglio';
+        pop.classList.add('cell-popover--open');
+        pop.setAttribute('aria-hidden','false');
+        closeBtn.focus();
       }
-      window.addEventListener('load', runAll);
+      function closePop() {
+        pop.classList.remove('cell-popover--open');
+        pop.setAttribute('aria-hidden','true');
+      }
+
+      // Apri su click di una cella di contenuto (escluse prima colonna orari e prima riga giorni)
+      document.querySelector('.tg tbody').addEventListener('click', function(e){
+        const td = e.target.closest('td');
+        if (!td) return;
+
+        const tr = td.parentElement;
+        const isFirstCol = td === tr.querySelector('td:first-child');
+        const isFirstRow = tr === td.closest('tbody').querySelector('tr:first-child');
+        if (isFirstCol || isFirstRow) return;
+
+        const text = td.innerText.trim();
+        if (text) {
+          const colIndex = Array.prototype.indexOf.call(tr.children, td);
+          const dayRow = td.closest('tbody').querySelector('tr:first-child');
+          const day = dayRow && dayRow.children[colIndex] ? dayRow.children[colIndex].innerText.trim() : '';
+          openPop(text, day);
+        }
+      });
+
+      // Chiudi popup
+      closeBtn.addEventListener('click', closePop);
+      pop.addEventListener('click', (e)=>{ if(e.target === pop) closePop(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePop(); });
     });
   </script>
 </body>
