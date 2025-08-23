@@ -184,7 +184,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <!-- TIMETABLE -->
 
-
 <style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
@@ -210,7 +209,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
       overflow:hidden;
       padding:10px 5px;
       word-break:normal;
-      cursor: default;
     }
 
     /* Disattiva lo sticky "vuoto" dell'header originale */
@@ -240,7 +238,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       position: sticky;               /* sticky per la colonna orari */
       left: 0;
       z-index: 3;                     /* sopra le altre celle */
-      overflow: visible !important;   /* i td di default hanno overflow:hidden */
+      overflow: visible !important;   /* i td hanno overflow:hidden: sblocchiamo */
       white-space: nowrap;
       padding-top: 0;                 /* appoggia alla linea superiore */
       padding-right: 0;               /* rientro gestito da --time-x */
@@ -248,7 +246,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
       width: var(--time-col);         /* assicura larghezza fissa anche a livello di cella */
       min-width: var(--time-col);
       /* background: var(--table-bg, transparent); */
-      cursor: default;
     }
     .tg tbody td:first-child .time-on-line{
       position: absolute;
@@ -284,41 +281,22 @@ image: /images/home/paper_natEcoEvol2020.jpg
       .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .tg      { min-width: 1000px; } /* forza overflow → scroll orizzontale */
       .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; }
-
-      /* Mantiene la scala temporale: niente a capo, ellissi */
-      .tg td, .tg th{
-        white-space: nowrap;          /* impedisce l'aumento in altezza della riga */
-        text-overflow: ellipsis;      /* mostra … se il testo è troppo lungo */
-        overflow: hidden;             /* evita che il contenuto gonfi la riga */
-      }
-
-      /* Indicatore "toccabile" solo su celle di contenuto (non orari, non header) */
-      .tg tbody td:not(:first-child){ cursor: pointer; }
+      /* Su mobile NON forziamo più single-line: permettiamo l'andare a capo */
+      .tg td, .tg th{ white-space: normal; }
     }
 
-    /* === POPOVER per leggere il contenuto completo su tap === */
-    .cell-popover{
-      position: fixed; inset: 0;
-      display: none; align-items: center; justify-content: center;
-      background: rgba(0,0,0,.35);
-      z-index: 9999; padding: 16px;
-    }
-    .cell-popover--open{ display: flex; }
-    .cell-popover__box{
-      background: #fff; color: #000;
-      max-width: 90vw; max-height: 70vh;
-      overflow: auto; border-radius: 12px; padding: 16px 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      font-family: inherit; font-size: 16px; line-height: 1.4;
+    /* Contenitore che clampiamo dinamicamente su mobile (inserito via JS) */
+    .cell-clip{
+      display: block;
       position: relative;
+      overflow: hidden;               /* taglia solo se non ci sta */
+      white-space: normal;            /* può andare a capo */
     }
-    .cell-popover__close{
-      position: absolute; top: 8px; right: 10px;
-      border: 0; background: transparent; font-size: 22px; cursor: pointer;
-      line-height: 1;
-    }
-    .cell-popover__meta{
-      font-size: 12px; opacity: .7; margin-bottom: 8px;
+    /* Multi-line ellipsis (WebKit/Blink) abilitato via JS impostando -webkit-line-clamp */
+    .cell-clip.-webkit-box{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -489,7 +467,400 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </table>
   </div>
 
-  <!-- Popover per testi completi -->
+  <!-- Script: 1) orari "sulla linea"; 2) clamp dinamico su mobile -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* === 1) Wrapping degli orari per effetto "sulla linea" === */
+      const timeCells = document.querySelectorAll('.tg tbody tr td:first-child');
+      timeCells.forEach(td => {
+        if (td.querySelector('.time-on-line')) return; // già fatto
+        const txt = (td.textContent || '').trim();
+        // Matcha "9:00", "9.15", "19", "19,45" ecc.
+        if (/^\d{1,2}([:.,]\d{2})?$/.test(txt)) {
+          const original = td.innerHTML; // preserva eventuali <span style="...">…</span>
+          td.innerHTML = `<span class="time-on-line">${original}</span>`;
+        }
+      });
+
+      /* === 2) Clamp dinamico solo su mobile: va a capo, tronca solo se non entra === */
+      const mql = window.matchMedia('(max-width: 767px)');
+
+      function applyClamp(){
+        const tbody = document.querySelector('.tg tbody');
+        if (!tbody) return;
+
+        // seleziona tutte le celle tranne: prima colonna (orari) e prima riga (giorni)
+        const rows = Array.from(tbody.rows);
+        rows.forEach((tr, rIndex) => {
+          Array.from(tr.cells).forEach((td, cIndex) => {
+            const isFirstCol = cIndex === 0;
+            const isFirstRow = rIndex === 0;
+            if (isFirstCol || isFirstRow) return;
+
+            // incapsula il contenuto se non già fatto
+            if (!td.querySelector('.cell-clip')) {
+              const wrap = document.createElement('div');
+              wrap.className = 'cell-clip';
+              // preserva HTML interno
+              wrap.innerHTML = td.innerHTML;
+              td.innerHTML = '';
+              td.appendChild(wrap);
+            }
+          });
+        });
+
+        // Solo sotto 768px applichiamo il clamp multilina
+        const clips = document.querySelectorAll('.cell-clip');
+        if (!mql.matches){
+          // desktop: rimuovi clamp esplicito, lascia contenuto libero dentro le celle alte
+          clips.forEach(el => {
+            el.style.maxHeight = '';
+            el.style.webkitLineClamp = '';
+            el.classList.remove('-webkit-box');
+          });
+          return;
+        }
+
+        // mobile: calcola l'altezza disponibile per OGNI cella e clamp in base alla line-height
+        clips.forEach(el => {
+          const td = el.parentElement;
+          const tdStyles = getComputedStyle(td);
+          const padTop = parseFloat(tdStyles.paddingTop) || 0;
+          const padBot = parseFloat(tdStyles.paddingBottom) || 0;
+          const available = td.clientHeight - padTop - padBot; // altezza massima per il testo
+
+          // calcola line-height "reale"
+          const cs = getComputedStyle(el);
+          let lineHeight = parseFloat(cs.lineHeight);
+          if (isNaN(lineHeight) || cs.lineHeight === 'normal') {
+            // fallback: ~1.2 * font-size
+            const fs = parseFloat(cs.fontSize) || 14;
+            lineHeight = fs * 1.2;
+          }
+
+          const maxLines = Math.max(1, Math.floor(available / lineHeight));
+
+          // imposta clamp multilina
+          el.style.maxHeight = available + 'px';
+          el.style.webkitLineClamp = String(maxLines);
+          el.classList.add('-webkit-box'); // abilita -webkit-line-clamp
+        });
+      }
+
+      // iniziale
+      applyClamp();
+      // ricalcola su resize e su cambio media query/orientamento
+      window.addEventListener('resize', () => { applyClamp(); });
+      mql.addEventListener ? mql.addEventListener('change', applyClamp) : mql.addListener(applyClamp);
+    });
+  </script>
+</body>
+
+
+<!--
+<style type="text/css">
+    .tg  {
+      border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
+      table-layout: fixed;            /* colonne a larghezza fissa */
+      width: 100%;
+      /* Variabili */
+      --row-min: 30px;                /* altezza minima riga (step temporale) */
+      --time-x: 8px;                  /* rientro orario dal bordo destro della prima colonna */
+      --time-col: 64px;               /* larghezza colonna orari (più stretta) */
+      --days-font-size: 18px;         /* dimensione font prima riga (giorni) - desktop */
+      /* --table-bg: #fff;            /* opzionale: sfondo pieno per sticky */ 
+    }
+
+    /* Larghezze: 1 colonna orari stretta + 6 colonne giorno uguali */
+    .tg .tg-col-time { width: var(--time-col); }
+    .tg .tg-col-day  { width: calc((100% - var(--time-col)) / 6); }
+
+    /* Font: eredita quello del sito per tutta la tabella */
+    .tg td, .tg th{
+      border-style:solid;border-width:0;
+      font-family: inherit;           /* default del sito */
+      font-size:14px;
+      overflow:hidden;
+      padding:10px 5px;
+      word-break:normal;
+      cursor: default;
+    }
+
+    /* Disattiva lo sticky "vuoto" dell'header originale */
+    .tg thead .tg-ul38{ position: static; top: auto; }
+
+    /* Classi colore/stile esistenti */
+    .tg .tg-ul38{text-align:left;vertical-align:top}
+    .tg .tg-gpin{background-color:#C9DAF8;text-align:left;vertical-align:top}
+    .tg .tg-agz1{background-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-nj25{background-color:#D9D2E9;text-align:left;vertical-align:top}
+    .tg .tg-mkke{background-color:#D0E0E3;text-align:left;vertical-align:top;font-weight:bold}
+    .tg .tg-82rs{background-color:#FFF2CC;text-align:left;vertical-align:top}
+    .tg .tg-yedf{background-color:#FFF2CC;text-align:left;vertical-align:top}
+    .tg .tg-7803{color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-ccct{background-color:#4e4e67;border-color:#4e4e67;color:#ffffff;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    .tg .tg-95qi{color:#FFF;text-align:left;vertical-align:top;font-weight:bold}
+    .tg .tg-pta1{color:#FFF;text-align:left;vertical-align:top}
+    .tg .tg-dmai{background-color:#FCE5CD;text-align:left;vertical-align:top}
+    .tg .tg-teb0{background-color:#D9EAD3;text-align:left;vertical-align:top}
+
+    /* Altezza minima riga = passo temporale (mantiene la scala delle durate) */
+    .tg tbody tr{ height: var(--row-min); }
+
+    /* === Prima colonna STICKY a sinistra + orario “sulla linea” allineato a destra === */
+    .tg tbody td:first-child{
+      position: sticky;               /* sticky per la colonna orari */
+      left: 0;
+      z-index: 3;                     /* sopra le altre celle */
+      overflow: visible !important;   /* i td di default hanno overflow:hidden */
+      white-space: nowrap;
+      padding-top: 0;                 /* appoggia alla linea superiore */
+      padding-right: 0;               /* rientro gestito da --time-x */
+      text-align: right;              /* coerenza per contenuti non assoluti */
+      width: var(--time-col);         /* assicura larghezza fissa anche a livello di cella */
+      min-width: var(--time-col);
+      /* background: var(--table-bg, transparent); */
+      cursor: default;
+    }
+    .tg tbody td:first-child .time-on-line{
+      position: absolute;
+      top: 0;                         /* bordo superiore della riga */
+      right: var(--time-x);           /* allineato a destra */
+      transform: translateY(-45%);    /* leggermente meno di metà */
+      line-height: 1;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* === Prima riga STICKY in alto (quella con i giorni) + font più grande === */
+    .tg tbody tr:first-child > *{
+      position: sticky;
+      top: 0;
+      z-index: 2;                     /* sotto alla colonna sticky per non creare artefatti */
+      /* background: var(--table-bg, transparent); */
+      font-size: var(--days-font-size);
+      line-height: 1.25;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    /* Cella di intersezione (prima riga + prima colonna): sopra tutto */
+    .tg tbody tr:first-child td:first-child{
+      z-index: 7;                     /* più della colonna (3) e della riga (2) */
+    }
+
+    /* Wrapper: scroll orizzontale su mobile */
+    .tg-wrap { max-width: 100%; }
+
+    @media (max-width: 767px){
+      .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .tg      { min-width: 1000px; } /* forza overflow → scroll orizzontale */
+      .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; }
+
+      /* Mantiene la scala temporale: niente a capo, ellissi */
+      .tg td, .tg th{
+        white-space: nowrap;          /* impedisce l'aumento in altezza della riga */
+        text-overflow: ellipsis;      /* mostra … se il testo è troppo lungo */
+        overflow: hidden;             /* evita che il contenuto gonfi la riga */
+      }
+
+      /* Indicatore "toccabile" solo su celle di contenuto (non orari, non header) */
+      .tg tbody td:not(:first-child){ cursor: pointer; }
+    }
+
+    /* === POPOVER per leggere il contenuto completo su tap === */
+    .cell-popover{
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.35);
+      z-index: 9999; padding: 16px;
+    }
+    .cell-popover--open{ display: flex; }
+    .cell-popover__box{
+      background: #fff; color: #000;
+      max-width: 90vw; max-height: 70vh;
+      overflow: auto; border-radius: 12px; padding: 16px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      font-family: inherit; font-size: 16px; line-height: 1.4;
+      position: relative;
+    }
+    .cell-popover__close{
+      position: absolute; top: 8px; right: 10px;
+      border: 0; background: transparent; font-size: 22px; cursor: pointer;
+      line-height: 1;
+    }
+    .cell-popover__meta{
+      font-size: 12px; opacity: .7; margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tg-wrap">
+    <table class="tg" aria-label="Programma settimanale">
+      <colgroup>
+        <col class="tg-col-time">
+        <col class="tg-col-day" span="6">
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+          <th class="tg-ul38"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-0lax"></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Monday 29/09</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Tuesday 30/09</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Wednesday 01/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Thursday 02/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Friday 03/10</span></td>
+          <td class="tg-95qi"><span style="font-weight:bold;color:#FFF">Saturday 04/10</span></td>
+        </tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">8:30</td>
+          <td class="tg-yedf" rowspan="2">Registration</td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-0lax" rowspan="4"></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">9:00</span></td>
+          <td class="tg-82rs"><span style="background-color:#FFF2CC">Welcome and introduction</span></td>
+          <td class="tg-gpin" rowspan="6">Mathieu Coppey</td>
+          <td class="tg-gpin" rowspan="6">Irene Giardina</td>
+          <td class="tg-gpin" rowspan="6">Matti Gralka</td>
+          <td class="tg-gpin" rowspan="6">Deborah Gordon</td>
+        </tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">9:15</span></td>
+          <td class="tg-dmai" rowspan="5">Participants' introduction</td>
+        </tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">9:30</td>
+          <td class="tg-dmai" rowspan="4">Presentation of groups' conclusions</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-7803" rowspan="2">10:30</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">11:00</td>
+          <td class="tg-gpin" rowspan="6">Thierry Emonet</td>
+          <td class="tg-gpin" rowspan="6">Mirta Galesic</td>
+          <td class="tg-mkke" rowspan="6">Poster session 1</td>
+          <td class="tg-nj25" rowspan="6"><span style="font-weight:bold">Selected talks 2</span>: Theo Gibbs, Angela Albi, Fernandez I Lopez, Alba Motes Rodrigo, Giovanni Iacucci, Gaurav Gardi</td>
+          <td class="tg-mkke" rowspan="6">Poster session 2</td>
+          <td class="tg-dmai" rowspan="4"></td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">12:00</td>
+          <td class="tg-82rs"><span style="background-color:#FFF2CC">Closing remarks</span></td>
+        </tr>
+        <tr><td class="tg-0lax" rowspan="17"></td></tr>
+        <tr>
+          <td class="tg-7803" rowspan="6">12:30</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+          <td class="tg-agz1" rowspan="6">Lunch</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">14:00</td>
+          <td class="tg-gpin" rowspan="4">Allyson Sgro</td>
+          <td class="tg-gpin" rowspan="4">Elena Scarpa</td>
+          <td class="tg-gpin" rowspan="4">Gonzalo Polavieja</td>
+          <td class="tg-gpin" rowspan="4">Karine Gibbs</td>
+          <td class="tg-gpin" rowspan="4">Chaitanya Gokhale</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">15:00</td>
+          <td class="tg-82rs" rowspan="2">Presentation of the Alma dal Co Foundation and of the school</td>
+          <td class="tg-nj25" rowspan="4"><span style="font-weight:bold">Selected talks 1</span>: Tabea Lilian Marx, Jan Rombouts, Judith Mine-Hattab, Oliver Meacock</td>
+          <td class="tg-gpin" rowspan="4">Yuko Ulrich</td>
+          <td class="tg-gpin" rowspan="4">Markus Arnoldini</td>
+          <td class="tg-gpin" rowspan="4">Simon Garnier</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">15:30</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">16:00</td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-agz1" rowspan="2">Coffee break</td>
+          <td class="tg-gpin" rowspan="4">Ralph Kuvers</td>
+          <td class="tg-ccct" rowspan="2">Coffee break</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">16:30</td>
+          <td class="tg-gpin" rowspan="4">Will Ratcliff</td>
+          <td class="tg-dmai" rowspan="10">Free afternoon/ additional group discussion</td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-teb0" rowspan="10">Public Conversation on Music &amp; Science, followed by a concert by the PhD students of Venice Conservatory</td>
+        </tr>
+        <tr></tr>
+        <tr><td class="tg-0lax" rowspan="2"></td></tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="2">17:30</td>
+          <td class="tg-0lax" rowspan="2"></td>
+          <td class="tg-dmai" rowspan="6">Group discussion</td>
+          <td class="tg-teb0" rowspan="6">Aperitif at Orto del Redentore, Giudecca. Donatella Calabi:<span style="font-style:italic"> 'Venezia è viva!'</span></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="4">18:00</td>
+          <td class="tg-teb0" rowspan="8">Visit to the European Cultural Center and get together with happy hour </td>
+          <td class="tg-teb0" rowspan="7">Francesco Musco: Open lecture on <span style="font-style:italic">'Venice &amp; Lagoon socio-ecological system'</span>, followed by aperitif</td>
+        </tr>
+        <tr></tr><tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1" rowspan="3">19:00</td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+          <td class="tg-0lax" rowspan="5"></td>
+        </tr>
+        <tr></tr><tr></tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">19:45</span></td>
+          <td class="tg-0lax" rowspan="2"></td>
+        </tr>
+        <tr>
+          <td class="tg-pta1"><span style="color:#FFF">20:00</span></td>
+          <td class="tg-0lax"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="cell-popover" id="cell-popover" aria-hidden="true">
     <div class="cell-popover__box" role="dialog" aria-modal="true" aria-labelledby="cell-popover-title">
       <button class="cell-popover__close" type="button" aria-label="Chiudi" title="Chiudi">&times;</button>
@@ -498,7 +869,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
   </div>
 
-  <!-- Script: incapsula automaticamente gli orari nello span .time-on-line -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       /* === 1) Wrapping degli orari per effetto "sulla linea" === */
@@ -560,7 +930,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     });
   </script>
 </body>
-
+-->
 
 <!--
 <style type="text/css">
