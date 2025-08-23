@@ -183,6 +183,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 <!-- TIMETABLE -->
+
 <style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
@@ -266,7 +267,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     /* --- Mobile --- */
     @media (max-width: 767px){
       .tg-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .tg      { min-width: 1000px; } /* forza overflow → scroll orizzontale */
+      .tg      { min-width: 1060px; } /* leggermente più larga di prima (era 1000px) */
       .tg { --time-col: 56px; --time-x: 6px; --days-font-size: 16px; --clip-bottom-gap: 10px; }
 
       /* Celle di contenuto predisposte al clamp */
@@ -488,7 +489,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
   </div>
 
-  <!-- Script: 1) orari "sulla linea"; 2) clamp variabile su mobile; 3) popup -->
+  <!-- Script: orari “sulla linea”; clamp variabile su mobile (+ caso speciale); popup -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       /* === 1) Wrapping degli orari per effetto "sulla linea" === */
@@ -526,26 +527,40 @@ image: /images/home/paper_natEcoEvol2020.jpg
             }
           });
         });
+
+        // --- Caso speciale: forza max 2 righe e più gap in basso per la voce specifica
+        const specialText = "Presentation of the Alma dal Co Foundation and of the school";
+        const specialTd = Array.from(document.querySelectorAll('.tg tbody td'))
+          .find(td => td.textContent.trim().startsWith(specialText));
+        if (specialTd) {
+          const clip = specialTd.querySelector('.cell-clip');
+          if (clip) {
+            clip.dataset.maxLines = '2';                 // forza massimo 2 righe
+            specialTd.style.setProperty('--clip-bottom-gap', '14px'); // più margine inferiore
+          }
+        }
       }
 
       function applyClamp(){
         if (!mql.matches) return; // Desktop: niente clamp
 
-        const table = document.querySelector('.tg');
-        const stylesTable = getComputedStyle(table);
-        const bottomGap = parseFloat(stylesTable.getPropertyValue('--clip-bottom-gap')) || 0;
-
         const clips = document.querySelectorAll('.cell-clip');
         clips.forEach(el => {
           const td = el.parentElement;
+
+          // gap inferiore (può essere personalizzato per singola cella)
           const tdStyles = getComputedStyle(td);
+          let bottomGap = parseFloat(tdStyles.getPropertyValue('--clip-bottom-gap'));
+          if (isNaN(bottomGap)) bottomGap = 0;
+
+          // padding cella
           const padTop = parseFloat(tdStyles.paddingTop) || 0;
           const padBottom = parseFloat(tdStyles.paddingBottom) || 0;
 
-          // Altezza disponibile nello slot (con anticipo taglio dal fondo)
+          // Altezza disponibile nello slot, con anticipo taglio dal fondo
           const available = Math.max(0, td.clientHeight - padTop - padBottom - bottomGap);
 
-          // line-height effettiva del wrapper
+          // calcolo line-height del wrapper
           const cs = getComputedStyle(el);
           let lineHeight = parseFloat(cs.lineHeight);
           if (isNaN(lineHeight) || cs.lineHeight === 'normal') {
@@ -553,17 +568,19 @@ image: /images/home/paper_natEcoEvol2020.jpg
             lineHeight = fs * 1.2;
           }
 
-          const maxLines = Math.max(1, Math.floor(available / lineHeight));
+          const dynamicMax = Math.max(1, Math.floor(available / lineHeight));
 
-          // Imposta clamp dinamico (mostra quante righe ci stanno)
-          el.style.webkitLineClamp = String(maxLines); // trigger ellissi multilinea
+          // Se c'è un limite forzato (dataset.maxLines), applica il min tra dinamico e forzato
+          const forced = parseInt(el.dataset.maxLines, 10);
+          const finalMax = (!isNaN(forced) && forced > 0) ? Math.min(dynamicMax, forced) : dynamicMax;
+
+          el.style.webkitLineClamp = String(finalMax);   // attiva ellissi multilinea
         });
       }
 
       function runClamp(){
         if (mql.matches) {
           prepareWrappers();
-          // due frame per sicurezza di layout
           requestAnimationFrame(() => requestAnimationFrame(applyClamp));
         }
       }
