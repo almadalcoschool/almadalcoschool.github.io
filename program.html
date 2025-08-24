@@ -314,26 +314,40 @@ image: /images/home/paper_natEcoEvol2020.jpg
       hyphens: auto;
     }
 
-    /* === AGENDA SEMPLICE (dettaglio talks) — colori coerenti con la tabella === */
+    /* === AGENDA DETTAGLIATA — colori coerenti con la tabella === */
     .agenda {
     --c-talk:    #C9DAF8; /* tg-gpin */
     --c-coffee:  #4e4e67; /* tg-agz1 */
-    --c-lunch:   #4e4e67; /* lunch usa la stessa classe tg-agz1 nella tabella */
+    --c-lunch:   #4e4e67; /* lunch = tg-agz1 nella tabella */
     --c-key:     #FFF2CC; /* tg-82rs / tg-yedf */
     --c-discuss: #FCE5CD; /* tg-dmai */
     --c-selected:#D9D2E9; /* tg-nj25 */
     --c-poster:  #D0E0E3; /* tg-mkke */
     --c-visit:   #D9EAD3; /* tg-teb0 */
 
-    max-width: 1100px;
-    margin: 36px auto 64px;
-    padding: 0 16px;
+    /* ⬇️ SEZIONE A LARGHEZZA PIENA + spazio sopra/sotto */
+    width: 100%;
+    max-width: none;            /* niente contenitore stretto */
+    margin: 64px 0 72px;        /* spazio sopra e sotto */
+    padding: clamp(16px, 3vw, 40px); /* respiro ai lati */
+    background: #fff;           /* fascia bianca a tutta pagina */
     font-family: inherit;
     }
+
+    /* Titolo sezione */
+    .agenda .agenda-title{
+    font-size: clamp(26px, 3.2vw, 36px);
+    margin: 0 0 14px;
+    letter-spacing: .02em;
+    }
+
+    /* Titolo giorno */
     .agenda h2.day-title {
     font-size: clamp(20px, 2.2vw, 26px);
     margin: 24px 0 14px;
     }
+
+    /* Card/slot */
     .agenda .slot {
     background: #fff;
     border: 1px solid #ececec;
@@ -382,10 +396,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
     /* Mobile */
     @media (max-width: 767px){
-    .agenda { padding: 0 12px; }
+    .agenda { padding: clamp(12px, 4vw, 20px); }
     .agenda .slot { margin: 12px 0; }
     }
-
   </style>
 </head>
 <body>
@@ -563,9 +576,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 <!-- TIMELINE DETTAGLIATO-->
-
 <section class="agenda" aria-label="Detailed program">
-
+    <h1 class="agenda-title">Detailed program</h1>
+  
     <!-- ===== MONDAY 29/09 ===== -->
     <h2 class="day-title">Monday 29/09</h2>
   
@@ -863,7 +876,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
   
   </section>
+
   
+
   
 
 
