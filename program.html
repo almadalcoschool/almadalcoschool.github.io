@@ -182,7 +182,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 
 
-<!-- TIMETABLE -->
+<!-- CSS DI TIMETABLE E TIMELINE -->
 
 <style type="text/css">
     .tg  {
@@ -250,7 +250,17 @@ image: /images/home/paper_natEcoEvol2020.jpg
       white-space: nowrap; text-align: right;
     }
 
-    /* === Prima riga STICKY (giorni) + font più grande === */
+    /* Etichetta “di mezzo” nella colonna orari (es. 12:15 a metà della 12:00) */
+    .tg tbody td:first-child .time-on-line.mid{
+      top: 50%;
+      right: var(--time-x);
+      transform: translateY(-50%);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+
+    /* === Prima riga STICKY (giorni) === */
     .tg tbody tr:first-child > *{
       position: sticky; top: 0; z-index: 2;
       /* background: var(--table-bg, transparent); */
@@ -1132,6 +1142,23 @@ image: /images/home/paper_natEcoEvol2020.jpg
           td.innerHTML = `<span class="time-on-line">${original}</span>`;
         }
       });
+
+      /* Aggiungi l'etichetta “12:15” a metà della cella “12:00” */
+      (function addMidLabel(){
+        // Cerca la cella che contiene 12:00 (formati 12, 12:00, 12.00, 12,00)
+        const cells = Array.from(document.querySelectorAll('.tg tbody tr td:first-child'));
+        const target = cells.find(td => {
+          const t = (td.textContent || '').replace(/\s+/g,'').replace(/[.,]/g,':').trim();
+          return t === '12:00' || t === '12';
+        });
+        if (!target) return;
+        if (target.querySelector('.time-on-line.mid')) return;
+
+        const mid = document.createElement('span');
+        mid.className = 'time-on-line mid';
+        mid.textContent = '12:15';
+        target.appendChild(mid);
+      })();
 
       /* === 2) Clamp variabile SOLO su mobile === */
       const mql = window.matchMedia('(max-width: 767px)');
