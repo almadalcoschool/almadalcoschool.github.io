@@ -463,6 +463,57 @@ image: /images/home/paper_natEcoEvol2020.jpg
     @media (max-width: 767px){
     .agenda .subslot{ --sub-time-w: 96px; }
     }
+    
+    /* === Allineamenti come gli slot normali (no centrato) === */
+    .agenda .slot h3 { 
+    text-align: left;           /* nel caso il tema centri gli h3 */
+    margin: 2px 0 6px;
+    }
+
+    /* Sub-slot: allinea tutto a sinistra e ritmo coerente */
+    .agenda .subslot,
+    .agenda .subslot * {
+    text-align: left;
+    }
+
+    /* Spaziatura coerente con gli slot principali (ma più compatta) */
+    .agenda .subslots { 
+    margin-top: 12px; 
+    padding-top: 10px; 
+    border-top: 1px dashed #e2e2e2; 
+    }
+    .agenda .subslot { 
+    padding: 8px 12px;          /* un filo più “card” come gli slot */
+    gap: 10px;
+    }
+
+    /* Tipografia sub-slot (piccola ma leggibile) */
+    .agenda .subslot-time{
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    }
+
+    .agenda .subslot-speaker{
+    font-size: 13.5px;          /* simile all’h3 ma ridotto */
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 1px;
+    }
+
+    .agenda .subslot-title{
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;           /* come il testo degli slot */
+    margin: 0;                  /* evita “stacchi” strani */
+    opacity: .95;
+    }
+
+    /* Mobile: mantieni proporzioni */
+    @media (max-width: 767px){
+    .agenda .subslot { padding: 8px 10px; }
+    }
+
 
   </style>
 </head>
