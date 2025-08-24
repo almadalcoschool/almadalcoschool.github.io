@@ -400,22 +400,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .agenda .slot { margin: 12px 0; }
     }
 
-    /* === Abstract nei talk: più piccoli e compatti === */
-    .agenda .slot p.talk{
-    font-size: 0.9rem;     /* ~14–15px se base 16px: più piccolo del corpo */
-    line-height: 1.45;     /* ritmo più serrato per testi lunghi */
-    margin-top: 2px;       /* meno stacco dal titolo h3 */
-    color: inherit;        /* usa il colore del sito */
-    }
-
-    /* Mobile: mantieni piccolo e leggibile */
-    @media (max-width: 767px){
-    .agenda .slot p.talk{
-        font-size: 0.875rem; /* ~14px */
-        line-height: 1.48;
-    }
-    }
-
     /* Slot “semplice” (niente titolo ripetuto) */
     .agenda .slot.simple .meta{ 
     margin-bottom: 0; 
@@ -538,6 +522,39 @@ image: /images/home/paper_natEcoEvol2020.jpg
     @media (max-width: 767px){
     .agenda .subslot { padding: 8px 10px; }
     }
+
+    /* === Paragrafi nell'agenda: più piccoli e compatti === */
+    .agenda p{
+    font-size: 14px;     /* più piccolo per testi lunghi */
+    line-height: 1.45;
+    margin: 2px 0 0;     /* meno stacco dal titolo */
+    color: inherit;
+    }
+
+    /* p: forza la stessa scala dei paragrafi */
+    .agenda .slot p.talk{
+    font-size: 14px;    
+    line-height: 1.45;
+    margin-top: 2px;
+    }
+
+    /* (opz.) micro-testo nei sub-slot se usi <p> anche lì */
+    .agenda .subslot p{
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0;
+    }
+
+    /* Mobile: leggermente più piccolo per contenere meglio */
+    @media (max-width: 767px){
+    .agenda p,
+    .agenda .slot p.talk{
+        font-size: 13.5px;
+        line-height: 1.48;
+    }
+    }
+
+
 
 
   </style>
