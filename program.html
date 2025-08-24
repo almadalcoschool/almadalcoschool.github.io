@@ -314,7 +314,189 @@ image: /images/home/paper_natEcoEvol2020.jpg
       hyphens: auto;
     }
 
-    /* === AGENDA DETTAGLIATA — colori coerenti con la tabella === */
+
+    /* === AGENDA DETTAGLIATA === */
+    /* Variabili colore coerenti con la tabella */
+    .agenda{
+    --c-talk:    #C9DAF8; /* tg-gpin */
+    --c-coffee:  #4e4e67; /* tg-agz1 */
+    --c-lunch:   #4e4e67; /* lunch = tg-agz1 */
+    --c-key:     #FFF2CC; /* tg-82rs / tg-yedf */
+    --c-discuss: #FCE5CD; /* tg-dmai */
+    --c-selected:#D9D2E9; /* tg-nj25 */
+    --c-poster:  #D0E0E3; /* tg-mkke */
+    --c-visit:   #D9EAD3; /* tg-teb0 */
+
+    /* Contenitore a tutta larghezza con fascia bianca e respiro */
+    width: 100%;
+    max-width: none;
+    margin: 64px 0 72px;
+    padding: clamp(16px, 3vw, 40px);
+    background: #fff;
+    font-family: inherit;
+    }
+
+    /* Titoli sezione e giorno */
+    .agenda .agenda-title{
+    font-size: clamp(26px, 3.2vw, 36px);
+    margin: 0 0 14px;
+    letter-spacing: .02em;
+    }
+    .agenda h2.day-title{
+    font-size: clamp(20px, 2.2vw, 26px);
+    margin: 24px 0 14px;
+    }
+
+    /* Card/slot base */
+    .agenda .slot{
+    background: #fff;
+    border: 1px solid #ececec;
+    border-left: 6px solid #ddd;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,.04);
+    }
+    .agenda .slot .meta{
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    }
+    .agenda .slot .meta .time{ font-variant-numeric: tabular-nums; }
+    .agenda .slot .meta .speaker{ font-weight: 600; }
+    .agenda .slot h3{
+    text-align: left;
+    font-size: 16px;
+    margin: 2px 0 6px;
+    letter-spacing: .01em;
+    }
+
+    /* Tipografia dei paragrafi (anche abstract) */
+    .agenda p{
+    font-size: 14px;        /* più piccolo per testi lunghi */
+    line-height: 1.45;      /* ritmo più compatto */
+    margin: 2px 0 0;        /* poco stacco dal titolo */
+    color: inherit;
+    }
+
+    /* Varianti colore del bordo sinistro */
+    .agenda .slot.talk     { border-left-color: var(--c-talk); }
+    .agenda .slot.coffee   { border-left-color: var(--c-coffee); }
+    .agenda .slot.lunch    { border-left-color: var(--c-lunch); }
+    .agenda .slot.key      { border-left-color: var(--c-key); }
+    .agenda .slot.discuss  { border-left-color: var(--c-discuss); }
+    .agenda .slot.selected { border-left-color: var(--c-selected); }
+    .agenda .slot.poster   { border-left-color: var(--c-poster); }
+    .agenda .slot.visit    { border-left-color: var(--c-visit); }
+
+    /* Badge */
+    .agenda .badge{
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    vertical-align: baseline;
+    margin-left: 8px;
+    }
+    .agenda .badge.talk    { background: var(--c-talk); }
+    .agenda .badge.coffee  { background: var(--c-coffee); color:#fff; }
+    .agenda .badge.lunch   { background: var(--c-lunch);  color:#fff; }
+    .agenda .badge.key     { background: var(--c-key); }
+    .agenda .badge.discuss { background: var(--c-discuss); }
+    .agenda .badge.selected{ background: var(--c-selected); }
+    .agenda .badge.poster  { background: var(--c-poster); }
+    .agenda .badge.visit   { background: var(--c-visit); }
+
+    /* Slot “semplice” (niente titolo ripetuto: Coffee/Lunch ecc.) */
+    .agenda .slot.simple .meta{
+    margin-bottom: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    }
+    .agenda .slot.simple h3{ display: none; }
+
+    /* === Sub-slots (mini-schedule dentro uno slot) === */
+    .agenda .subslots{
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px dashed #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+    .agenda .subslot{
+    --sub-time-w: 120px;
+    display: grid;
+    grid-template-columns: var(--sub-time-w) 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-left: 4px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    }
+    /* il bordo dei subslot eredita il colore dal tipo di slot */
+    .agenda .slot.talk     .subslot{ border-left-color: var(--c-talk); }
+    .agenda .slot.coffee   .subslot{ border-left-color: var(--c-coffee); }
+    .agenda .slot.lunch    .subslot{ border-left-color: var(--c-lunch); }
+    .agenda .slot.key      .subslot{ border-left-color: var(--c-key); }
+    .agenda .slot.discuss  .subslot{ border-left-color: var(--c-discuss); }
+    .agenda .slot.selected .subslot{ border-left-color: var(--c-selected); }
+    .agenda .slot.poster   .subslot{ border-left-color: var(--c-poster); }
+    .agenda .slot.visit    .subslot{ border-left-color: var(--c-visit); }
+
+    .agenda .subslot-time{
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #333;
+    white-space: nowrap;
+    }
+    .agenda .subslot-body{ min-width: 0; }
+    .agenda .subslot-speaker{
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 1px;
+    text-align: left;
+    }
+    .agenda .subslot-title{
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+    opacity: .95;
+    text-align: left;
+    }
+    /* Paragrafi eventualmente presenti nei subslot */
+    .agenda .subslot p{
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 767px){
+    .agenda{ padding: clamp(12px, 4vw, 20px); }
+    .agenda .slot{ margin: 12px 0; }
+    .agenda p{ font-size: 13.5px; line-height: 1.48; }
+    .agenda .subslot{ --sub-time-w: 96px; padding: 8px 10px; }
+    }
+
+  </style>
+</head>
+<body>
+
+
+
+    <!--
+    
+    /* === AGENDA DETTAGLIATA === */
+    /* Variabili colore per le card coerenti con la tabella*/
     .agenda {
     --c-talk:    #C9DAF8; /* tg-gpin */
     --c-coffee:  #4e4e67; /* tg-agz1 */
@@ -554,12 +736,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     }
     }
 
-
-
-
-  </style>
-</head>
-<body>
+    -->
 
   <div class="tg-wrap">
     <table class="tg" aria-label="Programma settimanale">
