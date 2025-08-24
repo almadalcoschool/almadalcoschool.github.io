@@ -314,14 +314,17 @@ image: /images/home/paper_natEcoEvol2020.jpg
       hyphens: auto;
     }
 
-
-    /* === AGENDA SEMPLICE (dettaglio talks) === */
+    /* === AGENDA SEMPLICE (dettaglio talks) — colori coerenti con la tabella === */
     .agenda {
-    --c-coffee: #4e4e67;
-    --c-lunch: #D9EAD3;
-    --c-key: #FFF2CC;
-    --c-discuss: #FCE5CD;
-    --c-talk: #C9DAF8;
+    --c-talk:    #C9DAF8; /* tg-gpin */
+    --c-coffee:  #4e4e67; /* tg-agz1 */
+    --c-lunch:   #4e4e67; /* lunch usa la stessa classe tg-agz1 nella tabella */
+    --c-key:     #FFF2CC; /* tg-82rs / tg-yedf */
+    --c-discuss: #FCE5CD; /* tg-dmai */
+    --c-selected:#D9D2E9; /* tg-nj25 */
+    --c-poster:  #D0E0E3; /* tg-mkke */
+    --c-visit:   #D9EAD3; /* tg-teb0 */
+
     max-width: 1100px;
     margin: 36px auto 64px;
     padding: 0 16px;
@@ -346,24 +349,20 @@ image: /images/home/paper_natEcoEvol2020.jpg
     }
     .agenda .slot .meta .time { font-variant-numeric: tabular-nums; }
     .agenda .slot .meta .speaker { font-weight: 600; }
-    .agenda .slot h3 {
-    font-size: 16px;
-    margin: 2px 0 6px;
-    letter-spacing: .01em;
-    }
-    .agenda .slot p {
-    margin: 0;
-    line-height: 1.55;
-    }
+    .agenda .slot h3 { font-size: 16px; margin: 2px 0 6px; letter-spacing: .01em; }
+    .agenda .slot p { margin: 0; line-height: 1.55; }
 
-    /* Varianti colore, coerenti con la tabella */
+    /* Varianti colore coerenti */
+    .agenda .slot.talk     { border-left-color: var(--c-talk); }
     .agenda .slot.coffee   { border-left-color: var(--c-coffee); }
-    .agenda .slot.lunch    { border-left-color: var(--c-lunch);  }
-    .agenda .slot.key      { border-left-color: var(--c-key);    }
-    .agenda .slot.discuss  { border-left-color: var(--c-discuss);}
-    .agenda .slot.talk     { border-left-color: var(--c-talk);   }
+    .agenda .slot.lunch    { border-left-color: var(--c-lunch); }
+    .agenda .slot.key      { border-left-color: var(--c-key); }
+    .agenda .slot.discuss  { border-left-color: var(--c-discuss); }
+    .agenda .slot.selected { border-left-color: var(--c-selected); }
+    .agenda .slot.poster   { border-left-color: var(--c-poster); }
+    .agenda .slot.visit    { border-left-color: var(--c-visit); }
 
-    /* Piccolo badge opzionale */
+    /* Badge */
     .agenda .badge {
     display: inline-block;
     font-size: 12px;
@@ -372,13 +371,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
     vertical-align: baseline;
     margin-left: 8px;
     }
-    .agenda .badge.coffee  { background: var(--c-coffee); color:#fff; }
-    .agenda .badge.lunch   { background: var(--c-lunch); }
-    .agenda .badge.key     { background: var(--c-key); }
-    .agenda .badge.discuss { background: var(--c-discuss); }
-    .agenda .badge.talk    { background: var(--c-talk); }
+    .agenda .badge.talk     { background: var(--c-talk); }
+    .agenda .badge.coffee   { background: var(--c-coffee); color:#fff; }
+    .agenda .badge.lunch    { background: var(--c-lunch);  color:#fff; }
+    .agenda .badge.key      { background: var(--c-key); }
+    .agenda .badge.discuss  { background: var(--c-discuss); }
+    .agenda .badge.selected { background: var(--c-selected); }
+    .agenda .badge.poster   { background: var(--c-poster); }
+    .agenda .badge.visit    { background: var(--c-visit); }
 
-    /* Mobile: nessun cambiamento strutturale, solo spacing leggermente maggiore */
+    /* Mobile */
     @media (max-width: 767px){
     .agenda { padding: 0 12px; }
     .agenda .slot { margin: 12px 0; }
@@ -562,8 +564,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <!-- TIMELINE DETTAGLIATO-->
 
-
-<section class="agenda" aria-label="Programma dettagliato">
+<section class="agenda" aria-label="Detailed program">
 
     <!-- ===== MONDAY 29/09 ===== -->
     <h2 class="day-title">Monday 29/09</h2>
@@ -571,25 +572,25 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="slot key">
       <div class="meta"><span class="time">08:30</span> — Registration <span class="badge key">welcome</span></div>
       <h3>Registration</h3>
-      <p>Accoglienza, badge e materiali.</p>
+      <p>Welcome desk, badges and materials.</p>
     </div>
   
     <div class="slot key">
       <div class="meta"><span class="time">09:00</span> — Welcome and introduction <span class="badge key">opening</span></div>
       <h3>Welcome and introduction</h3>
-      <p>Saluti iniziali e presentazione del programma della settimana.</p>
+      <p>Opening remarks and overview of the week’s program.</p>
     </div>
   
     <div class="slot discuss">
       <div class="meta"><span class="time">09:15</span> — Participants' introduction <span class="badge discuss">round</span></div>
       <h3>Participants' introduction</h3>
-      <p>Breve giro di tavolo: interessi, obiettivi e background.</p>
+      <p>Quick roundtable: interests, goals, and background.</p>
     </div>
   
     <div class="slot discuss">
       <div class="meta"><span class="time">09:30–10:30</span> — Presentation of groups' conclusions</div>
       <h3>Presentation of groups' conclusions</h3>
-      <p>Sintesi dei gruppi: risultati preliminari e prossimi passi.</p>
+      <p>Group summaries: preliminary results and next steps.</p>
     </div>
   
     <div class="slot coffee">
@@ -599,14 +600,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="mon-1100-emonet">
       <div class="meta"><span class="time">11:00–12:00</span> — <span class="speaker">Thierry Emonet</span></div>
-      <h3>Titolo talk (Thierry Emonet)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Thierry Emonet)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot key">
       <div class="meta"><span class="time">12:00</span> — Closing remarks</div>
       <h3>Closing remarks</h3>
-      <p>Chiusura della sessione mattutina.</p>
+      <p>Wrap-up of the morning session.</p>
     </div>
   
     <div class="slot lunch">
@@ -616,14 +617,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="mon-1400-sgro">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Allyson Sgro</span></div>
-      <h3>Titolo talk (Allyson Sgro)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Allyson Sgro)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot key" id="mon-1500-alma">
       <div class="meta"><span class="time">15:00–15:30</span> — Presentation of the Alma dal Co Foundation and of the school</div>
       <h3>Presentation of the Alma dal Co Foundation and of the school</h3>
-      <p>Presentazione dell’iniziativa e della scuola.</p>
+      <p>Presentation of the initiative and the school.</p>
     </div>
   
     <div class="slot coffee">
@@ -634,19 +635,19 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="slot discuss">
       <div class="meta"><span class="time">16:00–16:30</span> — Group discussion</div>
       <h3>Group discussion</h3>
-      <p>Discussione plenaria: Q&amp;A e roadmap.</p>
+      <p>Plenary discussion: Q&amp;A and roadmap.</p>
     </div>
   
     <div class="slot talk" id="mon-1630-ratcliff">
       <div class="meta"><span class="time">16:30–17:30</span> — <span class="speaker">Will Ratcliff</span></div>
-      <h3>Titolo talk (Will Ratcliff)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Will Ratcliff)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
-    <div class="slot">
-      <div class="meta"><span class="time">18:00</span> — Visit to the European Cultural Center &amp; get together</div>
-      <h3>Visita al European Cultural Center + happy hour</h3>
-      <p>Indirizzo, logistica e dettagli di incontro.</p>
+    <div class="slot visit">
+      <div class="meta"><span class="time">18:00</span> — Visit to the European Cultural Center &amp; get together <span class="badge visit">event</span></div>
+      <h3>Visit to the European Cultural Center + happy hour</h3>
+      <p>Address, logistics, and meeting details.</p>
     </div>
   
   
@@ -655,8 +656,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="tue-0900-coppey">
       <div class="meta"><span class="time">09:00–10:30</span> — <span class="speaker">Mathieu Coppey</span></div>
-      <h3>Titolo talk (Mathieu Coppey)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Mathieu Coppey)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -666,8 +667,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="tue-1100-galesic">
       <div class="meta"><span class="time">11:00–12:30</span> — <span class="speaker">Mirta Galesic</span></div>
-      <h3>Titolo talk (Mirta Galesic)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Mirta Galesic)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot lunch">
@@ -677,12 +678,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="tue-1400-scarpa">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Elena Scarpa</span></div>
-      <h3>Titolo talk (Elena Scarpa)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Elena Scarpa)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
-    <div class="slot key" id="tue-1500-selected1">
-      <div class="meta"><span class="time">15:00–16:00</span> — Selected talks 1</div>
+    <div class="slot selected" id="tue-1500-selected1">
+      <div class="meta"><span class="time">15:00–16:00</span> — Selected talks 1 <span class="badge selected">selected</span></div>
       <h3>Selected talks 1</h3>
       <p><strong>Speakers</strong>: Tabea Lilian Marx, Jan Rombouts, Judith Mine-Hattab, Oliver Meacock.</p>
     </div>
@@ -695,13 +696,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="slot discuss" id="tue-1630-free">
       <div class="meta"><span class="time">16:30–18:00</span> — Free afternoon / additional group discussion</div>
       <h3>Free afternoon / additional group discussion</h3>
-      <p>Sessioni ad hoc e lavoro di gruppo libero.</p>
+      <p>Ad hoc sessions and open group work.</p>
     </div>
   
-    <div class="slot" id="tue-1800-musco">
-      <div class="meta"><span class="time">18:00</span> — Francesco Musco (Open lecture)</div>
+    <div class="slot visit" id="tue-1800-musco">
+      <div class="meta"><span class="time">18:00</span> — Francesco Musco (Open lecture) <span class="badge visit">public</span></div>
       <h3>Venice &amp; Lagoon socio-ecological system</h3>
-      <p>Lectio aperta, seguita da <em>aperitivo</em>.</p>
+      <p>Open lecture, followed by an aperitif.</p>
     </div>
   
   
@@ -710,8 +711,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="wed-0900-giardina">
       <div class="meta"><span class="time">09:00–10:30</span> — <span class="speaker">Irene Giardina</span></div>
-      <h3>Titolo talk (Irene Giardina)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Irene Giardina)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -719,10 +720,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Coffee Break</h3>
     </div>
   
-    <div class="slot key" id="wed-1100-poster1">
-      <div class="meta"><span class="time">11:00–12:30</span> — Poster session 1</div>
+    <div class="slot poster" id="wed-1100-poster1">
+      <div class="meta"><span class="time">11:00–12:30</span> — Poster session 1 <span class="badge poster">poster</span></div>
       <h3>Poster session 1</h3>
-      <p>Esposizione e discussione dei poster.</p>
+      <p>Poster exhibition and discussion.</p>
     </div>
   
     <div class="slot lunch">
@@ -732,14 +733,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="wed-1400-polavieja">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Gonzalo Polavieja</span></div>
-      <h3>Titolo talk (Gonzalo Polavieja)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Gonzalo Polavieja)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot talk" id="wed-1500-ulrich">
       <div class="meta"><span class="time">15:00–16:00</span> — <span class="speaker">Yuko Ulrich</span></div>
-      <h3>Titolo talk (Yuko Ulrich)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Yuko Ulrich)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -750,7 +751,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="slot discuss" id="wed-1630-discussion">
       <div class="meta"><span class="time">16:30–18:00</span> — Group discussion</div>
       <h3>Group discussion</h3>
-      <p>Discussione guidata e feedback.</p>
+      <p>Facilitated discussion and feedback.</p>
     </div>
   
   
@@ -759,8 +760,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="thu-0900-gralka">
       <div class="meta"><span class="time">09:00–10:30</span> — <span class="speaker">Matti Gralka</span></div>
-      <h3>Titolo talk (Matti Gralka)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Matti Gralka)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -768,8 +769,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Coffee Break</h3>
     </div>
   
-    <div class="slot key" id="thu-1100-selected2">
-      <div class="meta"><span class="time">11:00–12:30</span> — Selected talks 2</div>
+    <div class="slot selected" id="thu-1100-selected2">
+      <div class="meta"><span class="time">11:00–12:30</span> — Selected talks 2 <span class="badge selected">selected</span></div>
       <h3>Selected talks 2</h3>
       <p><strong>Speakers</strong>: Theo Gibbs, Angela Albi, Fernandez I Lopez, Alba Motes Rodrigo, Giovanni Iacucci, Gaurav Gardi.</p>
     </div>
@@ -781,8 +782,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="thu-1400-gibbs">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Karine Gibbs</span></div>
-      <h3>Titolo talk (Karine Gibbs)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Karine Gibbs)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -790,10 +791,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Coffee Break</h3>
     </div>
   
-    <div class="slot talk" id="thu-1600-kuvers">
-      <div class="meta"><span class="time">16:00–17:30</span> — <span class="speaker">Ralph Kuvers</span></div>
-      <h3>Titolo talk (Ralph Kuvers)</h3>
-      <p>[Abstract del talk.]</p>
+    <div class="slot talk" id="thu-1630-kuvers">
+      <div class="meta"><span class="time">16:30–17:30</span> — <span class="speaker">Ralph Kuvers</span></div>
+      <h3>Talk title (Ralph Kuvers)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
   
@@ -802,8 +803,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="fri-0900-gordon">
       <div class="meta"><span class="time">09:00–10:30</span> — <span class="speaker">Deborah Gordon</span></div>
-      <h3>Titolo talk (Deborah Gordon)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Deborah Gordon)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -811,10 +812,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Coffee Break</h3>
     </div>
   
-    <div class="slot key" id="fri-1100-poster2">
-      <div class="meta"><span class="time">11:00–12:30</span> — Poster session 2</div>
+    <div class="slot poster" id="fri-1100-poster2">
+      <div class="meta"><span class="time">11:00–12:30</span> — Poster session 2 <span class="badge poster">poster</span></div>
       <h3>Poster session 2</h3>
-      <p>Esposizione e discussione dei poster.</p>
+      <p>Poster exhibition and discussion.</p>
     </div>
   
     <div class="slot lunch">
@@ -824,14 +825,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="fri-1400-arnoldini">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Markus Arnoldini</span></div>
-      <h3>Titolo talk (Markus Arnoldini)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Markus Arnoldini)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot talk" id="fri-1500-garnier">
       <div class="meta"><span class="time">15:00–16:00</span> — <span class="speaker">Simon Garnier</span></div>
-      <h3>Titolo talk (Simon Garnier)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Simon Garnier)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
     <div class="slot coffee">
@@ -845,23 +846,24 @@ image: /images/home/paper_natEcoEvol2020.jpg
   
     <div class="slot talk" id="sat-1400-gokhale">
       <div class="meta"><span class="time">14:00–15:00</span> — <span class="speaker">Chaitanya Gokhale</span></div>
-      <h3>Titolo talk (Chaitanya Gokhale)</h3>
-      <p>[Abstract del talk.]</p>
+      <h3>Talk title (Chaitanya Gokhale)</h3>
+      <p>[Talk abstract.]</p>
     </div>
   
-    <div class="slot" id="sat-1630-conversation">
-      <div class="meta"><span class="time">16:30</span> — Public Conversation on Music &amp; Science</div>
+    <div class="slot visit" id="sat-1630-conversation">
+      <div class="meta"><span class="time">16:30</span> — Public Conversation on Music &amp; Science <span class="badge visit">event</span></div>
       <h3>Public Conversation on Music &amp; Science</h3>
-      <p>Segue concerto degli studenti di dottorato del Conservatorio di Venezia.</p>
+      <p>Followed by a concert by PhD students of the Venice Conservatory.</p>
     </div>
   
-    <div class="slot" id="sat-1730-aperitif">
-      <div class="meta"><span class="time">17:30</span> — Aperitif at Orto del Redentore (Giudecca)</div>
+    <div class="slot visit" id="sat-1730-aperitif">
+      <div class="meta"><span class="time">17:30</span> — Aperitif at Orto del Redentore (Giudecca) <span class="badge visit">event</span></div>
       <h3>Aperitif at Orto del Redentore</h3>
-      <p>Donatella Calabi: <em>“Venezia è viva!”</em></p>
+      <p>Donatella Calabi: <em>“Venice is alive!”</em></p>
     </div>
   
   </section>
+  
   
 
 
