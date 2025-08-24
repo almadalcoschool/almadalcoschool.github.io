@@ -184,8 +184,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <!-- TIMETABLE -->
 
-
-  <style type="text/css">
+<style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
       table-layout: fixed;
@@ -492,22 +491,21 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
   </div>
 
-  <!-- Script: orari “sulla linea”; clamp variabile su mobile (+ fix 2 righe speciali); popup -->
+  <!-- Script: orari “sulla linea”; clamp variabile su mobile (+ fix mirato); popup -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      /* === 1) Wrapping degli orari per effetto "sulla linea" === */
+      /* === 1) Orari “sulla linea” === */
       const timeCells = document.querySelectorAll('.tg tbody tr td:first-child');
       timeCells.forEach(td => {
-        if (td.querySelector('.time-on-line')) return; // già fatto
+        if (td.querySelector('.time-on-line')) return;
         const txt = (td.textContent || '').trim();
-        // Matcha "9:00", "9.15", "19", "19,45" ecc.
         if (/^\d{1,2}([:.,]\d{2})?$/.test(txt)) {
-          const original = td.innerHTML; // preserva eventuali <span style="...">…</span>
+          const original = td.innerHTML;
           td.innerHTML = `<span class="time-on-line">${original}</span>`;
         }
       });
 
-      /* === 2) Multi-line clamp variabile SOLO su mobile === */
+      /* === 2) Clamp variabile SOLO su mobile === */
       const mql = window.matchMedia('(max-width: 767px)');
 
       function prepareWrappers(){
@@ -524,23 +522,30 @@ image: /images/home/paper_natEcoEvol2020.jpg
             if (!td.querySelector('.cell-clip')) {
               const wrap = document.createElement('div');
               wrap.className = 'cell-clip';
-              wrap.innerHTML = td.innerHTML; // preserva HTML
+              wrap.innerHTML = td.innerHTML;
               td.innerHTML = '';
               td.appendChild(wrap);
             }
           });
         });
 
-        // --- Caso speciale: forza ESATTAMENTE 2 righe e corregge gap per farcele stare ---
-        const specialNeedle = "presentation of the alma dal co foundation and of the school";
+        /* === FIX mirato per la cella richiesta (solo mobile) === */
+        const needle = "presentation of the alma dal co foundation and of the school";
         const specialTd = Array.from(document.querySelectorAll('.tg tbody td'))
-          .find(td => td.textContent.replace(/\s+/g,' ').trim().toLowerCase().includes(specialNeedle));
+          .find(td => td.textContent.replace(/\s+/g,' ').trim().toLowerCase().includes(needle));
         if (specialTd) {
           const clip = specialTd.querySelector('.cell-clip');
           if (clip) {
-            clip.dataset.maxLines = '2';           // massimo 2
-            clip.dataset.forceExact = '1';         // esattamente 2 (se possibile)
-            specialTd.dataset.specialGap = '1';    // indica che il gap va ricalcolato ad hoc
+            // 1) salvo il testo completo per il popup
+            const fullText = clip.innerText.trim();
+            clip.dataset.full = fullText;
+
+            // 2) mostro nella cella una versione abbreviata su due righe
+            clip.textContent = "Presentation of the Alma dal Co Foundation and...";
+
+            // 3) mantengo comunque il limite a 2 righe per sicurezza
+            clip.dataset.maxLines = '2';
+            clip.dataset.forceExact = '1';
           }
         }
       }
@@ -552,18 +557,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
         clips.forEach(el => {
           const td = el.parentElement;
 
-          // Padding cella
           const tdStyles = getComputedStyle(td);
           const padTop = parseFloat(tdStyles.paddingTop) || 0;
           const padBottom = parseFloat(tdStyles.paddingBottom) || 0;
 
-          // Altezza contenitore testuale
           const containerHeight = Math.max(0, td.clientHeight - padTop - padBottom);
-
-          // Gap di base
           let bottomGap = parseFloat(getComputedStyle(document.querySelector('.tg')).getPropertyValue('--clip-bottom-gap')) || 0;
 
-          // line-height effettiva del wrapper
           const cs = getComputedStyle(el);
           let lineHeight = parseFloat(cs.lineHeight);
           if (isNaN(lineHeight) || cs.lineHeight === 'normal') {
@@ -571,35 +571,20 @@ image: /images/home/paper_natEcoEvol2020.jpg
             lineHeight = fs * 1.2;
           }
 
-          // target dinamico
           let dynamicMax = Math.max(1, Math.floor((containerHeight - bottomGap) / lineHeight));
-
           const forced = parseInt(el.dataset.maxLines, 10);
           const forceExact = el.dataset.forceExact === '1';
 
           if (!isNaN(forced) && forced > 0) {
-            // Se serve esattamente 2 righe (caso speciale), riduco il gap per farcele stare
             if (forceExact) {
-              const neededGap = containerHeight - (forced * lineHeight) - 1; // -1px margine minimo
-              bottomGap = Math.max(0, Math.min(bottomGap, neededGap));       // riduci gap solo se necessario
+              const neededGap = containerHeight - (forced * lineHeight) - 1;
+              bottomGap = Math.max(0, Math.min(bottomGap, neededGap));
               dynamicMax = Math.max(1, Math.floor((containerHeight - bottomGap) / lineHeight));
             }
           }
 
           const finalMax = (!isNaN(forced) && forced > 0) ? Math.min(dynamicMax, forced) : dynamicMax;
-
-          // Applica il clamp (ellissi solo all'ultima riga visibile)
           el.style.webkitLineClamp = String(finalMax);
-
-          // --- FIX iOS clamp per il caso forzato: blocca anche l'altezza in px ---
-          if (!isNaN(forced) && forced > 0) {
-            const clampH = Math.max(0, Math.floor(finalMax * lineHeight) - 1);
-            el.style.maxHeight = clampH + 'px';
-            el.style.height = clampH + 'px';
-          } else {
-            el.style.maxHeight = '';
-            el.style.height = '';
-          }
         });
       }
 
@@ -616,7 +601,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
       if (document.fonts && document.fonts.ready) { document.fonts.ready.then(runClamp).catch(()=>{}); }
       window.addEventListener('load', runClamp);
 
-      /* === 3) Popup su click cella (mostra testo completo) === */
+      /* === 3) Popup === */
       const pop = document.getElementById('cell-popover');
       const popContent = document.getElementById('cell-popover-content');
       const closeBtn = pop.querySelector('.cell-popover__close');
@@ -634,7 +619,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         pop.setAttribute('aria-hidden','true');
       }
 
-      // Apri su click di una cella di contenuto (escluse prima colonna orari e prima riga giorni)
+      // Usa il testo completo se disponibile in data-full
       document.querySelector('.tg tbody').addEventListener('click', function(e){
         const td = e.target.closest('td');
         if (!td) return;
@@ -644,7 +629,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
         const isFirstRow = tr === td.closest('tbody').querySelector('tr:first-child');
         if (isFirstCol || isFirstRow) return;
 
-        const text = td.innerText.trim();
+        const clip = td.querySelector('.cell-clip');
+        const full = clip && clip.dataset.full ? clip.dataset.full : null;
+        const text = full || td.innerText.trim();
+
         if (text) {
           const colIndex = Array.prototype.indexOf.call(tr.children, td);
           const dayRow = td.closest('tbody').querySelector('tr:first-child');
@@ -653,7 +641,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
         }
       });
 
-      // Chiudi popup
       closeBtn.addEventListener('click', closePop);
       pop.addEventListener('click', (e)=>{ if(e.target === pop) closePop(); });
       document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closePop(); });
@@ -661,9 +648,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
   </script>
 </body>
 
-
 <!--
-<style type="text/css">
+  <style type="text/css">
     .tg  {
       border:none;border-collapse:collapse;border-spacing:0;margin:0 auto;
       table-layout: fixed;
@@ -959,7 +945,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
       </tbody>
     </table>
   </div>
-
   <div class="cell-popover" id="cell-popover" aria-hidden="true">
     <div class="cell-popover__box" role="dialog" aria-modal="true" aria-labelledby="cell-popover-title">
       <button class="cell-popover__close" type="button" aria-label="Chiudi" title="Chiudi">&times;</button>
@@ -1065,6 +1050,16 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
           // Applica il clamp (ellissi solo all'ultima riga visibile)
           el.style.webkitLineClamp = String(finalMax);
+
+          // --- FIX iOS clamp per il caso forzato: blocca anche l'altezza in px ---
+          if (!isNaN(forced) && forced > 0) {
+            const clampH = Math.max(0, Math.floor(finalMax * lineHeight) - 1);
+            el.style.maxHeight = clampH + 'px';
+            el.style.height = clampH + 'px';
+          } else {
+            el.style.maxHeight = '';
+            el.style.height = '';
+          }
         });
       }
 
@@ -1126,7 +1121,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
   </script>
 </body>
 -->
-
 
 
 
