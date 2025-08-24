@@ -399,6 +399,71 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .agenda { padding: clamp(12px, 4vw, 20px); }
     .agenda .slot { margin: 12px 0; }
     }
+
+    /* === Sub-slots (mini schedule inside a slot) === */
+    .agenda .subslots{
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px dashed #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+
+    /* Each sub-item as a compact card with a time column */
+    .agenda .subslot{
+    --sub-time-w: 120px;
+    display: grid;
+    grid-template-columns: var(--sub-time-w) 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 8px 10px;
+    border: 1px solid #eee;
+    border-left: 4px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    }
+
+    /* Match the parent slot color on the left stripe */
+    .agenda .slot.talk     .subslot{ border-left-color: var(--c-talk); }
+    .agenda .slot.coffee   .subslot{ border-left-color: var(--c-coffee); }
+    .agenda .slot.lunch    .subslot{ border-left-color: var(--c-lunch); }
+    .agenda .slot.key      .subslot{ border-left-color: var(--c-key); }
+    .agenda .slot.discuss  .subslot{ border-left-color: var(--c-discuss); }
+    .agenda .slot.selected .subslot{ border-left-color: var(--c-selected); }
+    .agenda .slot.poster   .subslot{ border-left-color: var(--c-poster); }
+    .agenda .slot.visit    .subslot{ border-left-color: var(--c-visit); }
+
+    .agenda .subslot-time{
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333;
+    white-space: nowrap;
+    }
+
+    .agenda .subslot-body{
+    min-width: 0;
+    }
+
+    .agenda .subslot-speaker{
+    font-weight: 700;
+    line-height: 1.25;
+    }
+
+    .agenda .subslot-title{
+    margin-top: 2px;
+    line-height: 1.45;
+    color: #333;
+    opacity: .95;
+    }
+
+    /* Responsive time column on small screens */
+    @media (max-width: 767px){
+    .agenda .subslot{ --sub-time-w: 96px; }
+    }
+
   </style>
 </head>
 <body>
@@ -675,31 +740,69 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
+
+    <!-- selected talks 1-->
+
     <div class="slot selected" id="tue-1500-selected1">
-      <div class="meta"><span class="time">15:00–16:00</span> — Selected talks 1 <span class="badge selected">selected</span></div>
-      <div class="meta"><span class="time">15:00-15:15</span> Tabea Lilian Marx </span></div>
-      <div class="meta"><span class="time">15:15–15:30</span> Jan Rombouts </span></div>
-      <div class="meta"><span class="time">15:30-15:45</span> Judith Mine-Hattab </span></div>
-      <div class="meta"><span class="time">15:45-15:30</span> Oliver Meacock </span></div>
-    </div>
+        <div class="meta">
+          <span class="time">15:00–16:00</span> — Selected talks 1
+          <span class="badge selected">selected</span>
+        </div>
+        <h3>Selected talks 1</h3>
+      
+        <ul class="subslots" aria-label="Selected talks 1 schedule">
+          <li class="subslot">
+            <div class="subslot-time">15:00–15:15</div>
+            <div class="subslot-body">
+              <div class="subslot-speaker">Tabea Lilian Marx</div>
+              <div class="subslot-title">[Talk title TBA]</div>
+            </div>
+          </li>
+      
+          <li class="subslot">
+            <div class="subslot-time">15:15–15:30</div>
+            <div class="subslot-body">
+              <div class="subslot-speaker">Jan Rombouts</div>
+              <div class="subslot-title">[Talk title TBA]</div>
+            </div>
+          </li>
+      
+          <li class="subslot">
+            <div class="subslot-time">15:30–15:45</div>
+            <div class="subslot-body">
+              <div class="subslot-speaker">Judith Mine-Hattab</div>
+              <div class="subslot-title">[Talk title TBA]</div>
+            </div>
+          </li>
+      
+          <li class="subslot">
+            <div class="subslot-time">15:45–16:00</div>
+            <div class="subslot-body">
+              <div class="subslot-speaker">Oliver Meacock</div>
+              <div class="subslot-title">[Talk title TBA]</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
   
     <div class="slot coffee">
       <div class="meta"><span class="time">16:00–16:30</span> — Coffee Break <span class="badge coffee">break</span></div>
       <h3>Coffee Break</h3>
     </div>
   
+    <div class="slot talk" id="tue-1400-scarpa">
+        <div class="meta"><span class="time">16:30–17:30</span> — <span class="speaker">Will Ratcliff</span></div>
+        <h3>Title TBA</h3>
+        <p>[Abstract TBA]</p>
+      </div>
+    
     <div class="slot discuss" id="tue-1630-free">
-      <div class="meta"><span class="time">16:30–18:00</span> — Free afternoon / additional group discussion</div>
-      <h3>Free afternoon / additional group discussion</h3>
-      <p>Ad hoc sessions and open group work.</p>
+      <div class="meta"><span class="time">17:30–19:00</span> — Group discussion</div>
+      <h3>Group discussion</h3>
     </div>
   
-    <div class="slot visit" id="tue-1800-musco">
-      <div class="meta"><span class="time">18:00</span> — Francesco Musco (Open lecture) <span class="badge visit">public</span></div>
-      <h3>Venice &amp; Lagoon socio-ecological system</h3>
-      <p>Open lecture, followed by an aperitif.</p>
-    </div>
-  
+
   
     <!-- ===== WEDNESDAY 01/10 ===== -->
     <h2 class="day-title">Wednesday 01/10</h2>
@@ -834,6 +937,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Coffee Break</h3>
     </div>
   
+    <div class="slot visit" id="tue-1800-musco">
+        <div class="meta"><span class="time">18:00</span> — Francesco Musco (Open lecture) <span class="badge visit">public</span></div>
+        <h3>Venice &amp; Lagoon socio-ecological system</h3>
+        <p>Open lecture, followed by an aperitif.</p>
+      </div>
+    
   
     <!-- ===== SATURDAY 04/10 ===== -->
     <h2 class="day-title">Saturday 04/10</h2>
