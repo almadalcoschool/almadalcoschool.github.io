@@ -400,6 +400,22 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .agenda .slot { margin: 12px 0; }
     }
 
+    /* === Abstract nei talk: più piccoli e compatti === */
+    .agenda .slot p.talk{
+    font-size: 0.9rem;     /* ~14–15px se base 16px: più piccolo del corpo */
+    line-height: 1.45;     /* ritmo più serrato per testi lunghi */
+    margin-top: 2px;       /* meno stacco dal titolo h3 */
+    color: inherit;        /* usa il colore del sito */
+    }
+
+    /* Mobile: mantieni piccolo e leggibile */
+    @media (max-width: 767px){
+    .agenda .slot p.talk{
+        font-size: 0.875rem; /* ~14px */
+        line-height: 1.48;
+    }
+    }
+
     /* === Sub-slots (mini schedule inside a slot) === */
     .agenda .subslots{
     list-style: none;
@@ -463,7 +479,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     @media (max-width: 767px){
     .agenda .subslot{ --sub-time-w: 96px; }
     }
-    
+
     /* === Allineamenti come gli slot normali (no centrato) === */
     .agenda .slot h3 { 
     text-align: left;           /* nel caso il tema centri gli h3 */
@@ -711,7 +727,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
   
     <div class="slot discuss">
-      <div class="meta"><span class="time">09:15-10:30</span> — Participants' introduction <span class="badge discuss">round</span></div>
+      <div class="meta"><span class="time">09:15-10:30</span> — Participants' introduction</div>
       <h3>Participants' introduction</h3>
       <p>Interests, goals, and background.</p>
     </div>
