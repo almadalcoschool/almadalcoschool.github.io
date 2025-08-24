@@ -416,6 +416,15 @@ image: /images/home/paper_natEcoEvol2020.jpg
     }
     }
 
+    /* Slot “semplice” (niente titolo ripetuto) */
+    .agenda .slot.simple .meta{ 
+    margin-bottom: 0; 
+    display: flex; 
+    align-items: baseline; 
+    gap: 8px;
+    }
+    .agenda .slot.simple h3{ display: none; } /* nel caso resti nell’HTML */
+
     /* === Sub-slots (mini schedule inside a slot) === */
     .agenda .subslots{
     list-style: none;
@@ -732,11 +741,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>Interests, goals, and background.</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
-  
+      
     <div class="slot talk" id="mon-1100-emonet">
       <div class="meta"><span class="time">11:00–12:30</span> — <span class="speaker">Thierry Emonet</span></div>
       <h3>Title TBA</h3>
@@ -759,9 +770,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <h3>Presentation of the Alma dal Co Foundation and of the school</h3>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">15:30–16:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+  
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot discuss">
@@ -785,9 +799,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot talk" id="tue-1100-galesic">
@@ -853,9 +869,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
     </div>
       
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">16:00–16:30</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+  
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot talk" id="tue-1400-scarpa">
@@ -880,9 +899,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+  
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot poster" id="wed-1100-poster1">
@@ -908,9 +930,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">16:00–16:30</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot discuss" id="wed-1630-discussion">
@@ -928,9 +952,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
 
@@ -1033,9 +1059,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot poster" id="fri-1100-poster2">
@@ -1061,9 +1089,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
       <p>[Abstract TBA]</p>
     </div>
   
-    <div class="slot coffee">
-      <div class="meta"><span class="time">16:00–16:30</span> — Coffee Break <span class="badge coffee">break</span></div>
-      <h3>Coffee Break</h3>
+    <div class="slot coffee simple" aria-label="Coffee Break">
+        <div class="meta">
+          <span class="time">16:00–16:30</span> — Coffee Break 
+          <span class="badge coffee">break</span>
+        </div>
     </div>
   
     <div class="slot visit" id="tue-1800-musco">
@@ -1080,9 +1110,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="slot discuss" id="sat-0930-conclusions">
         <div class="meta"><span class="time">09:30–12:00</span> — Group conclusions</div>
         <h3>Presentation of groups' conclusions</h3>
-        <div class="slot coffee">
-            <div class="meta"><span class="time">10:30–11:00</span> — Coffee Break <span class="badge coffee">break</span></div>
-            <h3>Coffee Break</h3>
+        
+        <div class="slot coffee simple" aria-label="Coffee Break">
+            <div class="meta">
+            <span class="time">16:00–16:30</span> — Coffee Break 
+            <span class="badge coffee">break</span>
+            </div>
         </div>
     </div>
   
