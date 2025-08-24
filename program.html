@@ -313,6 +313,128 @@ image: /images/home/paper_natEcoEvol2020.jpg
       overflow-wrap: anywhere;
       hyphens: auto;
     }
+
+    /* === TIMELINE (dettaglio talks) === */
+    .design-section{
+    --line:#e6e6e6;
+    --dot:#4e4e67;
+    --bg: #fff;
+    --card-shadow: 0 6px 18px rgba(0,0,0,.08);
+    --radius: 14px;
+    --gap: clamp(16px, 2vw, 28px);
+    font-family: inherit;
+    margin: 40px auto 60px;
+    padding: 10px var(--gap);
+    max-width: 1100px;
+    }
+    .timeline{
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    }
+    .timeline::before{
+    content:"";
+    position: absolute;
+    top: 0; bottom: 0; left: 18px;
+    width: 2px; background: var(--line);
+    }
+    .timeline-item{
+    position: relative;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    margin: 0 0 18px;
+    }
+    .timeline-item::before{
+    content:"";
+    position: absolute;
+    left: 10px; top: 10px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--dot);
+    box-shadow: 0 0 0 4px #fff;
+    }
+    .timeline-day{
+    margin: 28px 0 14px;
+    padding-left: 36px;
+    }
+    .timeline-day h1{
+    font-size: clamp(20px, 2.2vw, 28px);
+    margin: 0 0 6px;
+    }
+    .timeline-card{
+    background: var(--bg);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 14px 16px;
+    }
+    .timeline-card h2{
+    font-size: 16px; letter-spacing: .02em;
+    margin: 0 0 8px;
+    }
+    .timeline-time{
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    }
+    .timeline-speaker{
+    font-weight: 600;
+    }
+    .timeline-card p{
+    margin: 6px 0 0;
+    line-height: 1.5;
+    }
+
+    /* Badge per tipi di slot (colori coerenti con la tabella) */
+    .timeslot-contributed .timeline-time{
+    background:#C9DAF8; padding:2px 6px; border-radius:8px;
+    }
+    .timeslot-coffee .timeline-time{
+    background:#4e4e67; color:#fff; padding:2px 6px; border-radius:8px;
+    }
+    .timeslot-lunch .timeline-time{
+    background:#D9EAD3; padding:2px 6px; border-radius:8px;
+    }
+    .timeslot-discussion .timeline-time{
+    background:#FCE5CD; padding:2px 6px; border-radius:8px;
+    }
+    .timeslot-key .timeline-time{
+    background:#FFF2CC; padding:2px 6px; border-radius:8px;
+    }
+
+    /* Layout alternato su desktop */
+    @media (min-width: 900px){
+    .timeline{
+        max-width: 1000px;
+    }
+    .timeline::before{
+        left: 50%;
+    }
+    .timeline-item{
+        grid-template-columns: 1fr minmax(360px, 460px);
+        align-items: start;
+        margin: 0 0 22px;
+    }
+    .timeline-item .timeline-card{
+        width: 100%;
+    }
+    .timeline-item[data-side="left"]{
+        grid-template-columns: minmax(360px, 460px) 1fr;
+    }
+    .timeline-item[data-side="left"]::before{
+        left: calc(50% - 8px);
+    }
+    .timeline-item[data-side="right"]::before{
+        left: calc(50% - 8px);
+    }
+    .timeline-item[data-side="left"] .timeline-spacer{
+        order: 2;
+    }
+    .timeline-spacer{ display: block; }
+    }
+    @media (max-width: 899px){
+    .timeline-spacer{ display: none; }
+    }
+
   </style>
 </head>
 <body>
