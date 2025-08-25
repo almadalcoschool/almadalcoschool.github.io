@@ -4,13 +4,10 @@
   link: /alma/
 - name: Speakers
   link: /speakers/
-# - name: Apply
-#   link: /apply/
 - name: Registration
   link: /registration/
 - name: Program
-  link: /program_temporary/
-  # link: /program/
+  link: /program/
 - name: Venue and Logistics
   link: /venue/
 - name: Organizers 
