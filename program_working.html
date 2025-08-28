@@ -206,11 +206,17 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .tg td, .tg th{
       border-style:solid;border-width:0;
       font-family: inherit;
-      font-size:14px;
+      font-size:16px;
       overflow:hidden;
       padding:10px 5px;
       word-break:normal;
     }
+    /* per centrare il testo nelle caselle */
+    .tg td:not(:first-child) {
+    text-align: center;
+    vertical-align: middle;
+    }
+
 
     /* Disattiva sticky “vuoto” dell’header originale */
     .tg thead .tg-ul38{ position: static; top: auto; }
