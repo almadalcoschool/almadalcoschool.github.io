@@ -150,6 +150,54 @@ image: /new_imgs/Accademia.jpg
 				max-width: 95%; /* Limit width to avoid overflow */
 				}
 			}
+
+		/* TOC pulito, indipendente dal tema */
+		.toc{
+		max-width: 900px;
+		margin: 24px auto 16px;
+		padding: 16px 20px;
+		border: 1px solid #e5e5e5;
+		border-radius: 12px;
+		background: #fff;      /* evita banda scura */
+		color: #111;
+		position: relative;
+		z-index: 2;
+		box-shadow: 0 2px 6px rgba(0,0,0,.04);
+		}
+		.toc h2{
+		font-size: 20px;
+		margin: 0 0 8px;
+		text-transform: none;      /* niente maiuscole forzate */
+		letter-spacing: normal;
+		}
+		.toc ol{
+		list-style: decimal;
+		margin: 0 0 0 1.25rem;
+		padding: 0;
+		}
+		.toc li{
+		margin: 6px 0;
+		font-size: 16px;
+		line-height: 1.4;
+		text-transform: none;
+		letter-spacing: normal;
+		}
+		.toc a{
+		color: inherit;
+		text-decoration: none;
+		border-bottom: 1px dotted currentColor;
+		}
+		.toc a:hover{ text-decoration: underline; }
+
+		/* quando salti all’ancora, non attaccare il titolo in alto */
+		.info { scroll-margin-top: 20px; }
+
+		/* scorrimento morbido (opzionale) */
+		html { scroll-behavior: smooth; }
+
+		@media (max-width: 768px){
+		.toc{ margin: 16px 12px; }
+		}
 	</style>
 
 </head>
@@ -175,14 +223,24 @@ image: /new_imgs/Accademia.jpg
 	</div>
 </section>
 
-
+<div class="toc" role="navigation" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#transports">Transports</a></li>
+    <li><a href="#moving">Moving in Venice</a></li>
+    <li><a href="#poster">Poster</a></li>
+    <li><a href="#accommodation">Accommodation</a></li>
+  </ol>
+</div>
 
 <div class="main-content">
 	<section class="info" id="learn-more">
 		
 			<div class="container flex">
 				<div class="text">
-					<h2 class="editable"> Venue</h2>
+					<!-- <h2 class="editable"> Venue</h2> -->
+					<h2 id="venue" class="editable">Venue</h2>
 					<p>
 						The School will take place in the historical Portego Room of Palazzo Cavalli-Franchetti, 
 						one of the two landmark buildings of the Istituto Veneto di Scienze, Lettere ed Arti. Palazzo 
@@ -206,7 +264,8 @@ image: /new_imgs/Accademia.jpg
 	<section class="info ">
 		<div class="container flex">
 			<div class="text">
-				<h2 class="editable">Transports</h2>
+				<!-- <h2 class="editable">Transports</h2> -->
+				<h2 id="transports" class="editable">Transports</h2>
 					<p><b>Arriving by train</b></p>
 					<p>
 						To minimise the School’s environmental impact we strongly recommend that you travel to Venice by 
@@ -280,7 +339,8 @@ image: /new_imgs/Accademia.jpg
 	<section class="info ">
 		<div class="container flex">
 			<div class="text">
-				<h2 class="editable">Moving in Venice </h2>
+				<!-- <h2 class="editable">Moving in Venice </h2> -->
+				<h2 id="moving" class="editable">Moving in Venice</h2>
 				<p>
 					To move in Venice you can use the vaporetto (water bus) service. The vaporetto is the main form of public transport in Venice.
 					<strong> Local water transports</strong> are available (vaporetto).
@@ -328,7 +388,8 @@ image: /new_imgs/Accademia.jpg
 	<section class="info">
 		<div class="container flex">
 			<div class="text">
-				<h2 class="editable">Poster</h2>
+				<!-- <h2 class="editable">Poster</h2> -->
+				<h2 id="poster" class="editable">Poster</h2>
 				<p> Posters can be printed in Venice at  the cost of €7.00. 
 				Poster maximum size is A0. It must be sent in PDF format, latest by <b>Wednesday September 24, 12 am CEST</b>.</p>
 
@@ -350,7 +411,8 @@ image: /new_imgs/Accademia.jpg
 	<section class="info">
 		<div class="container flex">
 			<div class="text">
-				<h2 class="editable">Accommodation</h2>
+				<!-- <h2 class="editable">Accommodation</h2> -->
+				<h2 id="accommodation" class="editable">Accommodation</h2>
 				<p>Accommodation is at the participant’s expense. We suggest booking accommodation far in advance, 
 				as affordable rooms quickly fill-up. Hotels and accommodation facilities near the Conference Venue 
 				or representing good value are:</p>
