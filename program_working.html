@@ -551,7 +551,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         <tr>
           <td class="tg-pta1" rowspan="2">8:30</td>
           <!-- <td class="tg-yedf" rowspan="2">Registration</td> -->
-           <td class="tg-gray" rowspan="2">Registration</td>
+          <td class="tg-gray" rowspan="2">Registration</td>
           <td class="tg-0lax" rowspan="2"></td>
           <td class="tg-0lax" rowspan="2"></td>
           <td class="tg-0lax" rowspan="2"></td>
@@ -620,7 +620,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
         <tr>
           <td class="tg-pta1" rowspan="4">14:00</td>
           <td class="tg-gpin" rowspan="4">Allyson Sgro</td>
-          <td class="tg-gpin" rowspan="4">Elena Scarpa</td>
+          <!-- <td class="tg-gpin" rowspan="4">Elena Scarpa</td> -->
+          <td class="tg-gpin" rowspan="4" data-full="Abstract of Elena Scarpa">Elena Scarpa</td>
           <td class="tg-gpin" rowspan="4">Gonzalo Polavieja</td>
           <td class="tg-gpin" rowspan="4">Karine Gibbs</td>
           <td class="tg-gpin" rowspan="4">Chaitanya Gokhale</td>
@@ -1318,8 +1319,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
         const isFirstRow = tr === td.closest('tbody').querySelector('tr:first-child');
         if (isFirstCol || isFirstRow) return;
 
+
+
         const clip = td.querySelector('.cell-clip');
-        const full = clip && clip.dataset.full ? clip.dataset.full : null;
+        const full = td.dataset.full || (clip && clip.dataset.full ? clip.dataset.full : null);
         const text = full || td.innerText.trim();
 
         if (text) {
