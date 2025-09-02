@@ -1,0 +1,179 @@
+---
+title: Cultural Program
+description: Cultural program info.
+image: /images/home/paper_natEcoEvol2020.jpg
+---
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/style.css">-->
+
+<style>
+    /* CSS Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .main-content { margin-right: 230px; }
+
+    /* Title styles */
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
+        margin-bottom: 20px;
+        white-space: normal;
+        line-height: 1.2;
+        max-width: 90%;
+        overflow-wrap: break-word;
+    }
+
+    /* Center text in sections */
+    .text, .hero-text-container, .hero-title, .subtext, .container.flex { text-align: flex-start; }
+
+    .fixed-box {
+        position: fixed;
+        bottom: 0px;
+        right: 0;
+        width: 230px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-size: 20px; 
+    }
+
+    /* Hero section styles */
+    .hero {
+        background-image: url('images/home/paper_natEcoEvol2020.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+    }
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .grid img {
+        height: 100px;
+        max-width: 200px;
+        object-fit: contain;
+    }
+
+    .text { margin-bottom: 40px; }
+
+    .background-label {
+        position: relative;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgba(0, 0, 0, 0);
+        color: #b9b9b9;
+        padding: 5px 15px;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .main-content { margin-right: 0; }
+        .fixed-box { display: none; }
+
+        .hero {
+            height: 40vh;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .hero-title {
+            text-align: left;
+            font-size: 1.8em !important;
+            max-width: 100% !important;
+            line-height: 1.3;
+            padding: 10px 15px;
+            overflow-wrap: break-word !important;
+        }
+
+        .subtext {
+            font-size: 14px;
+            text-align: left;
+            overflow-wrap: break-word;
+        }
+
+        .text { margin-bottom: 40px; }
+
+        .hero-text-container { padding: 20px 15px; }
+        
+        .heading-landing, .heading-landing-home {
+            padding: 25px;
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+        
+        .grid img { height: 80px; width: auto; }
+
+        .inner-hero, .text-container, .hero-text-container, .heading-landing-home {
+            padding: 10 15px;
+            max-width: 95%;
+        }
+    }
+</style>
+</head>
+
+<body>
+<div class="fixed-box">
+    <strong>Date:</strong> 29th Sep – 4th Oct, 2025<br>
+    <strong>Location:</strong> Venice<br>
+    <strong>Registration:</strong> Closed <br>
+    <strong style="color: black;">Contacts:</strong> <a href="mailto:laura.padoan@istitutoveneto.it" style="color: black;">Laura Padoan</a>, <a href="tel:+390412407711" style="color: black;">+39 0412407711</a><br>
+    <a href="/POSTER.pdf" download="POSTER.pdf" style="color: black;"><strong style="color: black;">ADC school's flyer</strong></a><br>
+</div>
+
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+    <div class="inner-hero text-container">
+        <div class="hero-text-container">
+            <div class="heading-landing">
+                <h1 class="hero-title">Cultural Program</h1>
+                <!--<p class="subtext editable bold-large-text">How to get to the workshop?</p>-->
+            </div>
+        </div>
+    </div>
+    <div class="background-label"> Photo by Alma Dal Co, Nat Ecol Evol 2020 </div>
+</section>
+
+<div class="main-content">
+    <section class="info" id="learn-more">
+        <div class="container flex">
+            <div class="text">
+
+                <h2 class="editable">Overview</h2>
+                <p class="editable">
+                    Throughout the week we explore the dialogue between science, art, music, and the living city of Venice through guided visits and public conversations. :contentReference[oaicite:1]{index=1}
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Monday — Palazzo Bembo</h3>
+                <p class="editable">
+                    A visit to <em>Palazzo Bembo</em> introduces the European Cultural Centre hosting the exhibition <em>Time Space Existence 2025</em>, within the Venice Architecture Biennial 2025: <em>Intelligens. Natural. Artificial. Collective.</em> Architect Hadi El Hage will open the program and weave the first links between science and art—a thread running through the whole week. :contentReference[oaicite:2]{index=2}
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Thursday — Giardini del Redentore</h3>
+                <p class="editable">
+                    A walk to the <em>Giardini del Redentore</em>, a historic garden maintained by the Venice Gardens Foundation under president Adele Rerebaudengo. Recently reopened to visitors and residents, it blends nature and culture. Professor Donatella Calabi will discuss this restoration and other initiatives showing the city’s vitality despite overtourism, as reviewed in her book <em>Venezia è viva. Venice is alive. Venise est vivante</em>. :contentReference[oaicite:3]{index=3}
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Friday — Public Lecture at Palazzo Franchetti (IVSLA)</h3>
+                <p class="editable">
+                    In the <em>Sala del Portego</em> of Palazzo Franchetti, seat of the Istituto Veneto di Scienze, Lettere ed Arti (IVSLA), a public lecture on Venice and the Lagoon will explore solutions to protect and maintain the city’s cultural and environmental heritage amid overtourism and sea level rise. Professor Andrea Rinaldo, president of IVSLA, introduces with <em>Considerations on Venice in a Changing World</em>. Professor Francesco Musco, president of CORILA, follows with <em>Venice and the Regulated Lagoon</em>. Being a public event, lectures will be in Italian with English slides and translation of salient points. :contentReference[oaicite:4]{index=4}
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Saturday — Conversation on Science and Music</h3>
+                <p class="editable">
+                    The Alma Dal Co Foundation and the Benedetto Marcello Venice Conservatory host, in the <em>Sala Concerti</em>, a public <em>Conversation on Science and Music</em> with philosopher Massimo Cacciari, musicologist Sandro Cappelletto, neuroscientist Daniela Perani, Cardinal Ma
