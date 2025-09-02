@@ -41,7 +41,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         background-image: url('images/home/paper_natEcoEvol2020.jpg');
         background-size: cover;
         background-position: center;
-        height: 70vh;
+        height: 50vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -50,20 +50,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
         position: relative;
     }
 
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 10px;
-        max-width: 100%;
-        overflow: hidden;
+    /* Simple in-page TOC */
+    .toc { 
+        position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
+        padding: 10px 15px; display: flex; flex-wrap: wrap; gap: 12px; z-index: 10;
     }
-
-    .grid img {
-        height: 100px;
-        max-width: 200px;
-        object-fit: contain;
-    }
+    .toc a { text-decoration: none; color: #333; font-size: 0.95rem; padding: 6px 8px; border-radius: 8px; border: 1px solid #eee; }
+    .toc a:hover { background: #f7f7f7; }
+    .toc a.toc-sub { opacity: 0.8; }
 
     .text { margin-bottom: 40px; }
 
@@ -105,6 +99,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
             overflow-wrap: break-word;
         }
 
+        .toc {
+            position: static; border-bottom: none; padding: 10px; gap: 8px;
+        }
+
         .text { margin-bottom: 40px; }
 
         .hero-text-container { padding: 20px 15px; }
@@ -115,8 +113,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
             word-wrap: break-word;
         }
         
-        .grid img { height: 80px; width: auto; }
-
         .inner-hero, .text-container, .hero-text-container, .heading-landing-home {
             padding: 10 15px;
             max-width: 95%;
@@ -145,11 +141,15 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <div class="background-label"> Photo by Alma Dal Co, Nat Ecol Evol 2020 </div>
 </section>
 
+<div class="toc">
+    <a href="#cultural-program">Cultural Program</a>
+</div>
+
 <div class="main-content">
     <section class="info" id="learn-more">
         <div class="container flex">
             <div class="text">
-                <h3 class="editable">Cultural Program</h3>
+                <h2 id="cultural-program" class="editable">Cultural Program</h2>
                 <p class="editable">&nbsp;</p>
                 <p class="editable"> On Monday, a visit to Palazzo Bembo will introduce the European Cultural Centre that hosts the exhibition Time Space Existence 2025, which is on display in the framework of the Venice Architecture Biennial 2025: Intelligens. Natural. Artificial. Collective. </p>
                 <p class="editable">The introduction by by architect Hadi El Hage will establish the first links between science and art, which will be a thread across the whole week.</p>
