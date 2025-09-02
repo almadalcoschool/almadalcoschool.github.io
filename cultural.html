@@ -6,6 +6,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/style.css">-->
 
 <style>
     /* CSS Reset */
@@ -13,6 +14,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
     .main-content { margin-right: 230px; }
 
+    /* Title styles */
     .hero-title {
         font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
         margin-bottom: 20px;
@@ -22,6 +24,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
         overflow-wrap: break-word;
     }
 
+    /* Center text in sections */
     .text, .hero-text-container, .hero-title, .subtext, .container.flex { text-align: flex-start; }
 
     .fixed-box {
@@ -36,11 +39,12 @@ image: /images/home/paper_natEcoEvol2020.jpg
         font-size: 20px; 
     }
 
+    /* Hero section styles */
     .hero {
         background-image: url('images/home/paper_natEcoEvol2020.jpg');
         background-size: cover;
         background-position: center;
-        height: 50vh;
+        height: 70vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -49,14 +53,20 @@ image: /images/home/paper_natEcoEvol2020.jpg
         position: relative;
     }
 
-    /* Simple in-page TOC */
-    .toc { 
-        position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee;
-        padding: 10px 15px; display: flex; flex-wrap: wrap; gap: 12px; z-index: 10;
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+        max-width: 100%;
+        overflow: hidden;
     }
-    .toc a { text-decoration: none; color: #333; font-size: 0.95rem; padding: 6px 8px; border-radius: 8px; border: 1px solid #eee; }
-    .toc a:hover { background: #f7f7f7; }
-    .toc a.toc-sub { opacity: 0.8; }
+
+    .grid img {
+        height: 100px;
+        max-width: 200px;
+        object-fit: contain;
+    }
 
     .text { margin-bottom: 40px; }
 
@@ -98,10 +108,6 @@ image: /images/home/paper_natEcoEvol2020.jpg
             overflow-wrap: break-word;
         }
 
-        .toc {
-            position: static; border-bottom: none; padding: 10px; gap: 8px;
-        }
-
         .text { margin-bottom: 40px; }
 
         .hero-text-container { padding: 20px 15px; }
@@ -112,6 +118,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
             word-wrap: break-word;
         }
         
+        .grid img { height: 80px; width: auto; }
+
         .inner-hero, .text-container, .hero-text-container, .heading-landing-home {
             padding: 10 15px;
             max-width: 95%;
@@ -134,39 +142,71 @@ image: /images/home/paper_natEcoEvol2020.jpg
         <div class="hero-text-container">
             <div class="heading-landing">
                 <h1 class="hero-title">Cultural Program</h1>
+                <!--<p class="subtext editable bold-large-text">How to get to the workshop?</p>-->
             </div>
         </div>
     </div>
     <div class="background-label"> Photo by Alma Dal Co, Nat Ecol Evol 2020 </div>
 </section>
 
-<div class="toc">
-    <a href="#cultural-program">Cultural Program</a>
-</div>
-
 <div class="main-content">
     <section class="info" id="learn-more">
         <div class="container flex">
             <div class="text">
-                <h2 id="cultural-program" class="editable">Cultural Program</h2>
-                <p class="editable">&nbsp;</p>
-                <p class="editable"> On Monday, a visit to Palazzo Bembo will introduce the European Cultural Centre that hosts the exhibition Time Space Existence 2025, which is on display in the framework of the Venice Architecture Biennial 2025: Intelligens. Natural. Artificial. Collective. </p>
-                <p class="editable">The introduction by by architect Hadi El Hage will establish the first links between science and art, which will be a thread across the whole week.</p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable"> On Thursday, we will walk to the Giardini del Redentore, a historical garden maintained and managed by the Venice Gardens Foundation, under the direction of its president Adele Rerebaudengo. This extraordinary place, blending nature and culture, has just reopened to both visitors and residents. Professor Donatella Calabi will tell us of this restoration project and of other initiatives that testify to the vitality of a city despite overtourism, which she has reviewed in her book Venezia è viva. Venice is alive. Venise est vivante. </p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable"> On Friday, Sala del Portego of Palazzo Franchetti, the seat of the Istituto Veneto di Scienze, Lettere ed Arti (IVSLA), will host the public lecture on Venice and the Lagoon, exploring the solutions to protect and maintain the unique cultural and environmental heritage face to the unprecedented challenges posed by overtourism and sea level rise. The theme will be introduced by Professor Andrea Rinaldo, president of IVSLA, with Considerations on Venice in a Changing World. Professor Francesco Musco, president of the research consortium CORILA, will present Venice and the Regulated Lagoon. </p>
-                <p class="editable">Being a public event, lectures will be in Italian with English slides and translation of salient points.</p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable"> On Saturday, the Alma Dal Co Foundation and the Benedetto Marcello Venice Conservatory, host in Sala Concerti a public Conversation on Science and Music, with the participation of philosopher Massimo Cacciari, musicologist Sandro Cappelletto, neuroscientist Daniela Perani, Cardinal Matteo Zuppi and the doctoral students of the Venice Conservatory. The students will perform their own original music composed for the occasion. This extraordinary encounter between eminent figures of science, culture and religion and young researchers offers a unique opportunity to bridge Alma Dal Co’s two major passions. </p>
-                <p class="editable">This public event will be open to the citizens of Venice and held in Italian (but music speaks to everybody).</p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable">&nbsp;</p>
-                <p class="editable">&nbsp;</p>
+
+    
+
+                <h3 class="editable" style="margin-top:20px;">Monday — Palazzo Bembo</h3>
+                <p class="editable">
+                    On Monday, a visit to <em>Palazzo Bembo</em> will introduce the European Cultural Centre that hosts the exhibition <em>Time Space Existence 2025</em>, 
+                    which is on display in the framework of the Venice Architecture Biennial 2025: 
+                    <em>Intelligens. Natural. Artificial. Collective.</em>  
+                    The introduction by by architect Hadi El Hage will establish the first links between science and art, which will be a thread across the whole week.
+               </p>
+
+                <h3 class="editable" style="margin-top:20px;">Thursday — Giardini del Redentore</h3>
+                <p class="editable">
+                    On Thursday, we will walk to the <em>Giardini del Redentore</em>, a historical garden maintained 
+                    and managed by the Venice Gardens Foundation, under the direction of its president
+                    Adele Rerebaudengo. This extraordinary place, blending nature and culture, has just reopened to both 
+                    visitors and residents. Professor Donatella Calabi will tell us of this restoration project and of other 
+                    initiatives that testify to the vitality of a city despite overtourism, 
+                    which she has reviewed in her book <em>Venezia è viva. Venice is alive. Venise est vivante</em>. 
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Friday — Public Lecture at Palazzo Franchetti (IVSLA)</h3>
+                <p class="editable">
+                    On Friday, <em>Sala del Portego</em> of Palazzo Franchetti, the seat of the Istituto Veneto di Scienze, Lettere ed Arti (IVSLA), 
+                    will host the public lecture on Venice and the Lagoon, exploring the solutions to protect and maintain 
+                    the unique cultural and environmental heritage face to the unprecedented challenges posed by overtourism 
+                    and sea level rise. The theme will be introduced by Professor Andrea Rinaldo, president of IVSLA, with 
+                    <em>Considerations on Venice in a Changing World</em>. Professor Francesco Musco, president of the research
+                    consortium CORILA, will present <em>Venice and the Regulated Lagoon</em>. 
+                    <b>Being a public event, lectures will be in Italian with English slides and translation of salient points.</b>
+                </p>
+
+                <h3 class="editable" style="margin-top:20px;">Saturday — Conversation on Science and Music</h3>
+                <p class="editable">
+                    On Saturday, the Alma Dal Co Foundation and the Benedetto Marcello Venice Conservatory, 
+                    host in  <em>Sala Concerti</em> a public 
+                    <em>Conversation on Science and Music</em>, with the participation 
+                    of philosopher Massimo Cacciari, musicologist Sandro Cappelletto, neuroscientist Daniela Perani, 
+                    Cardinal Matteo Zuppi and the doctoral students of the Venice Conservatory. The students will 
+                    perform their own original music composed for the occasion. This extraordinary encounter between
+                    eminent figures of science, culture and religion and young researchers offers a unique opportunity 
+                    to bridge Alma Dal Co’s two major passions. 
+                    <b>This public event will be open to the citizens of Venice and held in Italian 
+                    (but music speaks to everybody).</b>
+                    
+                </p>
             </div>
         </div>
+    
     </section>
-</div>
+
+
+
+
+
 
 </body>
