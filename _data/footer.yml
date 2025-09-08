@@ -7,8 +7,15 @@ left_links:
     link: /speakers/
   - name: Registration
     link: /registration/
+# - name: Program
+#   link: /program/
   - name: Program
     link: /program/
+    sublinks:
+      - name: Scientific Program
+        link: /program/scientific_program/
+      - name: Cultural Program
+        link: /program/cultural_program/
   - name: Venue and Logistics
     link: /venue/
   - name: Organizers 
