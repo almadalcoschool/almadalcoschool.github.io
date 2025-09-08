@@ -16,25 +16,26 @@
 <nav>
   <a class="nav-toggle" id="open-nav" href="#">&#9776;</a>
 
-  {% for link in site.data.navigation %}
-    {% assign class = "" %}
-    {% if link.highlight %}{% assign class = class | append: " highlight" %}{% endif %}
-    {% if link.link == page.url %}{% assign class = class | append: " active" %}{% endif %}
-
-    {% if link.sublinks %}
-      <a href="#" class="{{ class }} dropdown-toggle">{{ link.name }} ▼</a>
-      <ul class="dropdown-menu">
-        {% for sublink in link.sublinks %}
-          <li>
-            <a href="{% include relative-src.html src=sublink.link %}" {% if sublink.new_window %}target="_blank"{% endif %}>
-              {{ sublink.name }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <a href="{% include relative-src.html src=link.link %}" class="{{ class }}" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a>
-    {% endif %}
-  {% endfor %}
+  <ul class="nav-list">
+    {% for link in site.data.navigation %}
+      {% if link.sublinks %}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">{{ link.name }} ▼</a>
+          <ul class="dropdown-menu">
+            {% for sublink in link.sublinks %}
+              <li>
+                <a href="{% include relative-src.html src=sublink.link %}">{{ sublink.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li>
+          <a href="{% include relative-src.html src=link.link %}">{{ link.name }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 </nav>
+
 
