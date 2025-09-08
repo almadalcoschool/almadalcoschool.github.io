@@ -18,28 +18,23 @@
 
   {% for link in site.data.navigation %}
     {% assign class = "" %}
-    {% if link.highlight %}
-      {% assign class = class | append: " highlight" %}
-    {% endif %}
-
-    {% if link.link == page.url %}
-      {% assign class = class | append: " active" %}
-    {% endif %}
+    {% if link.highlight %}{% assign class = class | append: " highlight" %}{% endif %}
+    {% if link.link == page.url %}{% assign class = class | append: " active" %}{% endif %}
 
     {% if link.sublinks %}
-      <!-- Dropdown -->
-      <div class="dropdown {{ class }}">
-        <span class="dropbtn">{{ link.name }} ▼</span>
-        <div class="dropdown-content">
-          {% for sublink in link.sublinks %}
-            <a href="{% include relative-src.html src=sublink.link %}" {% if sublink.new_window %}target="_blank"{% endif %}>{{ sublink.name }}</a>
-          {% endfor %}
-        </div>
-      </div>
+      <a href="#" class="{{ class }} dropdown-toggle">{{ link.name }} ▼</a>
+      <ul class="dropdown-menu">
+        {% for sublink in link.sublinks %}
+          <li>
+            <a href="{% include relative-src.html src=sublink.link %}" {% if sublink.new_window %}target="_blank"{% endif %}>
+              {{ sublink.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
     {% else %}
-      <!-- Link normale -->
       <a href="{% include relative-src.html src=link.link %}" class="{{ class }}" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a>
     {% endif %}
-
   {% endfor %}
 </nav>
+
