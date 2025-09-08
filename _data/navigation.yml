@@ -9,7 +9,6 @@
 # - name: Program
 #   link: /program/
 - name: Program
-  link: /program/
   sublinks:
     - name: Scientific Program
       link: /program/scientific_program/
