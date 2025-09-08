@@ -4,8 +4,8 @@
   link: /alma/
 - name: Speakers
   link: /speakers/
-- name: Registration
-  link: /registration/
+# - name: Registration
+#   link: /registration/
 - name: Scientific Program
   link: /scientific_program/
 - name: Cultural Program
