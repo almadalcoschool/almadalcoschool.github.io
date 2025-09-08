@@ -9,8 +9,8 @@ left_links:
   #   link: /registration/
   - name: Program
     link: /scientific_program/
-  # - name: Cultural Events
-  #   link: /cultural_program/
+  - name: Cultural Events
+    link: /cultural_program/
   - name: Venue and Logistics
     link: /venue/
   - name: Organizers 
