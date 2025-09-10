@@ -708,6 +708,16 @@
 //         #3{order:3;}
 //         #4{order:4;}
 // }
+
+
+// QUESTO AL POSTO DI TUTTO IL CSS SOPRA PER EVITARE LIMITI LUNGHEZZA NOMI PAGINE IN HEADER
+
+
+/* ==============================
+   FONT IMPORT
+   ============================== */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&display=swap');
+
 /* ==============================
    CONTAINER E HEADER
    ============================== */
@@ -717,15 +727,10 @@
   padding: 0 20px;
 }
 
-.text-container {
-  max-width: 1200px;
-}
+.text-container { max-width: 1200px; }
+.q-text-container { max-width: 800px; }
+.container { max-width: 1140px; }
 
-.q-text-container {
-  max-width: 800px;
-}
-
-/* Header */
 header {
   color: #fff;
   padding: 15px 0;
@@ -735,10 +740,9 @@ header {
   line-height: 0;
   background-color: rgba(43, 43, 64,.75);
 
-  /* Container dentro header: togliamo max-width per permettere nav fluido */
   .container {
     line-height: 0;
-    max-width: 100%; /* Modifica qui */
+    max-width: 100%; /* Modifica per nav fluido */
     padding: 0 20px;
   }
 
@@ -759,22 +763,16 @@ header {
       }
     }
 
-    .dark-logo {
-      display: inline;
-    }
-
-    .light-logo {
-      display: none;
-    }
+    .dark-logo { display: inline; }
+    .light-logo { display: none; }
   }
 
-  /* LINK NAVBAR */
   a {
     color: #fff;
     text-decoration: none;
     z-index: 1;
     position: relative;
-    display: block; /* base desktop */
+    display: block;
     @media #{$mid-point} {
       height: 100%;
       &:hover {
@@ -782,13 +780,8 @@ header {
         border-bottom-width: 5px;
       }
     }
-    span {
-      display: block;
-      height: 100%;
-    }
-    &:hover {
-      text-decoration: none;
-    }
+    span { display: block; height: 100%; }
+    &:hover { text-decoration: none; }
 
     &.nav-toggle {
       display: inline;
@@ -800,15 +793,17 @@ header {
       text-shadow: 0;
       padding: 0 !important;
 
-      @media #{$mid-point} {
-        display: none;
-      }
+      @media #{$mid-point} { display: none; }
       &:hover { border: 0; }
     }
   }
 
-  a.active {
-    border-bottom: 5px solid #443cc0ab;
+  a.active { border-bottom: 5px solid #443cc0ab; }
+
+  .company-name {
+    font-size: 1.7em;
+    display: inline-block;
+    img { height: 30px; width: auto; }
   }
 }
 
@@ -817,23 +812,21 @@ header {
    ============================== */
 nav {
   display: flex;
-  flex-wrap: wrap;              /* i link vanno a capo se necessario */
-  justify-content: flex-start;  /* o space-between se vuoi distanziarli */
+  flex-wrap: wrap;
+  justify-content: flex-start;
   width: 100%;
-  max-width: 100%;              /* rimuove limiti di container */
+  max-width: 100%;
   margin: 0;
   padding: 0;
 
   a {
     margin: 0 3px;
     padding: 14px 10px;
-    display: inline-block;      /* permette padding e dimensione */
-    white-space: normal;        /* va a capo se troppo lungo */
+    display: inline-block;
+    white-space: normal;
     text-align: center;
 
-    @media #{$mid-point} {
-      display: inline-block;
-    }
+    @media #{$mid-point} { display: inline-block; }
 
     &.nav-toggle {
       display: inline;
@@ -842,16 +835,107 @@ nav {
       top: -7px;
       font-size: 1.9em;
       padding: 0 !important;
-
-      @media #{$mid-point} {
-        display: none;
-      }
+      @media #{$mid-point} { display: none; }
     }
   }
 }
 
 /* ==============================
-   RESTO DEL CSS
+   CTA E VARIE
    ============================== */
+.cta a {
+  font-weight: bold;
+  color: #FFFFFF;
+}
 
-/* Manteniamo tutte le tue regole originali, es: .cta, .text-container, .timeline, ecc. */
+.image-column { display: flex; flex-direction: column; }
+
+.subtext {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 25px;
+  display: inline; 
+}
+
+.heading-landing, .heading-landing-home {
+  padding: 35px;  
+  background-color: #2c3435bb;
+  border-radius: 25px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.bold-large-text { /* eventuali stili futuri */ }
+
+.page h2 { text-align: center; }
+
+blockquote {
+  padding: 18px 25px;
+  margin: 0;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-style: italic;
+
+  cite { display: block; font-weight: bold; margin: 10px 0 0 0; }
+
+  p { display: inline; }
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.square-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+/* ==============================
+   TIMELINE / SESSIONI
+   ============================== */
+.timeline { width: 80%; max-width: 80vw; margin: 0 auto; display: flex; flex-direction: column; }
+
+.timeline-content {
+  padding: 1.75rem;
+  background: #FCFBE9;
+  box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #242424;
+  border-radius: 6px;
+  color: #000;
+  transition: 0.4s ease;
+  overflow-wrap: break-word !important;
+  margin: 1rem 0 20px 0;
+}
+
+.session-odd, .session-even, .session-discussion {
+  padding: 10px;
+  border-radius: 6px;
+  color: #000;
+  overflow-wrap: break-word !important;
+  margin: 10px;
+  border-style: solid;
+}
+
+.schedule {
+  display: grid;
+  grid-gap: 1em;
+  /* grid-template-rows e columns mantenuti come da te */
+}
+
+@media screen and (max-width: 700px){
+  .schedule { display: flex; flex-direction: column; }
+}
+
+/* ==============================
+   ALTRI STILI VARI
+   ============================== */
+/* Manteniamo tutto il resto come era: .editor-link, .learn-more, .meta, hr, ecc. */
