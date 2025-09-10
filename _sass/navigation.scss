@@ -140,3 +140,16 @@ nav {
     border-bottom: 5px solid #443cc0ab;
   }
 }
+// prova
+nav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+nav a {
+  display: inline-block !important;
+  white-space: normal !important; /* così vanno a capo se troppo lunghi */
+}
