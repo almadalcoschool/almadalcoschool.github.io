@@ -392,6 +392,58 @@ image: /images/home/paper_natEcoEvol2020.jpg
     letter-spacing: .01em;
     }
 
+    /* === SUMMARY INLINE CON CHEVRON PERSONALIZZATO === */
+    .agenda details > summary{
+      display: flex;                /* triangolino + testo sulla stessa riga */
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      list-style: none;             /* rimuove il marker nativo in FF */
+      padding: 0;                   /* niente spazi extra */
+    }
+
+    /* Nasconde marker nativo WebKit/Chromium e FF */
+    .agenda details > summary::-webkit-details-marker{ display: none; }
+    .agenda details > summary::marker{ content: ''; }
+
+    /* Chevrone CSS (triangolino) */
+    .agenda details > summary::before{
+      content: '';
+      width: 0; height: 0;
+      border-left: 6px solid currentColor;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      transition: transform .2s ease;
+      opacity: .75;
+    }
+
+    /* Ruota il chevrone quando aperto */
+    .agenda details[open] > summary::before{
+      transform: rotate(90deg);
+    }
+
+    /* Titolo dentro il summary sulla stessa riga, senza stacchi */
+    .agenda details > summary h3{
+      display: inline;              /* evita il “vai a capo” */
+      margin: 0;
+      font-size: 16px;              /* coerente con gli slot */
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* (facoltativo) Hover/focus più leggibile */
+    .agenda details > summary:hover{ opacity: .95; }
+    .agenda details > summary:focus-visible{
+      outline: 2px solid rgba(0,0,0,.25);
+      outline-offset: 2px;
+    }
+
+    /* Subslot: stessa logica anche dentro i subslot */
+    .agenda .subslots details > summary{
+      gap: 6px;
+    }
+
+
     /* Tipografia dei paragrafi (anche abstract) */
     .agenda p{
     font-size: 14px;        /* più piccolo per testi lunghi */
