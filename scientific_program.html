@@ -299,20 +299,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
       .tg tbody td:not(:first-child){ cursor: pointer; }
 
       /* Righe leggermente più alte */
-      .tg{ 
-        --row-min: 36px;        /* prima 30px: alza il passo temporale */
-      }
-
-      /* Un filo più di padding verticale per una touch area migliore */
-      .tg td, .tg th{
-        padding-top: 12px; 
-        padding-bottom: 12px;
-      }
-
-      /* Centra meglio l’orario sulla linea quando le righe sono più alte */
-      .tg tbody td:first-child .time-on-line{
-        transform: translateY(-50%);   /* prima -45% */
-      }
+      .tg{ --row-min: 34px;}
+        .tg td, .tg th{
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        .tg tbody td:first-child .time-on-line{
+          transform: translateY(-48%);  /* leggermente sopra il centro */
+        }
 
     }
 
