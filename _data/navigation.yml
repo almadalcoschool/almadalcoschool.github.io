@@ -10,8 +10,8 @@
   link: /scientific_program/
 - name: Cultural Events
   link: /cultural_program/
-- name: Gallery
-  link: /gallery/
+# - name: Gallery
+#   link: /gallery/
 - name: Venue and Logistics
   link: /venue/
 - name: Organizers 
