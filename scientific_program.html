@@ -346,6 +346,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     --c-short:   #D9D2E9; /* tg-nj25 */
     --c-poster:  #D9D2E9; /* tg-mkke #D0E0E3*/
     --c-visit:   #f9c48c; /* tg-teb0 */
+    --c-gray:   #e0e0e0;
 
     /* Contenitore a tutta larghezza con fascia bianca e respiro */
     width: 100%;
@@ -408,6 +409,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .agenda .slot.short { border-left-color: var(--c-short); }
     .agenda .slot.poster   { border-left-color: var(--c-poster); }
     .agenda .slot.visit    { border-left-color: var(--c-visit); }
+    .agenda .slot.gray   { border-left-color: var(--c-gray); }
 
     /* Badge */
     .agenda .badge{
@@ -426,6 +428,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
     .agenda .badge.short{ background: var(--c-short); }
     .agenda .badge.poster  { background: var(--c-poster); }
     .agenda .badge.visit   { background: var(--c-visit); }
+    .agenda .badge.gray  { background: var(--c-gray); color:#000; }
 
     /* Slot “semplice” (niente titolo ripetuto: Coffee/Lunch ecc.) */
     .agenda .slot.simple .meta{
@@ -722,11 +725,11 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <!-- ===== MONDAY 29/09 ===== -->
     <h2 class="day-title">Monday 29/09</h2>
 
-    <div class="slot key simple" aria-label="Registration">
-        <div class="meta">
-          <span class="time">08:30-09:00</span> — Registration
-          <span class="badge key">welcome</span>
-        </div>
+    <div class="slot gray simple" aria-label="Registration">
+      <div class="meta">
+        <span class="time">08:30–09:00</span> — Registration
+        <span class="badge gray">welcome</span>
+      </div>
     </div>
 
     <div class="slot key simple" aria-label="Welcome and introduction">
@@ -1175,11 +1178,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
         </div>
     </div>
   
-    <div class="slot discuss" id="tue-1630-free">
-        <div class="meta"><span class="time">16:00–19:00</span> — Group discussion </div>
-        <h3>Free afternoon / additional group discussion</h3>
+
+    <div class="slot gray simple" id="wed-1600-free" aria-label="Free afternoon / additional group discussion">
+      <div class="meta">
+        <span class="time">16:00–19:00</span> — Free afternoon / additional group discussion
+        <!-- opzionale: <span class="badge gray">free</span> -->
+      </div>
     </div>
-      
   
   
     <!-- ===== THURSDAY 02/10 ===== -->
@@ -1787,6 +1792,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
     });
   </script>
 </body>
+
+
+
 
 
 
