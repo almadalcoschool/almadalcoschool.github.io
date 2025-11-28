@@ -26,7 +26,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 		.fixed-box {
 			position: fixed;
-			bottom: 0px;
+			bottom: 0;
 			right: 0;
 			width: 230px;
 			background-color: rgba(255, 255, 255, 0.8);
@@ -56,23 +56,22 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 		/* ---------- Slideshow ---------- */
 
-
 		.slideshow-section {
 			max-width: 700px;
 			margin: 16px auto 32px auto;
 			padding: 0 16px;
+			background: white;
 		}
-
 
 		/* Altezza FISSA dello slideshow */
 		.slideshow-container {
 			position: relative;
 			width: 100%;
-			height: 420px;          /* ✅ altezza costante */
+			height: 420px;     /* altezza costante */
 			background: white;
 			overflow: hidden;
-			display: flex;         /* ✅ centra verticalmente */
-			align-items: center;   /* ✅ */
+			display: flex;
+			align-items: center;
 			justify-content: center;
 		}
 
@@ -82,31 +81,9 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			max-height: 100%;
 			width: auto;
 			height: auto;
-			object-fit: contain;   /* ✅ mai tagliate */
+			object-fit: contain;
 			display: block;
 		}
-
-
-		.slideshow-title { font-size: 1.8rem; margin-bottom: 12px; }
-
-		.slideshow-subtitle {
-			font-size: 1rem;
-			margin-bottom: 20px;
-			color: #555;
-		}
-
-		body {
-			background: white !important;
-		}
-
-		.slideshow-section {
-			background: white;
-		}
-
-		section {
-			background: white;
-		}
-
 
 		.slide { display: none; }
 		.slide.active { display: block; }
@@ -156,49 +133,56 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			background: #333;
 		}
 
+		/* Titoli allineati a sinistra e spaziatura coerente */
 		.slideshow-section h2,
 		section.info h2 {
-			text-align: left !important;
-			margin-top: 12px;     /* ✅ molto più compatto */
-			margin-bottom: 12px; /* ✅ */
+			text-align: left;
+			margin-top: 24px;
+			margin-bottom: 16px;
 		}
 
+		/* Più spazio prima di "Abstract booklet" solo lì */
 		h2.editable {
-			margin-top: 48px;   /* ✅ aumenta lo spazio prima di Abstract booklet */
+			margin-top: 48px;
 		}
 
+		body {
+			background: white;
+		}
+
+		section {
+			background: white;
+		}
 	</style>
 </head>
 
-
-
 <body>
 
-	<div class="fixed-box">
-		<strong>Date:</strong> 29th Sep – 4th Oct, 2025<br>
-		<strong>Location:</strong> Venice<br>
-		<strong>Registration:</strong> Closed <br>
-		<strong>Contacts:</strong>
-		<a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a>,
-		<a href="tel:+390412407711">+39 0412407711</a><br>
-		<a href="/POSTER.pdf" download><strong>ADC school's flyer</strong></a>
-	</div>
+<div class="fixed-box">
+    <strong>Date:</strong> 29th Sep – 4th Oct, 2025<br>
+	<strong>Location:</strong> Venice<br>
+    <strong>Registration:</strong> Closed <br>
+	<strong>Contacts:</strong>
+	<a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a>,
+	<a href="tel:+390412407711">+39 0412407711</a><br>
+	<a href="/POSTER.pdf" download><strong>ADC school's flyer</strong></a>
+</div>
 
-	<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-		<h1 class="hero-title">Highlights</h1>
-	</section>
+<section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
+	<h1 class="hero-title">Highlights</h1>
+</section>
 
-	</section> 
-	<section class="info ">
-		<div class="container flex"> 
-			<div class="text"> 
-				<h2 id="opinions" class="editable">Slideshow pictures gallery</h2>
-			</div> 
-		</div> 
+<div class="main-content">
+
+	<section class="info">
+		<div class="container flex">
+			<div class="text">
+				<h2 id="gallery" class="editable">Slideshow pictures gallery</h2>
+			</div>
+		</div>
 	</section>
 
 	<section class="slideshow-section">
-		<!-- <h2 id="opinions" class="editable"> Photo Highlights</h2> -->
 		<div class="slideshow-container" id="adc-slideshow">
 
 			<div class="slide active"><img src="/images/pictures_gallery/Adele Rerebaudengo in the Garden of Redentore 2- 10- 2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
@@ -223,40 +207,37 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		<div class="slideshow-dots" id="adc-slideshow-dots"></div>
 	</section>
 
+	<section class="info">
+		<div class="container flex">
+			<div class="text">
+				<h2 id="opinions" class="editable">Some opinions</h2>
 
+				<h3 class="editable">Speakers:</h3>
+				<p>
+					“I didn't know Alma, but this school made me wish that I had. Her legacy through this school and the foundation is beyond words. I returned home with a greater appreciation for the variety of questions in collective behavior and a reminder that many of us are asking similar questions but on different time and spatial scales”.<br>
+					“It was great to interact with the foundation, they have a wonderful mission that will help young academics”.<br>
+					“This was an amazing opportunity to meet people with similar interests in other disciplines, who I wouldn't meet otherwise. I learned a lot and established valuable new connections with other faculty. I also got to know many talented students and postdocs, and those connections will likely prove valuable in the future for all of us. […] And everything was just as Alma would have loved it, which was wonderful. It was a celebration of her life and ideas”.
+				</p>
 
+				<h3 class="editable">Junior scientists:</h3>
+				<p>
+					“It was a mind-opening experience that challenged and changed the way I think about science”.<br>
+					“I would most certainly recommend applying, and I would love to continue being part of such a lovely community”.<br>
+					“The school was one of the most intellectually challenging and rewarding experiences of my PhD”.<br>
+					“Such interdisciplinary meetings are very rare and they represent a unique opportunity for scientists with very different backgrounds to connect. These connections could have never happened otherwise as researchers working at different biological scales often never attend the same seminars or conferences”.<br>
+					“It was one of the best (if not the best) scientific conference/school I have ever attended. […] I really appreciate the efforts organisers and senior speakers put in focusing the school's impact on promoting young and early career researchers”.<br>
+					“Since 2016, I have attended around fifty schools and conferences, and in all honesty, last week was truly unique from both a scientific and cultural perspective. Margherita, Mario, and all the organisers have done an exceptional job in making all participants feel at home and part of a community from the very first day. […] I have nothing more to say than thank you, and I look forward to seeing you at the next edition!”
+				</p>
 
-	</section> <section class="info ">
-		<div class="container flex"> 
-			<div class="text"> 
-				<h2 id="opinions" class="editable">Some opinions </h2>
-					<h3 class="editable">Speakers:</h3>
-					<p> “I didn't know Alma, but this school made me wish that I had. Her legacy through this school and the foundation is beyond words. I returned home with a greater appreciation for the variety of questions in collective behavior and a reminder that many of us are asking similar questions but on different time and spatial scales”.<br> 
-						“It was great to interact with the foundation, they have a wonderful mission that will help young academics”.<br> 
-						“This was an amazing opportunity to meet people with similar interests in other disciplines, who I wouldn't meet otherwise. I learned a lot and established valuable new connections with other faculty. I also got to know many talented students and postdocs, and those connections will likely prove valuable in the future for all of us. […] And everything was just as Alma would have loved it, which was wonderful. It was a celebration of her life and ideas”. 
-					</p> 
-					<h3 class="editable">Junior scientists:</h3> 
-					<p> “It was a mind-opening experience that challenged and changed the way I think about science”.<br>
-						“I would most certainly recommend applying, and I would love to continue being part of such a lovely community”.<br> 
-						“The school was one of the most intellectually challenging and rewarding experiences of my PhD”.<br> 
-						“Such interdisciplinary meetings are very rare and they represent a unique opportunity for scientists with very different backgrounds to connect. 
-						These connections could have never happened otherwise as researchers working at different biological scales often never attend the same seminars or conferences”.<br> 
-						“It was one of the best (if not the best) scientific conference/school I have ever attended. […] I really appreciate the efforts organisers and senior speakers put in focusing the school's impact on promoting young and early career researchers”.<br> 
-						“Since 2016, I have attended around fifty schools and conferences, and in all honesty, last week was truly unique from both a scientific and cultural perspective. Margherita, Mario, and all the organisers have done an exceptional job in making all participants feel at home and part of a community from the very first day.
-						[…] I have nothing more to say than thank you, and I look forward to seeing you at the next edition!” 
-					</p> 
-					
-					<h2 class="editable"> Abstract booklet</h2> 
-					<p> <a href="/Book_Abstracts.pdf" download="ABSTRACT_BOOKLET_2025.pdf">Download here</a> the abstract booklet of the 2025 edition.
-					</p> 
-			</div> 
-		</div> 
-	</section> 
+				<h2 class="editable">Abstract booklet</h2>
+				<p>
+					<a href="/Book_Abstracts.pdf" download="ABSTRACT_BOOKLET_2025.pdf">Download here</a> the abstract booklet of the 2025 edition.
+				</p>
+			</div>
+		</div>
+	</section>
 
-</body>
-
-
-
+</div> <!-- /main-content -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
