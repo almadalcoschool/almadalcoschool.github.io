@@ -81,27 +81,30 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		}
 
 		/* Immagini mai tagliate */
+		/* Immagini adattate all’altezza del box, senza tagli */
 		.slide img {
-			max-width: 100%;
-			max-height: 100%;
-			width: auto;
-			height: auto;
-			object-fit: contain;
+			height: 100%;        /* riempi in altezza il container */
+			width: auto;         /* la larghezza si adatta di conseguenza */
+			max-width: 100%;     /* non uscire dal box in orizzontale */
+			max-height: 100%;    /* sicurezza extra */
+			object-fit: contain; /* niente tagli */
 			display: block;
 		}
+
 
 		.slide { display: none; }
 		.slide.active { display: block; }
 
+		/* Caption sotto la foto, non la copre più */
 		.slide-caption {
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			padding: 10px 14px;
-			color: #fff;
-			background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+			position: static;
+			padding: 8px 0 0;
+			color: #333;
+			background: none;
+			font-size: 0.9rem;
+			text-align: left; /* o center, se preferisci */
 		}
+
 
 		.slide-prev,
 		.slide-next {
