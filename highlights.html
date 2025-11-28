@@ -6,201 +6,55 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="css/style.css"> -->
 
 	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
 
-		/* CSS Reset */
-		* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box; /* Ensure consistent box sizing */
-			}
-		.main-content {
-				margin-right: 230px; /* Adjust this value based on the width of fixed-box plus some extra space */
-			}
-	
-		/* Title styles */
+		.main-content { margin-right: 230px; }
+
 		.hero-title {
-			font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem); /* Responsive font size */
-			margin-bottom: 20px; /* Space below the title */
-			white-space: normal; /* Allow wrapping */
-			line-height: 1.2; /* Better line height for readability */
-			max-width: 90%; /* Limit width on mobile */
-			overflow-wrap: break-word; /* Allow breaking of long words */
-			}
-	
-		/* Center text in sections */
+			font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
+			margin-bottom: 20px;
+			line-height: 1.2;
+			max-width: 90%;
+			overflow-wrap: break-word;
+		}
+
 		.text, .hero-text-container, .hero-title, .subtext, .container.flex {
 			text-align: flex-start;
-			}
-	
+		}
+
 		.fixed-box {
-			position: fixed; /* Keep the box fixed */
-			bottom: 0px; /* Distance from the bottom of the page */
-			right: 0; /* Position to the right */
-			width: 230px; /* Box width */
-			background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-			padding: 15px; /* Inner padding */
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for the box */
-			z-index: 1000; /* Ensure the box is above other content */
-			font-size: 20px; 
+			position: fixed;
+			bottom: 0px;
+			right: 0;
+			width: 230px;
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 15px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+			z-index: 1000;
+			font-size: 20px;
 		}
-	
-		
-		/* Hero section styles */
+
 		.hero {
-			background-image: url('images/home/paper_natEcoEvol2020.jpg'); /* Set background image */
-			background-size: cover; /* Cover the entire area */
-			background-position: center; /* Center the image */
-			height: 70vh; /* Set the height of the hero section */
-			display: flex; /* Use flexbox for layout */
-			flex-direction: column; /* Stack elements vertically */
-			justify-content: center; /* Center content vertically */
-			align-items: center; /* Center content horizontally */
-			color: white; /* Set text color */
-			position: relative; /* Set hero section to relative to position the label */
-			}
-	
-		.grid {
+			background-size: cover;
+			background-position: center;
+			height: 70vh;
 			display: flex;
-			flex-wrap: wrap; /* Allow items to wrap to a new line */
-			justify-content: flex-start; /* Center items within the container */
-			gap: 10px; /* Optional: Add space between items */
-			max-width: 100%; /* Ensure the grid doesn't exceed the container */
-			overflow: hidden; /* Prevent overflow */
-			}
-	
-		.grid img {
-			height:  100px;
-			max-width: 200px; /* Set a responsive max width */
-			object-fit: contain; /* Ensures the image aspect ratio remains intact */
-			}
-	
-		.text {
-			margin-bottom: 40px; /* Adjust the value as needed */
-			}
-		
-		.background-label {
-			position: relative; /* Positioned within the hero section */
-			bottom: 0px; /* Position 10px from the bottom */
-			right: 0px; /* Position 10px from the right */
-			background-color: rgba(0, 0, 0, 0);
-			color: #b9b9b9;
-			padding: 5px 15px; /* Padding around the label */
-			font-size: 0.9rem; /* Font size for the label */
-			border-radius: 4px; /* Rounded corners for the label */
-			z-index: 10; /* Ensure it appears above background content */
-			text-align: center; /* Center the text within the label */
+			justify-content: center;
+			align-items: center;
+			color: white;
 		}
-	
+
+		.text { margin-bottom: 40px; }
+
 		@media (max-width: 768px) {
-			.main-content {
-				margin-right: 0; 
-			}
-	
-			/* Updates for the hero section */
-			.fixed-box {
-			display: none; /* Hides the fixed box on mobile */
-				}
-	
-			.hero {
-				height: 40vh; /* Reduces the height of the hero section */
-				background-position: center; /* Centers the image */
-				background-size: cover; /* Ensures the image covers the section */
-				}
-	
-			.hero-title {
-				text-align: left; /* Align left on mobile */
-				font-size: 1.8em !important; /* Slightly larger font size for emphasis */
-				max-width: 100% !important; /* Use full width on mobile */
-				line-height: 1.3; /* Further increased line height for readability */
-				padding: 10px 15px; /* Add more padding around the title */
-				overflow-wrap: break-word !important; /* Allow breaking of long words */
-				
-			}
-	
-			.subtext {
-				font-size: 14px; /* Reduces the font size of the subtitle */
-				text-align: left; /* Centers the subtitle */
-				overflow-wrap: break-word;
-				}
-				.text {
-			margin-bottom: 40px; /* Adjust the value as needed */
-			}
-		
-			.hero-text-container {
-				padding: 20px 15px; /* Increase padding slightly for breathing room */
-				}
-			
-			.heading-landing, 
-			.heading-landing-home {
-				padding: 25px; /* Adjust padding for mobile */
-				max-width: 90%; /* Increase width slightly */
-				word-wrap: break-word; /* Allow words to break in case of overflow */
-				}
-			
-			.grid img {
-				height: 80px; /* Allow height to adjust */
-				width: auto; /* Smaller width for mobile */
-				}
-	
-			.inner-hero, .text-container, .hero-text-container, .heading-landing-home {
-				padding: 10 15px; /* Add horizontal padding to avoid overflow */
-				max-width: 95%; /* Limit width to avoid overflow */
-				}
-			}
-
-		/* TOC pulito, indipendente dal tema */
-		.toc{
-		max-width: 900px;
-		margin: 24px auto 16px;
-		padding: 16px 20px;
-		border: 1px solid #e5e5e5;
-		border-radius: 12px;
-		background: #fff;      /* evita banda scura */
-		color: #111;
-		position: relative;
-		z-index: 2;
-		box-shadow: 0 2px 6px rgba(0,0,0,.04);
-		}
-		.toc h2{
-		font-size: 20px;
-		margin: 0 0 8px;
-		text-transform: none;      /* niente maiuscole forzate */
-		letter-spacing: normal;
-		}
-		.toc ol{
-		list-style: decimal;
-		margin: 0 0 0 1.25rem;
-		padding: 0;
-		}
-		.toc li{
-		margin: 6px 0;
-		font-size: 22px;
-		line-height: 1.5;
-		text-transform: none;
-		letter-spacing: normal;
-		}
-		.toc a{
-		color: inherit;
-		text-decoration: none;
-		border-bottom: 1px dotted currentColor;
-		}
-		.toc a:hover{ text-decoration: underline; }
-
-		/* quando salti all’ancora, non attaccare il titolo in alto */
-		.info { scroll-margin-top: 20px; }
-
-		/* scorrimento morbido (opzionale) */
-		html { scroll-behavior: smooth; }
-
-		@media (max-width: 768px){
-		.toc{ margin: 16px 12px; }
+			.main-content { margin-right: 0; }
+			.fixed-box { display: none; }
+			.hero { height: 40vh; }
 		}
 
-
-		/* ---------- Slideshow / Gallery ---------- */
+		/* ---------- Slideshow ---------- */
 
 		.slideshow-section {
 			max-width: 900px;
@@ -208,10 +62,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			padding: 0 16px;
 		}
 
-		.slideshow-title {
-			font-size: 1.8rem;
-			margin-bottom: 12px;
-		}
+		.slideshow-title { font-size: 1.8rem; margin-bottom: 12px; }
 
 		.slideshow-subtitle {
 			font-size: 1rem;
@@ -221,22 +72,14 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 		.slideshow-container {
 			position: relative;
-			max-width: 100%;
-			margin: 0 auto;
 			overflow: hidden;
 			border-radius: 12px;
 			box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 			background: #000;
 		}
 
-		/* Single slide */
-		.slide {
-			display: none;
-		}
-
-		.slide.active {
-			display: block;
-		}
+		.slide { display: none; }
+		.slide.active { display: block; }
 
 		.slide img {
 			width: 100%;
@@ -245,49 +88,32 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			object-fit: cover;
 		}
 
-		/* Caption */
 		.slide-caption {
 			position: absolute;
 			left: 0;
 			right: 0;
 			bottom: 0;
 			padding: 10px 14px;
-			font-size: 0.95rem;
 			color: #fff;
 			background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
 		}
 
-		/* Prev / Next buttons */
 		.slide-prev,
 		.slide-next {
-			cursor: pointer;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
 			padding: 10px 14px;
-			font-weight: bold;
 			font-size: 18px;
 			border-radius: 50%;
 			background: rgba(255,255,255,0.7);
 			border: none;
-			outline: none;
-			user-select: none;
+			cursor: pointer;
 		}
 
-		.slide-prev:hover,
-		.slide-next:hover {
-			background: rgba(255,255,255,0.9);
-		}
+		.slide-prev { left: 12px; }
+		.slide-next { right: 12px; }
 
-		.slide-prev {
-			left: 12px;
-		}
-
-		.slide-next {
-			right: 12px;
-		}
-
-		/* Dots */
 		.slideshow-dots {
 			text-align: center;
 			margin-top: 12px;
@@ -306,31 +132,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		.slideshow-dot.active {
 			background: #333;
 		}
-
-		/* Mobile tweaks */
-		@media (max-width: 768px) {
-			.slideshow-section {
-				margin: 24px auto;
-				padding: 0 12px;
-			}
-
-			.slideshow-title {
-				font-size: 1.4rem;
-			}
-
-			.slide-caption {
-				font-size: 0.85rem;
-			}
-
-			.slide-prev,
-			.slide-next {
-				padding: 8px 10px;
-				font-size: 16px;
-			}
-		}
-
 	</style>
-
 </head>
 
 <body>
@@ -339,268 +141,112 @@ image: /images/home/paper_natEcoEvol2020.jpg
     <strong>Date:</strong> 29th Sep – 4th Oct, 2025<br>
 	<strong>Location:</strong> Venice<br>
     <strong>Registration:</strong> Closed <br>
-	<strong style="color: black;">Contacts:</strong> <a href="mailto:laura.padoan@istitutoveneto.it" style="color: black;">Laura Padoan</a>,<a href="tel:+390412407711" style="color: black;">+39 0412407711</a><br>
-	<a href="/POSTER.pdf" download="POSTER.pdf" style="color: black;"><strong style="color: black;">ADC school's flyer</strong></a><br>
+	<strong>Contacts:</strong>
+	<a href="mailto:laura.padoan@istitutoveneto.it">Laura Padoan</a>,
+	<a href="tel:+390412407711">+39 0412407711</a><br>
+	<a href="/POSTER.pdf" download><strong>ADC school's flyer</strong></a>
 </div>
 
 <section class="hero" style="background-image: url({% include relative-src.html src=page.image %})">
-	<div class="inner-hero text-container">
-		<div class="hero-text-container">
-			<div class="heading-landing">         
-                <h1 class="hero-title">Highlights</h1>
-            </div>
+	<h1 class="hero-title">Highlights</h1>
+</section>
+
+<section class="slideshow-section">
+	<h2 class="slideshow-title">Photo Highlights</h2>
+
+	<div class="slideshow-container" id="adc-slideshow">
+
+		<div class="slide active"><img src="/images/pictures_gallery/Adele Rerebaudengo in the Garden of Redentore 2- 10- 2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Alma Dal Co School Participants  in Palazzo Franchetti.jpeg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Andrea Rinaldo speech  3 - 10 -2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/arnoldini_markus.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Chaitanya S. Gokhale.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Deborah Gordon.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Donatella Calabi in the Garden of Redentore presenting Venezia è Viva! 2-10-2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Elena Scarpa.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/European Cultural Center visit 2-10-2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/European Cultural Center visit 29-9-2025.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Group session.jpeg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Poster session.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Simon Garnier.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+		<div class="slide"><img src="/images/pictures_gallery/Thierry Emonet.jpg"><div class="slide-caption"><!-- Caption here --></div></div>
+
+		<button class="slide-prev">&#10094;</button>
+		<button class="slide-next">&#10095;</button>
+	</div>
+
+	<div class="slideshow-dots" id="adc-slideshow-dots"></div>
+</section>
+
+<section class="info">
+	<div class="container flex">
+		<div class="text">
+
+			<h2>Some opinions</h2>
+
+			<h3>Speakers:</h3>
+			<p>“I didn't know Alma, but this school made me wish that I had... ”</p>
+
+			<h3>Junior scientists:</h3>
+			<p>“It was a mind-opening experience...”</p>
+
+			<h2>Abstract booklet</h2>
+			<p><a href="/Book_Abstracts.pdf" download>Download here</a></p>
+
 		</div>
 	</div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	const slideshow = document.getElementById('adc-slideshow');
+	if (!slideshow) return;
 
+	const slides = Array.from(slideshow.querySelectorAll('.slide'));
+	const prevBtn = slideshow.querySelector('.slide-prev');
+	const nextBtn = slideshow.querySelector('.slide-next');
+	const dotsContainer = document.getElementById('adc-slideshow-dots');
 
-<section class="slideshow-section">
-    <h2 class="slideshow-title">Photo Highlights</h2>
-    <p class="slideshow-subtitle">
-        A few moments from the Alma Dal Co School on Collective Behaviour 2025.
-    </p>
+	let dots = [];
+	let currentIndex = 0;
+	let autoTimer = null;
+	const AUTO_INTERVAL = 7000;
 
-    <div class="slideshow-container" id="adc-slideshow">
+	slides.forEach((_, index) => {
+		const dot = document.createElement('span');
+		dot.className = 'slideshow-dot' + (index === 0 ? ' active' : '');
+		dot.dataset.slide = index;
+		dotsContainer.appendChild(dot);
+	});
 
-        <div class="slide active">
-            <img src="/images/pictures_gallery/Adele Rerebaudengo in the Garden of Redentore 2- 10- 2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	dots = Array.from(dotsContainer.children);
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/Alma Dal Co School Participants  in Palazzo Franchetti.jpeg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	function showSlide(index) {
+		currentIndex = (index + slides.length) % slides.length;
+		slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+		dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+	}
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/Andrea Rinaldo speech  3 - 10 -2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	function next() { showSlide(currentIndex + 1); }
+	function prev() { showSlide(currentIndex - 1); }
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/arnoldini_markus.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	nextBtn.onclick = () => { next(); reset(); };
+	prevBtn.onclick = () => { prev(); reset(); };
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/Chaitanya S. Gokhale.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	dots.forEach(dot => {
+		dot.onclick = () => {
+			showSlide(parseInt(dot.dataset.slide));
+			reset();
+		};
+	});
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/Deborah Gordon.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
+	function reset() {
+		clearInterval(autoTimer);
+		autoTimer = setInterval(next, AUTO_INTERVAL);
+	}
 
-        <div class="slide">
-            <img src="/images/pictures_gallery/Donatella Calabi in the Garden of Redentore presenting Venezia è Viva! 2-10-2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Elena Scarpa.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/European Cultural Center visit 2-10-2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/European Cultural Center visit 29-9-2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/From ECC on the Canal Grande 29 - 9 - 2025.jpeg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Group session.jpeg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Irene Giardina.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Karine Gibbs.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Markus Arnoldini.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Mathieu Coppey.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Matti Gralka.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Myrta Galesic.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Palazzo Franchetti (1).jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Palazzo Franchetti sfondo 2.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Palazzo franchetti sfondo.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Palazzo Franchetti.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/paper_natEcoEvol2020.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Poster Session (2).jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Poster session.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Ralf Kurvers.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/School participants at Giardini del Redentore 2-10-2025.jpeg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Simon Garnier.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Social dinner on 30 9 2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Soffitto di Palazzo Pisani, attuale sede del Consrevatorio di Musica Benedetto Marcello.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/speech  3- 10 - 2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/The Chairs with the Founders of Alma Dal Co Foundation at the conclusionof the School.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/The Chairs.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/The exhibition in ECC Palazzo Bembo.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/The flautist Cecilia Vendrasco at Concert  4-10-2025.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Thierry Emonet.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Venezia_Palazzo_Cavalli-Franchetti_.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/William Ratcliff.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <div class="slide">
-            <img src="/images/pictures_gallery/Yuko Ulrich.jpg" alt="">
-            <div class="slide-caption"><!-- Caption here --></div>
-        </div>
-
-        <!-- Controls -->
-        <button class="slide-prev" aria-label="Previous slide">&#10094;</button>
-        <button class="slide-next" aria-label="Next slide">&#10095;</button>
-    </div>
-
-    <div class="slideshow-dots" id="adc-slideshow-dots"></div>
-</section>
-
-
-
-
-
-</section>	
-	<section class="info ">
-		<div class="container flex">
-			<div class="text">
-				<h2 id="transports" class="editable">Some opinions </h2>
-
-					<h3 class="editable">Speakers:</h3>
-					<p>
-						“I didn't know Alma, but this school made me wish that I had. Her legacy through this school and the foundation is beyond words. I returned home with a greater appreciation for the variety of questions in collective behavior and a reminder that many of us are asking similar questions but on different time and spatial scales”.<br>
-						“It was great to interact with the foundation, they have a wonderful mission that will help young academics”.<br>
-						“This was an amazing opportunity to meet people with similar interests in other disciplines, who I wouldn't meet otherwise. I learned a lot and established valuable new connections with other faculty. I also got to know many talented students and postdocs, and those connections will likely prove valuable in the future for all of us. […] And everything was just as Alma would have loved it, which was wonderful. It was a celebration of her life and ideas”.
-					</p>
-
-					<h3 class="editable">Junior scientists:</h3>
-					<p>
-						“It was a mind-opening experience that challenged and changed the way I think about science”.<br>
-						“I would most certainly recommend applying, and I would love to continue being part of such a lovely community”.<br>
-						“The school was one of the most intellectually challenging and rewarding experiences of my PhD”.<br>
-						“Such interdisciplinary meetings are very rare and they represent a unique opportunity for scientists with very different backgrounds to connect. These connections could have never happened otherwise as researchers working at different biological scales often never attend the same seminars or conferences”.<br>
-						“It was one of the best (if not the best) scientific conference/school I have ever attended. […] I really appreciate the efforts organisers and senior speakers put in focusing the school's impact on promoting young and early career researchers”.<br>
-						“Since 2016, I have attended around fifty schools and conferences, and in all honesty, last week was truly unique from both a scientific and cultural perspective. Margherita, Mario, and all the organisers have done an exceptional job in making all participants feel at home and part of a community from the very first day. […] I have nothing more to say than thank you, and I look forward to seeing you at the next edition!”
-					</p>
-
-				<h2 class="editable"> Abstract booklet</h2>
-				<p><a href="/Book_Abstracts.pdf" download="ABSTRACT_BOOKLET_2025.pdf">Download here</a> the abstract booklet of the 2025 edition.</p>
-			</div>
-		</div>
-	</section>	
-
-
+	reset();
+});
+</script>
 
 </body>
-
-
