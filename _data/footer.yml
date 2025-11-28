@@ -13,6 +13,8 @@ left_links:
     link: /cultural_program/
   # - name: Gallery
   #   link: /gallery/
+  - name: Highlights
+    link: /highlights/
   - name: Venue and Logistics
     link: /venue/
   - name: Organizers 
