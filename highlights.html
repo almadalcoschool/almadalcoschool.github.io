@@ -59,9 +59,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
 
 		.slideshow-section {
 			max-width: 700px;
-			margin: 40px auto;
+			margin: 16px auto 32px auto;
 			padding: 0 16px;
 		}
+
 
 		/* Altezza FISSA dello slideshow */
 		.slideshow-container {
@@ -155,11 +156,13 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			background: #333;
 		}
 
-		.slideshow-section h2 {
+		.slideshow-section h2,
+		section.info h2 {
 			text-align: left !important;
-			margin-bottom: 20px;
-			margin-top: 40px;
+			margin-top: 12px;     /* ✅ molto più compatto */
+			margin-bottom: 12px; /* ✅ */
 		}
+
 
 
 	</style>
@@ -181,7 +184,8 @@ image: /images/home/paper_natEcoEvol2020.jpg
 	<h1 class="hero-title">Highlights</h1>
 </section>
 
-</section> <section class="info ">
+</section> 
+<section class="info ">
 	<div class="container flex"> 
 		<div class="text"> 
 			<h2 id="opinions" class="editable">Slideshow pictures gallery</h2>
