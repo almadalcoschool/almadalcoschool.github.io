@@ -12,8 +12,10 @@
   link: /cultural_program/
 # - name: Gallery
 #   link: /gallery/
-- name: Venue and Logistics
-  link: /venue/
+- name: Highlights
+  link: /highlights/
+  #- name: Venue and Logistics
+  #  link: /venue/
 - name: Organizers 
   link: /organizers/
 - name: Promoters
