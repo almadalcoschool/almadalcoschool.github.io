@@ -68,41 +68,38 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			width: 100%;
 		}
 
-		/* Altezza FISSA dello slideshow */
 		.slideshow-container {
 			position: relative;
 			width: 100%;
-			height: 420px;     /* altezza costante */
+			height: 420px;              /* ✅ altezza FISSA */
 			background: white;
-			overflow: hidden;
-			display: flex;
+			display: flex;             /* ✅ per centrare l'immagine */
 			align-items: center;
 			justify-content: center;
+			overflow: hidden;          /* ✅ NON taglia perché l'immagine sarà contenuta */
 		}
 
-		/* Immagini mai tagliate */
-		/* Immagini adattate all’altezza del box, senza tagli */
 		.slide img {
-			height: 100%;        /* riempi in altezza il container */
-			width: auto;         /* la larghezza si adatta di conseguenza */
-			max-width: 100%;     /* non uscire dal box in orizzontale */
-			max-height: 100%;    /* sicurezza extra */
-			object-fit: contain; /* niente tagli */
+			height: 100%;          /* ✅ tutte alte 420px */
+			width: auto;           /* ✅ mantengono le proporzioni */
+			max-width: 100%;
+			object-fit: contain;  /* ✅ MAI crop */
 			display: block;
 		}
-
+		
 
 		.slide { display: none; }
 		.slide.active { display: block; }
 
-		/* Caption sotto la foto, non la copre più */
 		.slide-caption {
-			position: static;
-			padding: 8px 0 0;
-			color: #333;
-			background: none;
-			font-size: 0.9rem;
-			text-align: left; /* o center, se preferisci */
+			position: absolute;
+			bottom: 6px;      /* fluttua sopra, NON occupa spazio */
+			left: 12px;
+			color: white;
+			font-size: 0.85rem;
+			background: rgba(0,0,0,0.5);
+			padding: 4px 8px;
+			border-radius: 4px;
 		}
 
 
