@@ -70,11 +70,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			text-align: center; /* Center the text within the label */
 		}
 
-		@media (max-width: 768px) {
-			.main-content { margin-right: 0; }
-			.fixed-box { display: none; }
-			.hero { height: 40vh; }
-		}
+
 
 		/* ---------- SLIDESHOW DEFINITIVO ---------- */
 
@@ -206,7 +202,40 @@ image: /images/home/paper_natEcoEvol2020.jpg
 				overflow-wrap: break-word !important;
 			}
 
-			/* ✅ SLIDESHOW MOBILE A SCORRIMENTO */
+			.subtext {
+				font-size: 14px; /* Reduces the font size of the subtitle */
+				text-align: left; /* Centers the subtitle */
+				overflow-wrap: break-word;
+				}
+			.text {
+			margin-bottom: 40px; /* Adjust the value as needed */
+			}
+
+			.hero-text-container {
+				padding: 20px 15px; /* Increase padding slightly for breathing room */
+				}
+
+			/* Heading adjustments */
+			.heading-landing, 
+			.heading-landing-home {
+				padding: 25px; /* Adjust padding for mobile */
+				max-width: 90%; /* Increase width slightly */
+				word-wrap: break-word; /* Allow words to break in case of overflow */
+				}
+			
+			.grid img {
+				height: 80px; /* Allow height to adjust */
+				width: auto; /* Smaller width for mobile */
+				}
+	
+			.inner-hero, .text-container, .hero-text-container, .heading-landing-home {
+				padding: 10 15px; /* Add horizontal padding to avoid overflow */
+				max-width: 95%; /* Limit width to avoid overflow */
+				}
+
+			
+			/* SLIDESHOW MOBILE ADJUSTMENTS */
+
 			.slideshow-container {
 				height: 300px;          /* ✅ più basso su mobile */
 			}
