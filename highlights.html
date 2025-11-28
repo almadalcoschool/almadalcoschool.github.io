@@ -10,10 +10,10 @@ image: /images/home/paper_natEcoEvol2020.jpg
 	<style>
 		* { margin: 0; padding: 0; box-sizing: border-box; }
 
-		/* Colonna centrale: testo + slideshow */
+		/* Colonna principale con buco a destra */
 		.main-content {
-			margin-right: 230px;   /* lascia il buco a destra (se il tema lo usa) */
-			background: white;     /* TUTTO bianco dentro la colonna */
+			margin-right: 230px;
+			background: white;
 		}
 
 		.hero-title {
@@ -58,42 +58,52 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			.hero { height: 40vh; }
 		}
 
-		/* ---------- Slideshow ---------- */
+		/* ---------- SLIDESHOW DEFINITIVO ---------- */
 
 		.slideshow-section {
 			max-width: 700px;
 			margin: 40px auto 2px auto;
 			padding: 32px 16px;
-			background: white;   /* bianco nella sezione slideshow */
+			background: white;
 			width: 100%;
 		}
 
+		/* BOX A ALTEZZA FISSA */
 		.slideshow-container {
 			position: relative;
 			width: 100%;
-			height: 420px;              /* ✅ altezza FISSA */
+			height: 420px;              /* ✅ ALTEZZA FISSA */
 			background: white;
-			display: flex;             /* ✅ per centrare l'immagine */
+			overflow: hidden;          /* ✅ necessario */
+		}
+
+		/* OGNI SLIDE OCCUPA TUTTA L’ALTEZZA DEL BOX */
+		.slide {
+			display: none;
+			height: 100%;
+		}
+
+		/* SOLO LA SLIDE ATTIVA È VISIBILE E CENTRATA */
+		.slide.active {
+			display: flex;
 			align-items: center;
 			justify-content: center;
-			overflow: hidden;          /* ✅ NON taglia perché l'immagine sarà contenuta */
 		}
 
+		/* IMMAGINI CONTENUTE, MAI TAGLIATE */
 		.slide img {
-			height: 100%;          /* ✅ tutte alte 420px */
-			width: auto;           /* ✅ mantengono le proporzioni */
+			max-height: 100%;          /* ✅ NON PUÒ SUPERARE 420px */
 			max-width: 100%;
-			object-fit: contain;  /* ✅ MAI crop */
+			width: auto;
+			height: auto;
+			object-fit: contain;      /* ✅ MAI CROP */
 			display: block;
 		}
-		
 
-		.slide { display: none; }
-		.slide.active { display: block; }
-
+		/* CAPTION SOVRAPPOSTA, NON INFLUISCE SULL’ALTEZZA */
 		.slide-caption {
 			position: absolute;
-			bottom: 6px;      /* fluttua sopra, NON occupa spazio */
+			bottom: 6px;
 			left: 12px;
 			color: white;
 			font-size: 0.85rem;
@@ -102,7 +112,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			border-radius: 4px;
 		}
 
-
+		/* FRECCE */
 		.slide-prev,
 		.slide-next {
 			position: absolute;
@@ -119,6 +129,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 		.slide-prev { left: 12px; }
 		.slide-next { right: 12px; }
 
+		/* DOTS */
 		.slideshow-dots {
 			text-align: center;
 			margin-top: 12px;
@@ -138,7 +149,7 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			background: #333;
 		}
 
-		/* Titoli allineati a sinistra e spaziatura coerente */
+		/* TITOLI */
 		.slideshow-section h2,
 		section.info h2 {
 			text-align: left;
@@ -146,18 +157,31 @@ image: /images/home/paper_natEcoEvol2020.jpg
 			margin-bottom: 16px;
 		}
 
-		/* Più spazio prima di "Abstract booklet" solo lì */
+		/* SPAZIO EXTRA PRIMA DI ABSTRACT */
 		h2.editable {
 			margin-top: 48px;
 		}
 
-		.slideshow-container img {
-			height: 100% !important;
-			width: auto !important;
-			object-fit: contain !important;
-		}
+		/* ---------- MOBILE: COMPORTAMENTO FLUIDO ---------- */
+		@media (max-width: 768px) {
+			.slideshow-container {
+				height: auto;      /* ✅ su mobile l’altezza NON è fissa */
+			}
 
+			.slide,
+			.slide.active {
+				height: auto;
+				display: block;
+			}
+
+			.slide img {
+				width: 100%;
+				height: auto;
+				max-height: none;
+			}
+		}
 	</style>
+
 </head>
 
 <body>
