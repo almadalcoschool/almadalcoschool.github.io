@@ -15,8 +15,8 @@ left_links:
   #   link: /gallery/
   - name: Highlights
     link: /highlights/
-  - name: Venue and Logistics
-    link: /venue/
+  #- name: Venue and Logistics
+  #  link: /venue/
   - name: Organizers 
     link: /organizers/
   - name: Promoters
